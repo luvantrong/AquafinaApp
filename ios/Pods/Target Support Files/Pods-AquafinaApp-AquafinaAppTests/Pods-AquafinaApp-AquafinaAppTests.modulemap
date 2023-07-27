@@ -1,0 +1,6 @@
+module Pods_AquafinaApp_AquafinaAppTests {
+  umbrella header "Pods-AquafinaApp-AquafinaAppTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

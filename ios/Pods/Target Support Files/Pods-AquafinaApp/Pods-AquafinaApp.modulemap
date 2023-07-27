@@ -1,0 +1,6 @@
+module Pods_AquafinaApp {
+  umbrella header "Pods-AquafinaApp-umbrella.h"
+
+  export *
+  module * { export * }
+}
