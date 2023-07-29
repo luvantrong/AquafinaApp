@@ -18,6 +18,7 @@ const App: React.FC = () => {
         <Drawer.Screen name="Settings" component={Screen} />
       </Drawer.Navigator>
     </NavigationContainer>
+    // <Home />
   );
 };
 
