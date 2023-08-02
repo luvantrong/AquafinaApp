@@ -17,16 +17,17 @@ export interface ButtonProps {
   stylePressable?: StyleProp<ViewProps>;
   backgroundImage: string;
   styleText?: StyleProp<TextStyle>;
+  onPress?: () => void;
 }
 
 const _Button: React.FC<ButtonProps> = (props) => {
-  const { backgroundImage, title } = props;
+  const { backgroundImage, title, onPress } = props;
   return (
     <ImageBackground
       style={StyleSheet.flatten([_styles.container, props.stylePressable])}
       source={{ uri: backgroundImage }}
     >
-      <Pressable>
+      <Pressable onPress={onPress}>
         <Text style={StyleSheet.flatten([_styles.styleText, props.styleText])}>
           {title}
         </Text>
@@ -49,7 +50,7 @@ const _styles = StyleSheet.create({
 
   styleText: {
     fontSize: 14,
-    fontFamily: fontFamily.medium,
+    fontFamily: fontFamily.bold,
     color: Colors.WHITE,
   },
 });

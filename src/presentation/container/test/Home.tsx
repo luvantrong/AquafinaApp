@@ -1,14 +1,12 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
-import { Button, Header, BackgroundApp } from "../../component";
+import { Button, Header, BackgroundApp, TextField } from "../../component";
 import {
   ICON_AQUAFINA,
   ICON_HOME,
   ICON_LOGOUT,
-  ICON_MENU,
   BACKGROUND_BUTTON_BLUE,
   BACKGROUND_BUTTON_WHITE,
-  BACKGROUND_APP,
 } from "../../../../assets";
 import { Colors } from "../../resource";
 
@@ -30,6 +28,11 @@ const _Home: React.FC<HomeProps> = ({}) => {
         backgroundImage={BACKGROUND_BUTTON_WHITE}
         title="Đăng ký"
         styleText={{ color: Colors.BLUE_KV }}
+      />
+      <Text>TextField</Text>
+      <TextField
+        title="Số điện thoại"
+        placeholder="Nhập số điện thoại của bạn"
       />
     </BackgroundApp>
   );

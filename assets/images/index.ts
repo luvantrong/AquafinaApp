@@ -18,3 +18,9 @@ export const BACKGROUND_BUTTON_WHITE =
 
 export const BACKGROUND_APP =
   "https://firebasestorage.googleapis.com/v0/b/aquafina-fab2d.appspot.com/o/background_app.png?alt=media&token=18545bdb-5304-4d97-8cd1-fc8af65a621e";
+
+export const CONTENT =
+  "https://firebasestorage.googleapis.com/v0/b/aquafina-fab2d.appspot.com/o/content.png?alt=media&token=0f70301f-de7f-4520-9c67-b0305bacbd68";
+
+export const IMAGE_BOTTOM_LOGIN =
+  "https://firebasestorage.googleapis.com/v0/b/aquafina-fab2d.appspot.com/o/image_bottom_login.png?alt=media&token=a5d3c188-8650-4a44-a672-3728ee99beb3";

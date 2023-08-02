@@ -7,37 +7,47 @@ import {
   StyleProp,
   ViewStyle,
   ImageStyle,
+  Pressable,
 } from "react-native";
 import React from "react";
 import { ICON_HOME, ICON_AQUAFINA, ICON_LOGOUT } from "../../../../assets";
 
 export interface HeaderProps {
   icon_home: string;
+  onPressLeft?: () => void;
   icon_aquafina: string;
   icon_logout: string;
   styleIconHome?: StyleProp<ImageStyle>;
   styleIconLogout?: StyleProp<ImageStyle>;
+  onPressRight?: () => void;
 }
 
 const _Header: React.FC<HeaderProps> = (props) => {
-  const { icon_home, icon_aquafina, icon_logout } = props;
+  const { icon_home, icon_aquafina, icon_logout, onPressLeft, onPressRight } =
+    props;
   return (
     <View style={StyleSheet.flatten(_styles.container)}>
-      <Image
-        style={StyleSheet.flatten([_styles.image_home, props.styleIconHome])}
-        source={{ uri: icon_home }}
-      />
+      <Pressable onPress={onPressLeft}>
+        <Image
+          style={StyleSheet.flatten([_styles.image_home, props.styleIconHome])}
+          source={{ uri: icon_home }}
+        />
+      </Pressable>
+
       <Image
         style={StyleSheet.flatten(_styles.image_aquafina)}
         source={{ uri: icon_aquafina }}
       />
-      <Image
-        style={StyleSheet.flatten([
-          _styles.image_logout,
-          props.styleIconLogout,
-        ])}
-        source={{ uri: icon_logout }}
-      />
+
+      <Pressable onPress={onPressRight}>
+        <Image
+          style={StyleSheet.flatten([
+            _styles.image_logout,
+            props.styleIconLogout,
+          ])}
+          source={{ uri: icon_logout }}
+        />
+      </Pressable>
     </View>
   );
 };

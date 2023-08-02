@@ -10,8 +10,6 @@ import {
 } from "react-native";
 import { BACKGROUND_APP } from "../../../../assets";
 import { Colors } from "../../resource";
-// import {BACKGROUND} from '../../../../assets';
-// import {Colors} from '../../resource';
 
 export interface BackgroundProps {
   children: React.ReactNode;
