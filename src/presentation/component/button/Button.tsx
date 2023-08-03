@@ -7,6 +7,7 @@ import {
   TextStyle,
   View,
   ViewProps,
+  ViewStyle,
 } from "react-native";
 import React from "react";
 import { BACKGROUND_BUTTON_BLUE, fontFamily } from "../../../../assets";
@@ -14,7 +15,7 @@ import { Colors } from "../../resource";
 
 export interface ButtonProps {
   title: string;
-  stylePressable?: StyleProp<ViewProps>;
+  stylePressable?: StyleProp<ViewStyle>;
   backgroundImage: string;
   styleText?: StyleProp<TextStyle>;
   onPress?: () => void;

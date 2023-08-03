@@ -5,6 +5,7 @@ import {
   TextInput,
   StyleProp,
   ViewStyle,
+  TextStyle,
 } from "react-native";
 import React from "react";
 import { fontFamily } from "../../../../assets";
@@ -14,14 +15,22 @@ export interface TextFieldProps {
   title: string;
   placeholder: string;
   styleView?: StyleProp<ViewStyle>;
+  onChange: (text: string) => void;
+  textStyle?: StyleProp<TextStyle>;
+  value: string;
 }
 
 const _TextField: React.FC<TextFieldProps> = (props) => {
-  const { title, placeholder } = props;
+  const { title, placeholder, onChange, value } = props;
   return (
     <View style={[{ marginHorizontal: 20 }, props.styleView]}>
       <Text style={_styles.styleText}>{title}</Text>
-      <TextInput style={_styles.styleTextInput} placeholder={placeholder} />
+      <TextInput
+        style={StyleSheet.flatten([_styles.styleTextInput, props.textStyle])}
+        placeholder={placeholder}
+        onChangeText={onChange}
+        value={value}
+      />
     </View>
   );
 };
