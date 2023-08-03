@@ -1,55 +1,65 @@
-import { StyleProp, StyleSheet, Text, TextStyle, View } from "react-native";
+import {
+  StyleProp,
+  StyleSheet,
+  Text,
+  TextStyle,
+  View,
+  ViewStyle,
+} from "react-native";
 import React from "react";
+import { fontFamily } from "../../../../assets";
 
-interface TextViewBoldProps {
+interface Props {
+  boldTexts: string[];
   text: string;
-  searchStrings: string[];
-  boldStyle?: StyleProp<TextStyle>;
+  styleBold?: StyleProp<TextStyle>;
+  styleView?: StyleProp<ViewStyle>;
+  styleText?: StyleProp<TextStyle>;
 }
 
-const _TextViewBold: React.FC<TextViewBoldProps> = (props) => {
-  const { text, searchStrings, boldStyle } = props;
-  const boldText = (text: string, searchString: string): React.ReactNode[] => {
-    const parts = text.split(new RegExp(`(${searchString})`, "gi"));
-    return parts.map((part, i) =>
-      part.toLowerCase() === searchString.toLowerCase() ? (
-        <Text key={i} style={boldStyle}>
+const _TextViewBold: React.FC<Props> = (props) => {
+  const { boldTexts, text } = props;
+  const getTextWithBoldAndUpper = (text: string, boldTexts: string[]) => {
+    const regex = new RegExp(`(${boldTexts.join("|")})`, "gi");
+    const parts = text.split(regex);
+    return parts.map((part, index) => {
+      const isBoldAndUpper = boldTexts.includes(part);
+      return isBoldAndUpper ? (
+        <Text
+          key={index}
+          style={StyleSheet.flatten([_styles.textBold, props.styleBold])}
+        >
           {part}
         </Text>
       ) : (
-        <Text key={i}>{part}</Text>
-      )
-    );
+        <Text key={index}>{part}</Text>
+      );
+    });
   };
 
-  const boldAllStrings = (
-    text: string,
-    searchStrings: string[]
-  ): React.ReactNode => {
-    if (searchStrings.length === 0) {
-      return <Text>{text}</Text>;
-    }
-    const searchString = searchStrings[0];
-    const parts = text.split(new RegExp(`(${searchString})`, "gi"));
-    return (
-      <Text>
-        {parts.map((part, i) => {
-          if (part.toLowerCase() === searchString.toLowerCase()) {
-            return boldAllStrings(part, searchStrings.slice(1));
-          } else {
-            return <Text key={i}>{part}</Text>;
-          }
-        })}
+  return (
+    <View style={StyleSheet.flatten([_styles.container, props.styleView])}>
+      <Text style={StyleSheet.flatten([_styles.text, props.styleText])}>
+        {getTextWithBoldAndUpper(text, boldTexts)}
       </Text>
-    );
-  };
-
-  return boldAllStrings(
-    text,
-    searchStrings.map((s) => s.trim())
+    </View>
   );
 };
 
-const styles = StyleSheet.create({});
+const _styles = StyleSheet.create({
+  container: {
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  textBold: {
+    fontFamily: fontFamily.bold,
+    fontSize: 14,
+  },
+  text: {
+    fontSize: 14,
+    fontFamily: fontFamily.medium,
+  },
+});
 
 export const TextViewBold = React.memo(_TextViewBold);
