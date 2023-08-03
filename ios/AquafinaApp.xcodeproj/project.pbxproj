@@ -32,7 +32,7 @@
 		33F3589A578E403FBA044B96 /* SVN-Gotham XLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = D3C8A2EAD8CD410EB01D4B48 /* SVN-Gotham XLight.otf */; };
 		864F49C68B4C4B1BB71DBA1B /* SVN-Gotham Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2158D3722B1045AA8413268E /* SVN-Gotham Bold.ttf */; };
 		C54EAC06761542D393FF8614 /* SVN-Gotham Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 20DDB878C7B140609C4B04B7 /* SVN-Gotham Light.ttf */; };
-		90148D63184846EFB70E8A99 /* index.ts in Resources */ = {isa = PBXBuildFile; fileRef = 7089AB77E27845F4BC188BD5 /* index.ts */; };
+		24402AD68ADB47B6B6BE2E63 /* index.ts in Resources */ = {isa = PBXBuildFile; fileRef = 805B582A2DB74372B06643C7 /* index.ts */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,7 +81,7 @@
 		D3C8A2EAD8CD410EB01D4B48 /* SVN-Gotham XLight.otf */ = {isa = PBXFileReference; name = "SVN-Gotham XLight.otf"; path = "../assets/fonts/SVN-Gotham XLight.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		2158D3722B1045AA8413268E /* SVN-Gotham Bold.ttf */ = {isa = PBXFileReference; name = "SVN-Gotham Bold.ttf"; path = "../assets/fonts/SVN-Gotham Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		20DDB878C7B140609C4B04B7 /* SVN-Gotham Light.ttf */ = {isa = PBXFileReference; name = "SVN-Gotham Light.ttf"; path = "../assets/fonts/SVN-Gotham Light.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		7089AB77E27845F4BC188BD5 /* index.ts */ = {isa = PBXFileReference; name = "index.ts"; path = "../assets/fonts/index.ts"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		805B582A2DB74372B06643C7 /* index.ts */ = {isa = PBXFileReference; name = "index.ts"; path = "../assets/fonts/index.ts"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -208,7 +208,7 @@
 				D3C8A2EAD8CD410EB01D4B48 /* SVN-Gotham XLight.otf */,
 				2158D3722B1045AA8413268E /* SVN-Gotham Bold.ttf */,
 				20DDB878C7B140609C4B04B7 /* SVN-Gotham Light.ttf */,
-				7089AB77E27845F4BC188BD5 /* index.ts */,
+				805B582A2DB74372B06643C7 /* index.ts */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -328,7 +328,7 @@
 				33F3589A578E403FBA044B96 /* SVN-Gotham XLight.otf in Resources */,
 				864F49C68B4C4B1BB71DBA1B /* SVN-Gotham Bold.ttf in Resources */,
 				C54EAC06761542D393FF8614 /* SVN-Gotham Light.ttf in Resources */,
-				90148D63184846EFB70E8A99 /* index.ts in Resources */,
+				24402AD68ADB47B6B6BE2E63 /* index.ts in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
