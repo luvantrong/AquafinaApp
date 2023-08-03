@@ -2,11 +2,13 @@ import { createDrawerNavigator } from "@react-navigation/drawer";
 import { Home, Screen, Login } from "../container";
 import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
+import { StackTest } from "./StackTest";
 
 type RootDrawerParamList = {
-  Home: undefined;
+  // Home: undefined;
   Screen: undefined;
-  Login: undefined;
+  // Login: undefined;
+  StackTest: undefined;
 };
 
 const Drawer = createDrawerNavigator<RootDrawerParamList>();
@@ -15,13 +17,12 @@ const _MyDrawer = () => {
   return (
     <NavigationContainer>
       <Drawer.Navigator
-        initialRouteName="Login"
+        initialRouteName="StackTest"
         screenOptions={{
           headerShown: false,
         }}
       >
-        <Drawer.Screen name="Login" component={Login} />
-        <Drawer.Screen name="Home" component={Home} />
+        <Drawer.Screen name="StackTest" component={StackTest} />
         <Drawer.Screen name="Screen" component={Screen} />
       </Drawer.Navigator>
     </NavigationContainer>

@@ -25,10 +25,16 @@ import {
   TextView,
 } from "../../component";
 import { Colors } from "../../resource";
-
-const _Login = () => {
+import { NativeStackScreenProps } from "@react-navigation/native-stack";
+import { stackTest } from "../../navigation";
+type propsType = NativeStackScreenProps<stackTest, "Login">;
+const _Login: React.FC<propsType> = (props) => {
+  const { navigation } = props;
+  const goToScreenHome = () => {
+    navigation.navigate("Home");
+  };
   const [value, setValue] = useState("");
-  const [font, setFont] = useState("Arial");
+  const [font, setFont] = useState(fontFamily.medium);
 
   const handleInputChange = (text: string) => {
     setValue(text);
@@ -74,6 +80,7 @@ const _Login = () => {
         title="Đăng nhập"
         backgroundImage={BACKGROUND_BUTTON_BLUE}
         stylePressable={{ marginTop: Dimensions.get("window").height * 0.31 }}
+        onPress={goToScreenHome}
       />
       <TextView title="Hoặc" textStyle={_styles.textOr} />
       <Button
