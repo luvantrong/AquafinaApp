@@ -1,13 +1,11 @@
 import { createDrawerNavigator } from "@react-navigation/drawer";
-import { Home, Screen, Login } from "../container";
+import { Screen } from "../container";
 import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { StackTest } from "./StackTest";
 
 type RootDrawerParamList = {
-  // Home: undefined;
   Screen: undefined;
-  // Login: undefined;
   StackTest: undefined;
 };
 

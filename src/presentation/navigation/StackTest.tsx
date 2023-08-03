@@ -1,13 +1,16 @@
 import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { Home, Login } from "../container";
+import { Home, SignIn, SignInOTP } from "../container";
 
-type HomeProps = {};
-type LoginProps = {};
+type SignInProps = {};
+
+type SignInOTPProps = {
+  phoneNumber: string;
+};
 
 export type stackTest = {
-  Home: HomeProps | undefined;
-  Login: LoginProps | undefined;
+  SignIn: SignInProps | undefined;
+  SignInOTP: SignInOTPProps | undefined;
 };
 
 const Stack = createNativeStackNavigator<stackTest>();
@@ -15,13 +18,13 @@ const Stack = createNativeStackNavigator<stackTest>();
 const _StackTest = () => {
   return (
     <Stack.Navigator
-      initialRouteName="Login"
+      initialRouteName="SignIn"
       screenOptions={{
         headerShown: false,
       }}
     >
-      <Stack.Screen name="Login" component={Login} />
-      <Stack.Screen name="Home" component={Home} />
+      <Stack.Screen name="SignIn" component={SignIn} />
+      <Stack.Screen name="SignInOTP" component={SignInOTP} />
     </Stack.Navigator>
   );
 };

@@ -27,14 +27,16 @@ import {
 import { Colors } from "../../resource";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { stackTest } from "../../navigation";
-type propsType = NativeStackScreenProps<stackTest, "Login">;
-const _Login: React.FC<propsType> = (props) => {
+type propsType = NativeStackScreenProps<stackTest, "SignIn">;
+const _SignIn: React.FC<propsType> = (props) => {
   const { navigation } = props;
-  const goToScreenHome = () => {
-    navigation.navigate("Home");
-  };
+
   const [value, setValue] = useState("");
   const [font, setFont] = useState(fontFamily.medium);
+
+  const goToScreenHome = () => {
+    navigation.navigate("SignInOTP", { phoneNumber: value });
+  };
 
   const handleInputChange = (text: string) => {
     setValue(text);
@@ -120,4 +122,4 @@ const _styles = StyleSheet.create({
   },
 });
 
-export const Login = React.memo(_Login);
+export const SignIn = React.memo(_SignIn);
