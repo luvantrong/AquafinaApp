@@ -123,6 +123,9 @@ const _EnterOTP: React.FC<PropsType> = (props) => {
             console.log(`Code is ${code}, you are good to go!`);
             setCode(code);
           }}
+          placeholderCharacter="|"
+          placeholderTextColor={Colors.GRAY_PLA}
+          editable={true}
         />
       </View>
       <Button
