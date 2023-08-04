@@ -31,7 +31,7 @@ const _TextField: React.FC<TextFieldProps> = (props) => {
     <View style={[{ marginHorizontal: 20 }, props.styleView]}>
       <Text style={_styles.styleText}>{title}</Text>
       <ImageBackground
-        style={{ opacity: 0.9 }}
+        style={{ opacity: 0.9, overflow: "hidden", borderRadius: 8 }}
         source={{ uri: BACKGROUND_WHITE }}
       >
         <TextInput
