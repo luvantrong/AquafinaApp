@@ -5,4 +5,5 @@ export const Colors = {
   BLUE_TEXT: "rgba(0, 71, 186, 1)",
   GRAY_PLA: "rgba(174, 177, 181, 1)",
   GREY_5: "rgba(112, 113, 114, 1)",
+  RED: "#FA4238",
 };

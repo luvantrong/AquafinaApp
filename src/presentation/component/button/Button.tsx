@@ -16,14 +16,14 @@ import { Colors } from "../../resource";
 export interface ButtonProps {
   title: string;
   stylePressable?: StyleProp<ViewStyle>;
-  backgroundImage: string;
+  backgroundImage?: string;
   styleText?: StyleProp<TextStyle>;
   onPress?: () => void;
 }
 
 const _Button: React.FC<ButtonProps> = (props) => {
   const { backgroundImage, title, onPress } = props;
-  return (
+  return backgroundImage ? (
     <ImageBackground
       style={StyleSheet.flatten([_styles.container, props.stylePressable])}
       source={{ uri: backgroundImage }}
@@ -34,6 +34,15 @@ const _Button: React.FC<ButtonProps> = (props) => {
         </Text>
       </Pressable>
     </ImageBackground>
+  ) : (
+    <Pressable
+      onPress={onPress}
+      style={StyleSheet.flatten([_styles.container, props.stylePressable])}
+    >
+      <Text style={StyleSheet.flatten([_styles.styleText, props.styleText])}>
+        {title}
+      </Text>
+    </Pressable>
   );
 };
 

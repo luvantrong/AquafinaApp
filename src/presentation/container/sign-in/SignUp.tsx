@@ -28,28 +28,35 @@ import {
 import { Colors } from "../../resource";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { stackTest } from "../../navigation";
-type propsType = NativeStackScreenProps<stackTest, "SignIn">;
-const _SignIn: React.FC<propsType> = (props) => {
+type propsType = NativeStackScreenProps<stackTest, "SignUp">;
+const _SignUp: React.FC<propsType> = (props) => {
   const { navigation } = props;
 
-  const [value, setValue] = useState("");
-  const [font, setFont] = useState(fontFamily.medium);
+  const [valueName, setValueName] = useState("");
+  const [valuePhone, setValuePhone] = useState("");
+  const [fontName, setFontName] = useState(fontFamily.medium);
+  const [fontPhone, setFontPhone] = useState(fontFamily.medium);
 
-  const goToScreenOTP = () => {
-    navigation.navigate("EnterOTP", { phoneNumber: value });
-  };
-
-  const handleInputChange = (text: string) => {
-    setValue(text);
+  const handleInputChangeName = (text: string) => {
+    setValueName(text);
     if (text) {
-      setFont(fontFamily.bold);
+      setFontName(fontFamily.bold);
     } else {
-      setFont(fontFamily.medium);
+      setFontName(fontFamily.medium);
     }
   };
 
-  const goToScreenSignUp = () => {
-    navigation.navigate("SignUp");
+  const handleInputChangePhone = (text: string) => {
+    setValuePhone(text);
+    if (text) {
+      setFontPhone(fontFamily.bold);
+    } else {
+      setFontPhone(fontFamily.medium);
+    }
+  };
+
+  const goToScreenOTP = () => {
+    navigation.navigate("EnterOTP", { phoneNumber: valuePhone });
   };
 
   return (
@@ -72,29 +79,30 @@ const _SignIn: React.FC<propsType> = (props) => {
         imageStyle={_styles.imageBottomStyle}
       />
       <TextView
-        title="Đăng Nhập"
+        title="Đăng Ký"
         styleContainer={{ marginTop: Dimensions.get("window").height * 0.21 }}
+      />
+      <TextField
+        title="Họ và tên"
+        placeholder="Nhập họ và tên của bạn"
+        styleView={{ marginTop: 25 }}
+        value={valueName}
+        textStyle={{ fontFamily: fontName }}
+        onChange={handleInputChangeName}
       />
       <TextField
         title="Số điện thoại"
         placeholder="Nhập số điện thoại của bạn"
-        styleView={{ marginTop: 25 }}
-        onChange={handleInputChange}
-        value={value}
-        textStyle={{ fontFamily: font }}
+        styleView={{ marginTop: 10 }}
+        value={valuePhone}
+        textStyle={{ fontFamily: fontPhone }}
+        onChange={handleInputChangePhone}
       />
-      <Button
-        title="Đăng nhập"
-        backgroundImage={BACKGROUND_BUTTON_BLUE}
-        stylePressable={{ marginTop: Dimensions.get("window").height * 0.31 }}
-        onPress={goToScreenOTP}
-      />
-      <TextView title="Hoặc" textStyle={_styles.textOr} />
       <Button
         title="Đăng ký"
-        backgroundImage={BACKGROUND_BUTTON_WHITE}
-        styleText={{ color: Colors.BLUE_KV }}
-        onPress={goToScreenSignUp}
+        backgroundImage={BACKGROUND_BUTTON_BLUE}
+        stylePressable={{ marginTop: Dimensions.get("window").height * 0.21 }}
+        onPress={goToScreenOTP}
       />
     </SafeAreaView>
   );
@@ -113,6 +121,18 @@ const _styles = StyleSheet.create({
     fontSize: 11,
     marginVertical: 3,
   },
+
+  shadow: {
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.5,
+    shadowRadius: 3.84,
+
+    elevation: 5,
+  },
 });
 
-export const SignIn = React.memo(_SignIn);
+export const SignUp = React.memo(_SignUp);

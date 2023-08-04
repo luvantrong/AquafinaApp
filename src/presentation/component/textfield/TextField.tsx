@@ -6,16 +6,21 @@ import {
   StyleProp,
   ViewStyle,
   TextStyle,
+  ImageBackground,
 } from "react-native";
 import React from "react";
-import { fontFamily } from "../../../../assets";
+import {
+  BACKGROUND_BUTTON_WHITE,
+  BACKGROUND_WHITE,
+  fontFamily,
+} from "../../../../assets";
 import { Colors } from "../../resource";
 
 export interface TextFieldProps {
   title: string;
   placeholder: string;
   styleView?: StyleProp<ViewStyle>;
-  onChange: (text: string) => void;
+  onChange?: (text: string) => void;
   textStyle?: StyleProp<TextStyle>;
   value: string;
 }
@@ -25,12 +30,17 @@ const _TextField: React.FC<TextFieldProps> = (props) => {
   return (
     <View style={[{ marginHorizontal: 20 }, props.styleView]}>
       <Text style={_styles.styleText}>{title}</Text>
-      <TextInput
-        style={StyleSheet.flatten([_styles.styleTextInput, props.textStyle])}
-        placeholder={placeholder}
-        onChangeText={onChange}
-        value={value}
-      />
+      <ImageBackground
+        style={{ opacity: 0.9 }}
+        source={{ uri: BACKGROUND_WHITE }}
+      >
+        <TextInput
+          style={StyleSheet.flatten([_styles.styleTextInput, props.textStyle])}
+          placeholder={placeholder}
+          onChangeText={onChange}
+          value={value}
+        />
+      </ImageBackground>
     </View>
   );
 };

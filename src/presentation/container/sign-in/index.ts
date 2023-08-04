@@ -1,2 +1,3 @@
 export * from "./SignIn";
-export * from "./SignInOTP";
+export * from "./EnterOTP";
+export * from "./SignUp";
