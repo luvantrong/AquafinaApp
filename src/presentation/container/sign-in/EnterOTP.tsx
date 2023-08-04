@@ -1,16 +1,8 @@
-import {
-  SafeAreaView,
-  StyleSheet,
-  Dimensions,
-  View,
-  Image,
-} from "react-native";
+import { SafeAreaView, StyleSheet, Dimensions, View } from "react-native";
 import React, { useState } from "react";
 import {
   BACKGROUND_BUTTON_BLUE,
-  BACKGROUND_BUTTON_WHITE,
   CONTENT,
-  ICON_AQUAFINA,
   ICON_HOME,
   ICON_LOGOUT,
   IMAGE_BOTTOM_LOGIN,
@@ -21,19 +13,24 @@ import {
   Button,
   Header,
   ImageView,
-  TextField,
   TextView,
   TextViewBold,
 } from "../../component";
 import { Colors } from "../../resource";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import { stackTest } from "../../navigation";
+import { StackUser } from "../../navigation";
 import OTPInputView from "@twotalltotems/react-native-otp-input";
+import { DrawerNavigationProp } from "@react-navigation/drawer";
 
-type propsType = NativeStackScreenProps<stackTest, "EnterOTP">;
-const _EnterOTP: React.FC<propsType> = (props) => {
+type DrawerNavigationProps = DrawerNavigationProp<StackUser>;
+type PropsType = NativeStackScreenProps<StackUser, "EnterOTP"> & {
+  navigation: DrawerNavigationProps;
+};
+
+const _EnterOTP: React.FC<PropsType> = (props) => {
   const { navigation, route } = props;
   const phoneNumber = route.params?.phoneNumber;
+  const type = route.params?.type;
   const textBold = "Một mã OTP vừa được gửi vào số " + phoneNumber;
   const phone = phoneNumber + "";
   const boldTexts: string[] = [phone];
@@ -49,12 +46,23 @@ const _EnterOTP: React.FC<propsType> = (props) => {
   const codeOTP = "1234";
   const [code, setCode] = useState<string>("");
 
+  const showDrawerNavigator = () => {
+    navigation.openDrawer();
+  };
+
   const handleCheckOTP = () => {
     if (code != codeOTP) {
       setDisplay("none");
       setColorOTP(Colors.RED);
       setBorderColorOTP(Colors.RED);
       setDisplayReSendOPT("flex");
+      return false;
+    }
+
+    if (type == true) {
+      console.log("Chuyển sang màn hình trang chủ");
+    } else if (type == false) {
+      navigation.navigate("NotificationSignUp");
     }
   };
 
@@ -72,6 +80,7 @@ const _EnterOTP: React.FC<propsType> = (props) => {
         icon_home={ICON_HOME}
         icon_aquafina={LOGO_AQUAFINA}
         icon_logout={ICON_LOGOUT}
+        onPressLeft={showDrawerNavigator}
       />
       <ImageView
         uri={CONTENT}
@@ -79,6 +88,7 @@ const _EnterOTP: React.FC<propsType> = (props) => {
           width: Dimensions.get("window").width * 0.8,
           height: Dimensions.get("window").width * 0.5,
           marginTop: Dimensions.get("window").height * 0.14,
+          marginEnd: Dimensions.get("window").width * 0.04,
         }}
       />
       <ImageView

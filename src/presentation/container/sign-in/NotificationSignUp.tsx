@@ -2,7 +2,6 @@ import { SafeAreaView, StyleSheet, Dimensions } from "react-native";
 import React, { useState } from "react";
 import {
   BACKGROUND_BUTTON_BLUE,
-  BACKGROUND_BUTTON_WHITE,
   CONTENT,
   ICON_HOME,
   ICON_LOGOUT,
@@ -10,43 +9,21 @@ import {
   LOGO_AQUAFINA,
   fontFamily,
 } from "../../../../assets";
-import {
-  Button,
-  Header,
-  ImageView,
-  TextField,
-  TextView,
-} from "../../component";
+import { Button, Header, ImageView, TextView } from "../../component";
 import { Colors } from "../../resource";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { StackUser } from "../../navigation";
 import { DrawerNavigationProp } from "@react-navigation/drawer";
 
 type DrawerNavigationProps = DrawerNavigationProp<StackUser>;
-type PropsType = NativeStackScreenProps<StackUser, "SignIn"> & {
+type PropsType = NativeStackScreenProps<StackUser, "NotificationSignUp"> & {
   navigation: DrawerNavigationProps;
 };
-const _SignIn: React.FC<PropsType> = (props) => {
-  const { navigation } = props;
+const _NotificationSignUp: React.FC<PropsType> = (props) => {
+  const { navigation, route } = props;
 
-  const [value, setValue] = useState("");
-  const [font, setFont] = useState(fontFamily.medium);
-
-  const goToScreenOTP = () => {
-    navigation.navigate("EnterOTP", { phoneNumber: value, type: true });
-  };
-
-  const handleInputChange = (text: string) => {
-    setValue(text);
-    if (text) {
-      setFont(fontFamily.bold);
-    } else {
-      setFont(fontFamily.medium);
-    }
-  };
-
-  const goToScreenSignUp = () => {
-    navigation.navigate("SignUp");
+  const goToScreenSignIn = () => {
+    navigation.navigate("SignIn");
   };
 
   const showDrawerNavigator = () => {
@@ -75,29 +52,20 @@ const _SignIn: React.FC<PropsType> = (props) => {
         imageStyle={_styles.imageBottomStyle}
       />
       <TextView
-        title="Đăng Nhập"
-        styleContainer={{ marginTop: Dimensions.get("window").height * 0.21 }}
+        title="Đăng ký thành công"
+        styleContainer={{ marginTop: Dimensions.get("window").height * 0.27 }}
+        textStyle={_styles.textSignUp}
       />
-      <TextField
-        title="Số điện thoại"
-        placeholder="Nhập số điện thoại của bạn"
-        styleView={{ marginTop: 25 }}
-        onChange={handleInputChange}
-        value={value}
-        textStyle={{ fontFamily: font }}
+      <TextView
+        title="Vui lòng đăng nhập để bắt đầu chương trình"
+        styleContainer={{ marginTop: 10 }}
+        textStyle={_styles.textNotify}
       />
       <Button
         title="Đăng nhập"
         backgroundImage={BACKGROUND_BUTTON_BLUE}
-        stylePressable={{ marginTop: Dimensions.get("window").height * 0.31 }}
-        onPress={goToScreenOTP}
-      />
-      <TextView title="Hoặc" textStyle={_styles.textOr} />
-      <Button
-        title="Đăng ký"
-        backgroundImage={BACKGROUND_BUTTON_WHITE}
-        styleText={{ color: Colors.BLUE_KV }}
-        onPress={goToScreenSignUp}
+        stylePressable={{ marginTop: Dimensions.get("window").height * 0.34 }}
+        onPress={goToScreenSignIn}
       />
     </SafeAreaView>
   );
@@ -110,12 +78,16 @@ const _styles = StyleSheet.create({
     marginTop: Dimensions.get("window").height * 1.48,
     marginStart: Dimensions.get("window").width * 0.05,
   },
-  textOr: {
+
+  textSignUp: {
     textTransform: "none",
+  },
+  textNotify: {
+    fontFamily: fontFamily.medium,
+    textTransform: "none",
+    fontSize: 14,
     color: Colors.GREY_5,
-    fontSize: 11,
-    marginVertical: 3,
   },
 });
 
-export const SignIn = React.memo(_SignIn);
+export const NotificationSignUp = React.memo(_NotificationSignUp);

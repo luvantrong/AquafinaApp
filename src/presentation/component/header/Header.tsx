@@ -10,7 +10,7 @@ import {
   Pressable,
 } from "react-native";
 import React from "react";
-import { ICON_HOME, ICON_AQUAFINA, ICON_LOGOUT } from "../../../../assets";
+import { ICON_HOME, ICON_LOGOUT } from "../../../../assets";
 
 export interface HeaderProps {
   icon_home: string;
@@ -20,11 +20,18 @@ export interface HeaderProps {
   styleIconHome?: StyleProp<ImageStyle>;
   styleIconLogout?: StyleProp<ImageStyle>;
   onPressRight?: () => void;
+  onPressCenter?: () => void;
 }
 
 const _Header: React.FC<HeaderProps> = (props) => {
-  const { icon_home, icon_aquafina, icon_logout, onPressLeft, onPressRight } =
-    props;
+  const {
+    icon_home,
+    icon_aquafina,
+    icon_logout,
+    onPressLeft,
+    onPressRight,
+    onPressCenter,
+  } = props;
   return (
     <View style={StyleSheet.flatten(_styles.container)}>
       <Pressable onPress={onPressLeft}>
@@ -34,10 +41,12 @@ const _Header: React.FC<HeaderProps> = (props) => {
         />
       </Pressable>
 
-      <Image
-        style={StyleSheet.flatten(_styles.image_aquafina)}
-        source={{ uri: icon_aquafina }}
-      />
+      <Pressable onPress={onPressCenter}>
+        <Image
+          style={StyleSheet.flatten(_styles.image_aquafina)}
+          source={{ uri: icon_aquafina }}
+        />
+      </Pressable>
 
       <Pressable onPress={onPressRight}>
         <Image

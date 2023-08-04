@@ -1,17 +1,8 @@
-import {
-  SafeAreaView,
-  StyleSheet,
-  Text,
-  View,
-  Image,
-  Dimensions,
-} from "react-native";
+import { SafeAreaView, StyleSheet, Dimensions } from "react-native";
 import React, { useState } from "react";
 import {
   BACKGROUND_BUTTON_BLUE,
-  BACKGROUND_BUTTON_WHITE,
   CONTENT,
-  ICON_AQUAFINA,
   ICON_HOME,
   ICON_LOGOUT,
   IMAGE_BOTTOM_LOGIN,
@@ -27,15 +18,24 @@ import {
 } from "../../component";
 import { Colors } from "../../resource";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import { stackTest } from "../../navigation";
-type propsType = NativeStackScreenProps<stackTest, "SignUp">;
-const _SignUp: React.FC<propsType> = (props) => {
+import { StackUser } from "../../navigation";
+import { DrawerNavigationProp } from "@react-navigation/drawer";
+
+type DrawerNavigationProps = DrawerNavigationProp<StackUser>;
+type PropsType = NativeStackScreenProps<StackUser, "SignUp"> & {
+  navigation: DrawerNavigationProps;
+};
+const _SignUp: React.FC<PropsType> = (props) => {
   const { navigation } = props;
 
   const [valueName, setValueName] = useState("");
   const [valuePhone, setValuePhone] = useState("");
   const [fontName, setFontName] = useState(fontFamily.medium);
   const [fontPhone, setFontPhone] = useState(fontFamily.medium);
+
+  const showDrawerNavigator = () => {
+    navigation.openDrawer();
+  };
 
   const handleInputChangeName = (text: string) => {
     setValueName(text);
@@ -56,7 +56,7 @@ const _SignUp: React.FC<propsType> = (props) => {
   };
 
   const goToScreenOTP = () => {
-    navigation.navigate("EnterOTP", { phoneNumber: valuePhone });
+    navigation.navigate("EnterOTP", { phoneNumber: valuePhone, type: false });
   };
 
   return (
@@ -65,6 +65,7 @@ const _SignUp: React.FC<propsType> = (props) => {
         icon_home={ICON_HOME}
         icon_aquafina={LOGO_AQUAFINA}
         icon_logout={ICON_LOGOUT}
+        onPressLeft={showDrawerNavigator}
       />
       <ImageView
         uri={CONTENT}
@@ -72,6 +73,7 @@ const _SignUp: React.FC<propsType> = (props) => {
           width: Dimensions.get("window").width * 0.8,
           height: Dimensions.get("window").width * 0.5,
           marginTop: Dimensions.get("window").height * 0.14,
+          marginEnd: Dimensions.get("window").width * 0.04,
         }}
       />
       <ImageView
