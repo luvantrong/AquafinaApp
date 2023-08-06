@@ -5,6 +5,7 @@ import {
   CONTENT,
   ICON_HOME,
   ICON_LOGOUT,
+  ICON_MENU,
   IMAGE_BOTTOM_LOGIN,
   LOGO_AQUAFINA,
   fontFamily,
@@ -62,7 +63,7 @@ const _SignUp: React.FC<PropsType> = (props) => {
   return (
     <SafeAreaView>
       <Header
-        icon_home={ICON_HOME}
+        icon_home={ICON_MENU}
         icon_aquafina={LOGO_AQUAFINA}
         icon_logout={ICON_LOGOUT}
         onPressLeft={showDrawerNavigator}

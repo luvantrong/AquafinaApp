@@ -30,3 +30,41 @@ export const ICON_LOGIN =
 
 export const BACKGROUND_WHITE =
   "https://firebasestorage.googleapis.com/v0/b/aquafina-fab2d.appspot.com/o/background_white.png?alt=media&token=16e7dcee-c326-4e05-97b6-e0625bad7032";
+
+export const ICON_CLOSE =
+  "https://firebasestorage.googleapis.com/v0/b/aquafina-fab2d.appspot.com/o/icon_close.png?alt=media&token=d888ee7b-0f05-4385-a6eb-9a82646afb69";
+
+export const ICON_AVATAR =
+  "https://firebasestorage.googleapis.com/v0/b/aquafina-fab2d.appspot.com/o/avatar.png?alt=media&token=9d8c9805-df34-491f-9d5c-7fc6f5a24bfb";
+
+export const ICON_MENU_1 =
+  "https://firebasestorage.googleapis.com/v0/b/aquafina-fab2d.appspot.com/o/Icon_thegioixanh.png?alt=media&token=577035d2-4e37-4e85-bab8-db1645858b3a";
+
+export const ICON_MENU_2 =
+  "https://firebasestorage.googleapis.com/v0/b/aquafina-fab2d.appspot.com/o/icon_menu2.png?alt=media&token=39f79263-617c-4b90-8798-11590ec4038c";
+
+export const ICON_MENU_3 =
+  "https://firebasestorage.googleapis.com/v0/b/aquafina-fab2d.appspot.com/o/icon_menu3.png?alt=media&token=262e3fca-9468-4dde-a75f-0b71f70a3836";
+
+export const ICON_MENU_4 =
+  "https://firebasestorage.googleapis.com/v0/b/aquafina-fab2d.appspot.com/o/icon_menu4.png?alt=media&token=41bf3e2e-5d92-4fff-9a28-56df587e7f1b";
+
+export const ICON_MENU_5 =
+  "https://firebasestorage.googleapis.com/v0/b/aquafina-fab2d.appspot.com/o/ranking.png?alt=media&token=54b57946-1a42-4ff5-a9a4-900301c1ec20";
+
+export const AVATAR_SIGNIN =
+  "https://firebasestorage.googleapis.com/v0/b/aquafina-fab2d.appspot.com/o/avatar_signin.png?alt=media&token=4cdc7f52-d675-422a-a64d-5fab6bbe4fbd";
+export const ICON_MENU_1_FOCUS =
+  "https://firebasestorage.googleapis.com/v0/b/aquafina-fab2d.appspot.com/o/menu1_focus.png?alt=media&token=f3f3af0a-2fb8-4903-b50f-8af96aa157c3";
+
+export const ICON_MENU_2_FOCUS =
+  "https://firebasestorage.googleapis.com/v0/b/aquafina-fab2d.appspot.com/o/icon_menu_2_focus.png?alt=media&token=0895b21f-2a1e-4e9b-8c54-4d1a59ee28b2";
+
+export const ICON_MENU_3_FOCUS =
+  "https://firebasestorage.googleapis.com/v0/b/aquafina-fab2d.appspot.com/o/icon_menu_3_focus.png?alt=media&token=2085aad0-e2c8-4dd6-9a27-c5ac0fcce5d6";
+
+export const ICON_MENU_4_FOCUS =
+  "https://firebasestorage.googleapis.com/v0/b/aquafina-fab2d.appspot.com/o/icon_menu_4_focus.png?alt=media&token=7d89d502-1999-4015-9f01-c362960ccd2c";
+
+export const ICON_MENU_5_FOCUS =
+  "https://firebasestorage.googleapis.com/v0/b/aquafina-fab2d.appspot.com/o/ranking11.png?alt=media&token=ee527535-b6b9-49a5-8a27-73d1baa777ee";
