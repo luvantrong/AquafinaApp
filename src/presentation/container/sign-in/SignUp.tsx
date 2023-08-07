@@ -35,8 +35,8 @@ const _SignUp: React.FC<PropsType> = (props) => {
   const [fontName, setFontName] = useState(fontFamily.medium);
   const [fontPhone, setFontPhone] = useState(fontFamily.medium);
 
-  const showDrawerNavigator = () => {
-    navigation.openDrawer();
+  const goToScreenHome = () => {
+    navigation.navigate("Home");
   };
 
   const handleInputChangeName = (text: string) => {
@@ -67,7 +67,7 @@ const _SignUp: React.FC<PropsType> = (props) => {
         icon_home={ICON_HOME}
         icon_aquafina={LOGO_AQUAFINA}
         icon_logout={ICON_LOGOUT}
-        onPressLeft={showDrawerNavigator}
+        onPressLeft={goToScreenHome}
         styleIconAquafina={{ width: 75, height: 25 }}
       />
       <ImageView

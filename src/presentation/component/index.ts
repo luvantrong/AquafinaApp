@@ -6,3 +6,4 @@ export * from "./image";
 export * from "./text";
 export * from "./textBold";
 export * from "./textPlus";
+export * from "./sliderBanner";

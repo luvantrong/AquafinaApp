@@ -1,15 +1,27 @@
 import {
   Dimensions,
   Image,
+  Pressable,
   SafeAreaView,
+  ScrollView,
   StyleSheet,
   Text,
   View,
 } from "react-native";
 import React from "react";
-import { Header, ImageView, TextPlus } from "../../component";
+import {
+  Banner,
+  Button,
+  Header,
+  ImageView,
+  SliderBanner,
+  TextPlus,
+} from "../../component";
 import {
   BANNER_HOME,
+  BANNER_HOME_2,
+  BANNER_HOME_3,
+  BANNER_HOME_4,
   ICON_LOGIN,
   ICON_MENU,
   LOGO_AQUAFINA,
@@ -23,14 +35,32 @@ type DrawerNavigationProps = DrawerNavigationProp<StackHome>;
 type PropsType = NativeStackScreenProps<StackHome, "Home"> & {
   navigation: DrawerNavigationProps;
 };
-
 const _Home: React.FC<PropsType> = (props) => {
   const { navigation } = props;
+
   const showDrawerNavigator = () => {
     navigation.openDrawer();
   };
+
   const goToScreenSignIn = () => {
     navigation.navigate("SignIn");
+  };
+
+  const goToScreenHome = () => {
+    navigation.navigate("Home");
+  };
+
+  const handleToScreen = (screen: any) => {
+    switch (screen) {
+      case "Thế Giới Xanh":
+        navigation.navigate("GreenWorldScreen");
+        break;
+      case "Quà Tặng Xanh":
+        navigation.navigate("PresentScreen");
+        break;
+      default:
+        break;
+    }
   };
   return (
     <SafeAreaView>
@@ -41,23 +71,38 @@ const _Home: React.FC<PropsType> = (props) => {
         styleIconLogout={{ opacity: 1 }}
         onPressLeft={showDrawerNavigator}
         onPressRight={goToScreenSignIn}
+        onPressCenter={goToScreenHome}
       />
-      <ImageView
-        uri={BANNER_HOME}
-        imageStyle={{
-          width: Dimensions.get("window").width * 1,
-          height: Dimensions.get("window").height * 0.8,
-          resizeMode: "stretch",
-        }}
-        viewStyle={{
-          position: "absolute",
-          top: Dimensions.get("window").height * 0.08,
-        }}
-      />
+      <ScrollView>
+        <SliderBanner checkSignIn={true} data={DATA} onPress={handleToScreen} />
+      </ScrollView>
     </SafeAreaView>
   );
 };
 
 const _styles = StyleSheet.create({});
+
+const DATA: Banner[] = [
+  {
+    id: 1,
+    image: BANNER_HOME,
+    screen: "Thế Giới Xanh",
+  },
+  {
+    id: 2,
+    image: BANNER_HOME_2,
+    screen: "Thế Giới Xanh",
+  },
+  {
+    id: 3,
+    image: BANNER_HOME_3,
+    screen: "Thế Giới Xanh",
+  },
+  {
+    id: 4,
+    image: BANNER_HOME_4,
+    screen: "Quà Tặng Xanh",
+  },
+];
 
 export const Home = React.memo(_Home);

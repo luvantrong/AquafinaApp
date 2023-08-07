@@ -6,19 +6,26 @@ import {
   SignUp,
   NotificationSignUp,
   Home,
+  ChartScreen,
+  GreenWorldScreen,
+  MapScreen,
+  PointsScreen,
+  PresentScreen,
 } from "../container";
 
 type SignInProps = {};
-
 type EnterOTPProps = {
   phoneNumber: string;
   type: boolean;
 };
 type SignUpProps = {};
-
 type NotificationSignUpProps = {};
-
 type HomeProps = {};
+type ChartScreenProps = {};
+type GreenWorldScreenProps = {};
+type MapScreenProps = {};
+type PointsScreenProps = {};
+type PresentScreenProps = {};
 
 export type StackHome = {
   SignIn: SignInProps | undefined;
@@ -26,11 +33,16 @@ export type StackHome = {
   SignUp: SignUpProps | undefined;
   NotificationSignUp: NotificationSignUpProps | undefined;
   Home: HomeProps | undefined;
+  ChartScreen: ChartScreenProps | undefined;
+  GreenWorldScreen: GreenWorldScreenProps | undefined;
+  MapScreen: MapScreenProps | undefined;
+  PointsScreen: PointsScreenProps | undefined;
+  PresentScreen: PresentScreenProps | undefined;
 };
 
 const Stack = createNativeStackNavigator<StackHome>();
 
-const _StackHome = () => {
+const _StackUser = () => {
   return (
     <Stack.Navigator
       initialRouteName="Home"
@@ -43,8 +55,13 @@ const _StackHome = () => {
       <Stack.Screen name="SignUp" component={SignUp} />
       <Stack.Screen name="NotificationSignUp" component={NotificationSignUp} />
       <Stack.Screen name="Home" component={Home} />
+      <Stack.Screen name="ChartScreen" component={ChartScreen} />
+      <Stack.Screen name="GreenWorldScreen" component={GreenWorldScreen} />
+      <Stack.Screen name="MapScreen" component={MapScreen} />
+      <Stack.Screen name="PointsScreen" component={PointsScreen} />
+      <Stack.Screen name="PresentScreen" component={PresentScreen} />
     </Stack.Navigator>
   );
 };
 
-export const StackUser = React.memo(_StackHome);
+export const StackUser = React.memo(_StackUser);

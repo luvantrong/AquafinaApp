@@ -18,17 +18,21 @@ export interface ButtonProps {
   stylePressable?: StyleProp<ViewStyle>;
   backgroundImage?: string;
   styleText?: StyleProp<TextStyle>;
-  onPress?: () => void;
+  onPress?: (screen?: string) => void;
 }
 
 const _Button: React.FC<ButtonProps> = (props) => {
   const { backgroundImage, title, onPress } = props;
+
+  const handlePress = () => {
+    onPress && onPress();
+  };
   return backgroundImage ? (
     <ImageBackground
       style={StyleSheet.flatten([_styles.container, props.stylePressable])}
       source={{ uri: backgroundImage }}
     >
-      <Pressable onPress={onPress}>
+      <Pressable onPress={handlePress}>
         <Text style={StyleSheet.flatten([_styles.styleText, props.styleText])}>
           {title}
         </Text>
@@ -36,7 +40,7 @@ const _Button: React.FC<ButtonProps> = (props) => {
     </ImageBackground>
   ) : (
     <Pressable
-      onPress={onPress}
+      onPress={handlePress}
       style={StyleSheet.flatten([_styles.container, props.stylePressable])}
     >
       <Text style={StyleSheet.flatten([_styles.styleText, props.styleText])}>

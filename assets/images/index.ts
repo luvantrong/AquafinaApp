@@ -70,4 +70,13 @@ export const ICON_MENU_5_FOCUS =
   "https://firebasestorage.googleapis.com/v0/b/aquafina-fab2d.appspot.com/o/ranking11.png?alt=media&token=ee527535-b6b9-49a5-8a27-73d1baa777ee";
 
 export const BANNER_HOME =
-  "https://firebasestorage.googleapis.com/v0/b/aquafina-fab2d.appspot.com/o/banner_home.png?alt=media&token=f301759e-6322-4cf4-8e1e-8ae93584024b";
+  "https://firebasestorage.googleapis.com/v0/b/aquafina-fab2d.appspot.com/o/banner_1.png?alt=media&token=4f3ce591-f583-414b-a8e1-a5eba19cb883";
+
+export const BANNER_HOME_2 =
+  "https://firebasestorage.googleapis.com/v0/b/aquafina-fab2d.appspot.com/o/b2.png?alt=media&token=254c8b23-ee03-4c78-857e-2839b3116fc8";
+
+export const BANNER_HOME_3 =
+  "https://firebasestorage.googleapis.com/v0/b/aquafina-fab2d.appspot.com/o/b3.png?alt=media&token=bb26f49c-4bb4-4686-90f4-d61f0476bf11";
+
+export const BANNER_HOME_4 =
+  "https://firebasestorage.googleapis.com/v0/b/aquafina-fab2d.appspot.com/o/b44.png?alt=media&token=22d15033-058b-43ea-85f2-cc4993e85281";

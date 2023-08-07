@@ -10,7 +10,7 @@ import {
 } from "../container";
 import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
-import { StackUser } from "./StackUser";
+import { StackUser } from "./StackHome";
 import { CustomDrawerContent } from "./CustomDrawerContent";
 import {
   AVATAR_SIGNIN,
