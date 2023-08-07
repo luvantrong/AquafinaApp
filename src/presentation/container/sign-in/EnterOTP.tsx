@@ -1,5 +1,5 @@
 import { SafeAreaView, StyleSheet, Dimensions, View } from "react-native";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   BACKGROUND_BUTTON_BLUE,
   CONTENT,
@@ -10,19 +10,14 @@ import {
   LOGO_AQUAFINA,
   fontFamily,
 } from "@assets";
-import {
-  Button,
-  Header,
-  ImageView,
-  TextView,
-  TextViewBold,
-} from "@components";
+import { Button, Header, ImageView, TextView, TextViewBold } from "@components";
 import { Colors } from "@resources";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { StackHome } from "@navigation";
 import OTPInputView from "@twotalltotems/react-native-otp-input";
 import { DrawerNavigationProp } from "@react-navigation/drawer";
 import LinearGradient from "react-native-linear-gradient";
+import auth, { FirebaseAuthTypes } from "@react-native-firebase/auth";
 
 type DrawerNavigationProps = DrawerNavigationProp<StackHome>;
 type PropsType = NativeStackScreenProps<StackHome, "EnterOTP"> & {
@@ -48,24 +43,54 @@ const _EnterOTP: React.FC<PropsType> = (props) => {
   const codeOTP = "1234";
   const [code, setCode] = useState<string>("");
 
+  const [confirm, setConfirm] =
+    useState<FirebaseAuthTypes.ConfirmationResult | null>(null);
+
+  function onAuthStateChanged(user: any) {
+    console.log("user", user);
+  }
+
+  useEffect(() => {
+    const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
+    return subscriber; // unsubscribe on unmount
+  }, []);
+
+  async function signInWithPhoneNumber(phoneNumber: string) {
+    const confirmation = await auth().signInWithPhoneNumber(phoneNumber);
+    setConfirm(confirmation);
+  }
+
+  useEffect(() => {
+    signInWithPhoneNumber("+84 943223470");
+  }, []);
+
+  async function confirmCode() {
+    try {
+      await confirm?.confirm(code);
+    } catch (error) {
+      console.log("Invalid code.");
+    }
+  }
+
   const gotoScreenHome = () => {
     navigation.navigate("Home");
   };
 
   const handleCheckOTP = () => {
-    if (code != codeOTP) {
-      setDisplay("none");
-      setColorOTP(Colors.RED);
-      setBorderColorOTP(Colors.RED);
-      setDisplayReSendOPT("flex");
-      return false;
-    }
+    // if (code != codeOTP) {
+    //   setDisplay("none");
+    //   setColorOTP(Colors.RED);
+    //   setBorderColorOTP(Colors.RED);
+    //   setDisplayReSendOPT("flex");
+    //   return false;
+    // }
+    confirmCode();
 
-    if (type == true) {
-      navigation.navigate("Home");
-    } else if (type == false) {
-      navigation.navigate("NotificationSignUp");
-    }
+    // if (type == true) {
+    //   navigation.navigate("Home");
+    // } else if (type == false) {
+    //   navigation.navigate("NotificationSignUp");
+    // }
   };
 
   const handleResendOTP = () => {

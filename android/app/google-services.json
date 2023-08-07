@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "623022763335",
+    "project_id": "aquafina-fab2d",
+    "storage_bucket": "aquafina-fab2d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:623022763335:android:5783b5618e15144d4db062",
+        "android_client_info": {
+          "package_name": "com.aquafinaapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "623022763335-mvl6cvlhktka0g2li8fohkd2447kjvrd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBWcWsJpD07KaoXu0ByTB7rx8EPIyBUp9A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "623022763335-mvl6cvlhktka0g2li8fohkd2447kjvrd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

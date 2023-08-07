@@ -1,20 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.aquafinaapp-mergeDebugResources-29:/values-v16/values-v16.xml",
+            "outputFile": "com.aquafinaapp-mergeDebugResources-35:/values-v16/values-v16.xml",
             "map": [
                 {
-                    "source": "/Users/tronglv/.gradle/caches/transforms-3/75e4635b66fa4e4e84e71b52579837ce/transformed/core-1.7.0/res/values-v16/values-v16.xml",
-                    "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endColumns": "65",
-                        "endOffsets": "116"
-                    }
-                },
-                {
-                    "source": "/Users/tronglv/.gradle/caches/transforms-3/b14585e0ae3314e7a64bac79062dab1c/transformed/appcompat-1.4.1/res/values-v16/values-v16.xml",
+                    "source": "/Users/tronglv/.gradle/caches/transforms-3/804f45cd7fa4d25c04a5b944d2f9477e/transformed/appcompat-1.4.1/res/values-v16/values-v16.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -30,6 +20,16 @@
                         "endLines": "6",
                         "endColumns": "12",
                         "endOffsets": "289"
+                    }
+                },
+                {
+                    "source": "/Users/tronglv/.gradle/caches/transforms-3/d247d480415d3444cc8e02839c6dfa53/transformed/core-1.7.0/res/values-v16/values-v16.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "65",
+                        "endOffsets": "116"
                     }
                 }
             ]

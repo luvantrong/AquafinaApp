@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="default_web_client_id" translatable="false">623022763335-mvl6cvlhktka0g2li8fohkd2447kjvrd.apps.googleusercontent.com</string>
+    <string name="gcm_defaultSenderId" translatable="false">623022763335</string>
+    <string name="google_api_key" translatable="false">AIzaSyBWcWsJpD07KaoXu0ByTB7rx8EPIyBUp9A</string>
+    <string name="google_app_id" translatable="false">1:623022763335:android:5783b5618e15144d4db062</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyBWcWsJpD07KaoXu0ByTB7rx8EPIyBUp9A</string>
+    <string name="google_storage_bucket" translatable="false">aquafina-fab2d.appspot.com</string>
+    <string name="project_id" translatable="false">aquafina-fab2d</string>
+</resources>

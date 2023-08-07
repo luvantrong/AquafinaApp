@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.aquafinaapp-mergeDebugResources-29:/values-watch-v21/values-watch-v21.xml",
+            "outputFile": "com.aquafinaapp-mergeDebugResources-35:/values-watch-v21/values-watch-v21.xml",
             "map": [
                 {
-                    "source": "/Users/tronglv/.gradle/caches/transforms-3/b14585e0ae3314e7a64bac79062dab1c/transformed/appcompat-1.4.1/res/values-watch-v21/values-watch-v21.xml",
+                    "source": "/Users/tronglv/.gradle/caches/transforms-3/804f45cd7fa4d25c04a5b944d2f9477e/transformed/appcompat-1.4.1/res/values-watch-v21/values-watch-v21.xml",
                     "from": {
                         "startLines": "2,6,10",
                         "startColumns": "4,4,4",
