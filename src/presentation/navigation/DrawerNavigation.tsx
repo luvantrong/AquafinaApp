@@ -48,6 +48,7 @@ const _MyDrawer = () => {
       <Drawer.Navigator
         drawerContent={(props) => (
           <CustomDrawerContent
+            checkSignIn={false}
             imageAvatar={AVATAR_SIGNIN}
             textAccount="Lê Quỳnh Ái Vân"
             {...props}

@@ -7,4 +7,6 @@ export const Colors = {
   GREY_5: "rgba(112, 113, 114, 1)",
   RED: "#FA4238",
   BLACK: "rgba(41, 43, 46, 1)",
+  WHITE_LINEAR: "#FFFFFF",
+  WHITE_LINEAR_2: "#FFFFFF90",
 };

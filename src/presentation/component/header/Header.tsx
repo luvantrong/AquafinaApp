@@ -19,6 +19,7 @@ export interface HeaderProps {
   icon_logout: string;
   styleIconHome?: StyleProp<ImageStyle>;
   styleIconLogout?: StyleProp<ImageStyle>;
+  styleIconAquafina?: StyleProp<ImageStyle>;
   onPressRight?: () => void;
   onPressCenter?: () => void;
 }
@@ -43,7 +44,10 @@ const _Header: React.FC<HeaderProps> = (props) => {
 
       <Pressable onPress={onPressCenter}>
         <Image
-          style={StyleSheet.flatten(_styles.image_aquafina)}
+          style={StyleSheet.flatten([
+            _styles.image_aquafina,
+            props.styleIconAquafina,
+          ])}
           source={{ uri: icon_aquafina }}
         />
       </Pressable>
@@ -76,8 +80,8 @@ const _styles = StyleSheet.create({
   },
 
   image_aquafina: {
-    width: 75,
-    height: 25,
+    width: 96,
+    height: 40,
   },
 
   image_logout: {

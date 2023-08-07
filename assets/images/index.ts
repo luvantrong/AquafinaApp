@@ -68,3 +68,6 @@ export const ICON_MENU_4_FOCUS =
 
 export const ICON_MENU_5_FOCUS =
   "https://firebasestorage.googleapis.com/v0/b/aquafina-fab2d.appspot.com/o/ranking11.png?alt=media&token=ee527535-b6b9-49a5-8a27-73d1baa777ee";
+
+export const BANNER_HOME =
+  "https://firebasestorage.googleapis.com/v0/b/aquafina-fab2d.appspot.com/o/banner_home.png?alt=media&token=f301759e-6322-4cf4-8e1e-8ae93584024b";

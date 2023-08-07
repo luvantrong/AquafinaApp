@@ -13,11 +13,12 @@ import {
 import { Button, Header, ImageView, TextView } from "../../component";
 import { Colors } from "../../resource";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import { StackUser } from "../../navigation";
+import { StackHome } from "../../navigation";
 import { DrawerNavigationProp } from "@react-navigation/drawer";
+import LinearGradient from "react-native-linear-gradient";
 
-type DrawerNavigationProps = DrawerNavigationProp<StackUser>;
-type PropsType = NativeStackScreenProps<StackUser, "NotificationSignUp"> & {
+type DrawerNavigationProps = DrawerNavigationProp<StackHome>;
+type PropsType = NativeStackScreenProps<StackHome, "NotificationSignUp"> & {
   navigation: DrawerNavigationProps;
 };
 const _NotificationSignUp: React.FC<PropsType> = (props) => {
@@ -27,17 +28,18 @@ const _NotificationSignUp: React.FC<PropsType> = (props) => {
     navigation.navigate("SignIn");
   };
 
-  const showDrawerNavigator = () => {
-    navigation.openDrawer();
+  const gotoScreenHome = () => {
+    navigation.navigate("Home");
   };
 
   return (
     <SafeAreaView>
       <Header
-        icon_home={ICON_MENU}
+        icon_home={ICON_HOME}
         icon_aquafina={LOGO_AQUAFINA}
         icon_logout={ICON_LOGOUT}
-        onPressLeft={showDrawerNavigator}
+        onPressLeft={gotoScreenHome}
+        styleIconAquafina={{ width: 75, height: 25 }}
       />
       <ImageView
         uri={CONTENT}
@@ -62,12 +64,19 @@ const _NotificationSignUp: React.FC<PropsType> = (props) => {
         styleContainer={{ marginTop: 10 }}
         textStyle={_styles.textNotify}
       />
-      <Button
-        title="Đăng nhập"
-        backgroundImage={BACKGROUND_BUTTON_BLUE}
-        stylePressable={{ marginTop: Dimensions.get("window").height * 0.34 }}
-        onPress={goToScreenSignIn}
-      />
+      <LinearGradient
+        style={{
+          marginTop: Dimensions.get("window").height * 0.34,
+          height: 400,
+        }}
+        colors={[Colors.WHITE_LINEAR_2, Colors.WHITE_LINEAR]}
+      >
+        <Button
+          title="Đăng nhập"
+          backgroundImage={BACKGROUND_BUTTON_BLUE}
+          onPress={goToScreenSignIn}
+        />
+      </LinearGradient>
     </SafeAreaView>
   );
 };

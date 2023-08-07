@@ -1,2 +1,2 @@
-export * from "./Home";
+export * from "./HomeTest";
 export * from "./Screen";

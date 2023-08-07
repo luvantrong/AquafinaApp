@@ -19,12 +19,13 @@ import {
 } from "../../component";
 import { Colors } from "../../resource";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import { StackUser } from "../../navigation";
+import { StackHome } from "../../navigation";
 import OTPInputView from "@twotalltotems/react-native-otp-input";
 import { DrawerNavigationProp } from "@react-navigation/drawer";
+import LinearGradient from "react-native-linear-gradient";
 
-type DrawerNavigationProps = DrawerNavigationProp<StackUser>;
-type PropsType = NativeStackScreenProps<StackUser, "EnterOTP"> & {
+type DrawerNavigationProps = DrawerNavigationProp<StackHome>;
+type PropsType = NativeStackScreenProps<StackHome, "EnterOTP"> & {
   navigation: DrawerNavigationProps;
 };
 
@@ -47,8 +48,8 @@ const _EnterOTP: React.FC<PropsType> = (props) => {
   const codeOTP = "1234";
   const [code, setCode] = useState<string>("");
 
-  const showDrawerNavigator = () => {
-    navigation.openDrawer();
+  const gotoScreenHome = () => {
+    navigation.navigate("Home");
   };
 
   const handleCheckOTP = () => {
@@ -61,7 +62,7 @@ const _EnterOTP: React.FC<PropsType> = (props) => {
     }
 
     if (type == true) {
-      console.log("Chuyển sang màn hình trang chủ");
+      navigation.navigate("Home");
     } else if (type == false) {
       navigation.navigate("NotificationSignUp");
     }
@@ -78,10 +79,11 @@ const _EnterOTP: React.FC<PropsType> = (props) => {
   return (
     <SafeAreaView>
       <Header
-        icon_home={ICON_MENU}
+        icon_home={ICON_HOME}
         icon_aquafina={LOGO_AQUAFINA}
         icon_logout={ICON_LOGOUT}
-        onPressLeft={showDrawerNavigator}
+        onPressLeft={gotoScreenHome}
+        styleIconAquafina={{ width: 75, height: 25 }}
       />
       <ImageView
         uri={CONTENT}
@@ -129,27 +131,34 @@ const _EnterOTP: React.FC<PropsType> = (props) => {
           editable={true}
         />
       </View>
-      <Button
-        title="Xác nhận"
-        backgroundImage={BACKGROUND_BUTTON_BLUE}
-        stylePressable={{ marginTop: Dimensions.get("window").height * 0.234 }}
-        onPress={handleCheckOTP}
-      />
-      <TextViewBold
-        text="Mã sẽ được gửi trong vòng 30 giây"
-        boldTexts={textRed}
-        styleBold={{ color: "red", textTransform: "uppercase" }}
-        styleView={{ marginTop: 12, display: display }}
-      />
+      <LinearGradient
+        style={{
+          marginTop: Dimensions.get("window").height * 0.234,
+          height: 400,
+        }}
+        colors={[Colors.WHITE_LINEAR_2, Colors.WHITE_LINEAR]}
+      >
+        <Button
+          title="Xác nhận"
+          backgroundImage={BACKGROUND_BUTTON_BLUE}
+          onPress={handleCheckOTP}
+        />
+        <TextViewBold
+          text="Mã sẽ được gửi trong vòng 30 giây"
+          boldTexts={textRed}
+          styleBold={{ color: "red", textTransform: "uppercase" }}
+          styleView={{ marginTop: 12, display: display }}
+        />
 
-      <Button
-        onPress={handleResendOTP}
-        title="Gửi lại mã"
-        styleText={StyleSheet.flatten([
-          _styles.textReSendOTP,
-          { display: displayReSendOPT },
-        ])}
-      />
+        <Button
+          onPress={handleResendOTP}
+          title="Gửi lại mã"
+          styleText={StyleSheet.flatten([
+            _styles.textReSendOTP,
+            { display: displayReSendOPT },
+          ])}
+        />
+      </LinearGradient>
     </SafeAreaView>
   );
 };

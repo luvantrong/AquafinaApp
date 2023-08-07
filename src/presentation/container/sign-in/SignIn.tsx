@@ -20,11 +20,12 @@ import {
 } from "../../component";
 import { Colors } from "../../resource";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import { StackUser } from "../../navigation";
+import { StackHome } from "../../navigation";
 import { DrawerNavigationProp } from "@react-navigation/drawer";
+import LinearGradient from "react-native-linear-gradient";
 
-type DrawerNavigationProps = DrawerNavigationProp<StackUser>;
-type PropsType = NativeStackScreenProps<StackUser, "SignIn"> & {
+type DrawerNavigationProps = DrawerNavigationProp<StackHome>;
+type PropsType = NativeStackScreenProps<StackHome, "SignIn"> & {
   navigation: DrawerNavigationProps;
 };
 const _SignIn: React.FC<PropsType> = (props) => {
@@ -50,17 +51,18 @@ const _SignIn: React.FC<PropsType> = (props) => {
     navigation.navigate("SignUp");
   };
 
-  const showDrawerNavigator = () => {
-    navigation.openDrawer();
+  const gotoScreenHome = () => {
+    navigation.navigate("Home");
   };
 
   return (
     <SafeAreaView>
       <Header
-        icon_home={ICON_MENU}
+        icon_home={ICON_HOME}
         icon_aquafina={LOGO_AQUAFINA}
         icon_logout={ICON_LOGOUT}
-        onPressLeft={showDrawerNavigator}
+        onPressLeft={gotoScreenHome}
+        styleIconAquafina={{ width: 75, height: 25 }}
       />
       <ImageView
         uri={CONTENT}
@@ -87,19 +89,26 @@ const _SignIn: React.FC<PropsType> = (props) => {
         value={value}
         textStyle={{ fontFamily: font }}
       />
-      <Button
-        title="Đăng nhập"
-        backgroundImage={BACKGROUND_BUTTON_BLUE}
-        stylePressable={{ marginTop: Dimensions.get("window").height * 0.31 }}
-        onPress={goToScreenOTP}
-      />
-      <TextView title="Hoặc" textStyle={_styles.textOr} />
-      <Button
-        title="Đăng ký"
-        backgroundImage={BACKGROUND_BUTTON_WHITE}
-        styleText={{ color: Colors.BLUE_KV }}
-        onPress={goToScreenSignUp}
-      />
+      <LinearGradient
+        style={{
+          marginTop: Dimensions.get("window").height * 0.31,
+          height: 350,
+        }}
+        colors={[Colors.WHITE_LINEAR_2, Colors.WHITE_LINEAR]}
+      >
+        <Button
+          title="Đăng nhập"
+          backgroundImage={BACKGROUND_BUTTON_BLUE}
+          onPress={goToScreenOTP}
+        />
+        <TextView title="Hoặc" textStyle={_styles.textOr} />
+        <Button
+          title="Đăng ký"
+          backgroundImage={BACKGROUND_BUTTON_WHITE}
+          styleText={{ color: Colors.BLUE_KV }}
+          onPress={goToScreenSignUp}
+        />
+      </LinearGradient>
     </SafeAreaView>
   );
 };

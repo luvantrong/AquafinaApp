@@ -19,11 +19,12 @@ import {
 } from "../../component";
 import { Colors } from "../../resource";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import { StackUser } from "../../navigation";
+import { StackHome } from "../../navigation";
 import { DrawerNavigationProp } from "@react-navigation/drawer";
+import LinearGradient from "react-native-linear-gradient";
 
-type DrawerNavigationProps = DrawerNavigationProp<StackUser>;
-type PropsType = NativeStackScreenProps<StackUser, "SignUp"> & {
+type DrawerNavigationProps = DrawerNavigationProp<StackHome>;
+type PropsType = NativeStackScreenProps<StackHome, "SignUp"> & {
   navigation: DrawerNavigationProps;
 };
 const _SignUp: React.FC<PropsType> = (props) => {
@@ -63,10 +64,11 @@ const _SignUp: React.FC<PropsType> = (props) => {
   return (
     <SafeAreaView>
       <Header
-        icon_home={ICON_MENU}
+        icon_home={ICON_HOME}
         icon_aquafina={LOGO_AQUAFINA}
         icon_logout={ICON_LOGOUT}
         onPressLeft={showDrawerNavigator}
+        styleIconAquafina={{ width: 75, height: 25 }}
       />
       <ImageView
         uri={CONTENT}
@@ -101,12 +103,19 @@ const _SignUp: React.FC<PropsType> = (props) => {
         textStyle={{ fontFamily: fontPhone }}
         onChange={handleInputChangePhone}
       />
-      <Button
-        title="Đăng ký"
-        backgroundImage={BACKGROUND_BUTTON_BLUE}
-        stylePressable={{ marginTop: Dimensions.get("window").height * 0.21 }}
-        onPress={goToScreenOTP}
-      />
+      <LinearGradient
+        style={{
+          marginTop: Dimensions.get("window").height * 0.21,
+          height: 400,
+        }}
+        colors={[Colors.WHITE_LINEAR_2, Colors.WHITE_LINEAR]}
+      >
+        <Button
+          title="Đăng ký"
+          backgroundImage={BACKGROUND_BUTTON_BLUE}
+          onPress={goToScreenOTP}
+        />
+      </LinearGradient>
     </SafeAreaView>
   );
 };

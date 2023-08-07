@@ -9,6 +9,7 @@ import { Header } from "../component";
 import {
   ICON_AVATAR,
   ICON_CLOSE,
+  ICON_LOGIN,
   ICON_LOGOUT,
   LOGO_AQUAFINA,
   fontFamily,
@@ -18,10 +19,23 @@ import { Colors } from "../resource";
 type CustomDrawerContentProps = DrawerContentComponentProps & {
   imageAvatar: string;
   textAccount: string;
+  imageSignOut?: string;
+  imageSignIn?: string;
+  textSignOut?: string;
+  textSignIn?: string;
+  checkSignIn: boolean;
 };
 
 const _CustomDrawerContent: React.FC<CustomDrawerContentProps> = (props) => {
-  const { imageAvatar, textAccount } = props;
+  const {
+    imageAvatar,
+    textAccount,
+    imageSignIn,
+    imageSignOut,
+    textSignIn,
+    textSignOut,
+    checkSignIn,
+  } = props;
   return (
     <View style={{ flex: 1 }}>
       <DrawerContentScrollView>
@@ -42,15 +56,28 @@ const _CustomDrawerContent: React.FC<CustomDrawerContentProps> = (props) => {
         </View>
         <DrawerItemList {...props} />
       </DrawerContentScrollView>
-      <Pressable style={StyleSheet.flatten(_styles.stylePressable)}>
-        <Image
-          style={{ width: 24, height: 24 }}
-          source={{ uri: ICON_LOGOUT }}
-        />
-        <Text style={StyleSheet.flatten(_styles.styleTextSignOut)}>
-          Sign out
-        </Text>
-      </Pressable>
+      {checkSignIn ? (
+        <Pressable style={StyleSheet.flatten(_styles.stylePressable)}>
+          <Image
+            style={{ width: 24, height: 24 }}
+            source={{ uri: ICON_LOGOUT }}
+          />
+          <Text style={StyleSheet.flatten(_styles.styleTextSignOut)}>
+            Sign out
+          </Text>
+        </Pressable>
+      ) : (
+        <Pressable style={StyleSheet.flatten(_styles.stylePressable)}>
+          <Image
+            style={{ width: 24, height: 24 }}
+            source={{ uri: ICON_LOGIN }}
+          />
+          <Text style={StyleSheet.flatten(_styles.styleTextSignOut)}>
+            Sign in
+          </Text>
+        </Pressable>
+        
+      )}
     </View>
   );
 };
