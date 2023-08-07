@@ -80,3 +80,6 @@ export const BANNER_HOME_3 =
 
 export const BANNER_HOME_4 =
   "https://firebasestorage.googleapis.com/v0/b/aquafina-fab2d.appspot.com/o/b44.png?alt=media&token=22d15033-058b-43ea-85f2-cc4993e85281";
+
+export const SUM_BOTTLE =
+  "https://firebasestorage.googleapis.com/v0/b/aquafina-fab2d.appspot.com/o/sum.png?alt=media&token=c4ed58f4-c3c5-456d-ae8c-b41a4992e59c";

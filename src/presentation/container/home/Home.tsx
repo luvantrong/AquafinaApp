@@ -15,6 +15,7 @@ import {
   Header,
   ImageView,
   SliderBanner,
+  SumBottle,
   TextPlus,
 } from "../../component";
 import {
@@ -73,8 +74,9 @@ const _Home: React.FC<PropsType> = (props) => {
         onPressRight={goToScreenSignIn}
         onPressCenter={goToScreenHome}
       />
-      <ScrollView>
+      <ScrollView style={{ marginBottom: 55 }}>
         <SliderBanner checkSignIn={true} data={DATA} onPress={handleToScreen} />
+        <SumBottle sumAqua={200000} sumOther={100000} />
       </ScrollView>
     </SafeAreaView>
   );

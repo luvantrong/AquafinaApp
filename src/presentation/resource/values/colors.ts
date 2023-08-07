@@ -9,4 +9,5 @@ export const Colors = {
   BLACK: "rgba(41, 43, 46, 1)",
   WHITE_LINEAR: "#FFFFFF",
   WHITE_LINEAR_2: "#FFFFFF90",
+  BLUE_400: "rgba(51, 108, 200, 1)",
 };
