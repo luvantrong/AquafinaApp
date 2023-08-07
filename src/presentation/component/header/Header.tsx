@@ -10,7 +10,6 @@ import {
   Pressable,
 } from "react-native";
 import React from "react";
-import { ICON_HOME, ICON_LOGOUT } from "../../../../assets";
 
 export interface HeaderProps {
   icon_home: string;

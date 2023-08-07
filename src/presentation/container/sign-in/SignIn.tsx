@@ -10,17 +10,17 @@ import {
   IMAGE_BOTTOM_LOGIN,
   LOGO_AQUAFINA,
   fontFamily,
-} from "../../../../assets";
+} from "@assets";
 import {
   Button,
   Header,
   ImageView,
   TextField,
   TextView,
-} from "../../component";
-import { Colors } from "../../resource";
+} from "@components";
+import { Colors } from "@resources";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import { StackHome } from "../../navigation";
+import { StackHome } from "@navigation";
 import { DrawerNavigationProp } from "@react-navigation/drawer";
 import LinearGradient from "react-native-linear-gradient";
 

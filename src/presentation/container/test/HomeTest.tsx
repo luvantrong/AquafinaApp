@@ -1,14 +1,14 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
-import { Button, Header, BackgroundApp, TextField } from "../../component";
+import { Button, Header, BackgroundApp, TextField } from "@components";
 import {
   ICON_HOME,
   ICON_LOGOUT,
   BACKGROUND_BUTTON_BLUE,
   BACKGROUND_BUTTON_WHITE,
   LOGO_AQUAFINA,
-} from "../../../../assets";
-import { Colors } from "../../resource";
+} from "@assets";
+import { Colors } from "@resources";
 
 export interface HomeProps {}
 

@@ -5,7 +5,7 @@ import {
   DrawerContentScrollView,
   DrawerItemList,
 } from "@react-navigation/drawer";
-import { Header } from "../component";
+import { Header } from "@components";
 import {
   ICON_AVATAR,
   ICON_CLOSE,
@@ -13,8 +13,8 @@ import {
   ICON_LOGOUT,
   LOGO_AQUAFINA,
   fontFamily,
-} from "../../../assets";
-import { Colors } from "../resource";
+} from "@assets";
+import { Colors } from "../resource/values";
 
 type CustomDrawerContentProps = DrawerContentComponentProps & {
   imageAvatar: string;
@@ -76,7 +76,6 @@ const _CustomDrawerContent: React.FC<CustomDrawerContentProps> = (props) => {
             Sign in
           </Text>
         </Pressable>
-        
       )}
     </View>
   );

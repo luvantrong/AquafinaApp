@@ -6,8 +6,8 @@ import {
   Dimensions,
 } from "react-native";
 import React from "react";
-import { SUM_BOTTLE, fontFamily } from "../../../../assets";
-import { Colors } from "../../resource";
+import { SUM_BOTTLE, fontFamily } from "@assets";
+import { Colors } from "@resources";
 
 export interface SumBottleProps {
   sumAqua: number;

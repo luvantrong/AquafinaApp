@@ -8,8 +8,8 @@ import {
   StyleProp,
   ViewStyle,
 } from "react-native";
-import { BACKGROUND_APP } from "../../../../assets";
-import { Colors } from "../../resource";
+import { BACKGROUND_APP } from "@assets";
+import { Colors } from "@resources";
 
 export interface BackgroundProps {
   children: React.ReactNode;

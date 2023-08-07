@@ -7,7 +7,7 @@ import {
   ViewStyle,
 } from "react-native";
 import React from "react";
-import { fontFamily } from "../../../../assets";
+import { fontFamily } from "@assets";
 
 interface Props {
   boldTexts: string[];

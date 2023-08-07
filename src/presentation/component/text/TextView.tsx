@@ -8,8 +8,8 @@ import {
   TextStyle,
 } from "react-native";
 import React from "react";
-import { fontFamily } from "../../../../assets";
-import { Colors } from "../../resource";
+import { fontFamily } from "@assets";
+import { Colors } from "@resources";
 
 export interface TextViewProps {
   styleContainer?: StyleProp<ViewStyle>;

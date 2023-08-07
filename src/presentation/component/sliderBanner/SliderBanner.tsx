@@ -1,12 +1,8 @@
 import { Pressable, StyleSheet, Text, View, Image } from "react-native";
 import React from "react";
 import Swiper from "react-native-swiper";
-import { BACKGROUND_BUTTON_BLUE, BANNER_HOME } from "../../../../assets";
+import { BACKGROUND_BUTTON_BLUE, BANNER_HOME } from "@assets";
 import { Button } from "../button";
-import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import { StackHome } from "../../navigation";
-import { NavigationProp } from "@react-navigation/native";
-
 export interface Banner {
   id: number;
   image: string;

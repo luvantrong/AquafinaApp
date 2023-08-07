@@ -7,11 +7,10 @@ import {
   PresentScreen,
   PointsScreen,
   ChartScreen,
-} from "../container";
+} from "@containers";
 import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
-import { StackHome } from "./StackHome";
-import { CustomDrawerContent } from "./CustomDrawerContent";
+
 import {
   AVATAR_SIGNIN,
   ICON_AVATAR,
@@ -27,9 +26,11 @@ import {
   ICON_MENU_5,
   ICON_MENU_5_FOCUS,
   fontFamily,
-} from "../../../assets";
+} from "@assets";
 import { StyleSheet, Image } from "react-native";
-import { Colors } from "../resource";
+import { Colors } from "@resources";
+import { CustomDrawerContent } from "./CustomDrawerContent";
+import { StackHome } from "./StackHome";
 
 type RootDrawerParamList = {
   "Thế Giới Xanh": undefined;

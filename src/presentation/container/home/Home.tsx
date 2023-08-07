@@ -17,7 +17,7 @@ import {
   SliderBanner,
   SumBottle,
   TextPlus,
-} from "../../component";
+} from "@components";
 import {
   BANNER_HOME,
   BANNER_HOME_2,
@@ -26,11 +26,10 @@ import {
   ICON_LOGIN,
   ICON_MENU,
   LOGO_AQUAFINA,
-} from "../../../../assets";
+} from "@assets";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import { StackHome } from "../../navigation";
+import { StackHome } from "@navigation";
 import { DrawerNavigationProp } from "@react-navigation/drawer";
-import { Colors } from "../../resource";
 
 type DrawerNavigationProps = DrawerNavigationProp<StackHome>;
 type PropsType = NativeStackScreenProps<StackHome, "Home"> & {

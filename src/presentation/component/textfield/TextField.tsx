@@ -13,8 +13,8 @@ import {
   BACKGROUND_BUTTON_WHITE,
   BACKGROUND_WHITE,
   fontFamily,
-} from "../../../../assets";
-import { Colors } from "../../resource";
+} from "@assets";
+import { Colors } from "@resources";
 
 export interface TextFieldProps {
   title: string;

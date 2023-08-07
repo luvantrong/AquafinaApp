@@ -11,7 +11,7 @@ import {
   MapScreen,
   PointsScreen,
   PresentScreen,
-} from "../container";
+} from "@containers";
 
 type SignInProps = {};
 type EnterOTPProps = {
