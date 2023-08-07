@@ -10,7 +10,7 @@ import {
 } from "../container";
 import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
-import { StackUser } from "./StackHome";
+import { StackHome } from "./StackHome";
 import { CustomDrawerContent } from "./CustomDrawerContent";
 import {
   AVATAR_SIGNIN,
@@ -37,7 +37,7 @@ type RootDrawerParamList = {
   "Bản Đồ Xanh": undefined;
   "Điểm Thưởng Xanh": undefined;
   "Bảng Xếp Hạng": undefined;
-  StackUser: undefined;
+  StackHome: undefined;
 };
 
 const Drawer = createDrawerNavigator<RootDrawerParamList>();
@@ -54,12 +54,12 @@ const _MyDrawer = () => {
             {...props}
           />
         )}
-        initialRouteName="StackUser"
+        initialRouteName="StackHome"
         screenOptions={({ route }) => ({
           headerShown: false,
           drawerIcon: ({ focused, color, size }) => {
             let icon;
-            if (route.name === "StackUser") {
+            if (route.name === "StackHome") {
               icon = focused ? ICON_MENU_1_FOCUS : ICON_MENU_1;
             } else if (route.name === "Thế Giới Xanh") {
               icon = focused ? ICON_MENU_1_FOCUS : ICON_MENU_1;
@@ -95,8 +95,8 @@ const _MyDrawer = () => {
         <Drawer.Screen name="Điểm Thưởng Xanh" component={PointsScreen} />
         <Drawer.Screen name="Bảng Xếp Hạng" component={ChartScreen} />
         <Drawer.Screen
-          name="StackUser"
-          component={StackUser}
+          name="StackHome"
+          component={StackHome}
           options={{
             drawerLabel: () => null,
             drawerItemStyle: { display: "none" },
