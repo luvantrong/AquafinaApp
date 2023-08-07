@@ -42,7 +42,7 @@ export type StackHome = {
 
 const Stack = createNativeStackNavigator<StackHome>();
 
-const _StackUser = () => {
+const _StackHome = () => {
   return (
     <Stack.Navigator
       initialRouteName="Home"
@@ -64,4 +64,4 @@ const _StackUser = () => {
   );
 };
 
-export const StackUser = React.memo(_StackUser);
+export const StackHome = React.memo(_StackHome);
