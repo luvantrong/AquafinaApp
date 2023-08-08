@@ -50,10 +50,10 @@ const _EnterOTP: React.FC<PropsType> = (props) => {
     console.log("user", user);
   }
 
-  useEffect(() => {
-    const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
-    return subscriber; // unsubscribe on unmount
-  }, []);
+  // useEffect(() => {
+  //   const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
+  //   return subscriber; // unsubscribe on unmount
+  // }, []);
 
   async function signInWithPhoneNumber(phoneNumber: string) {
     const confirmation = await auth().signInWithPhoneNumber(phoneNumber);
@@ -61,7 +61,7 @@ const _EnterOTP: React.FC<PropsType> = (props) => {
   }
 
   useEffect(() => {
-    signInWithPhoneNumber("+84943223470");
+    // signInWithPhoneNumber("+84943223470");
   }, []);
 
   async function confirmCode() {
@@ -69,10 +69,6 @@ const _EnterOTP: React.FC<PropsType> = (props) => {
       await confirm?.confirm(code);
     } catch (error) {
       console.log("Invalid code.");
-      setDisplay("none");
-      setColorOTP(Colors.RED);
-      setBorderColorOTP(Colors.RED);
-      setDisplayReSendOPT("flex");
       // return false;
     }
   }
@@ -82,20 +78,20 @@ const _EnterOTP: React.FC<PropsType> = (props) => {
   };
 
   const handleCheckOTP = () => {
-    // if (code != codeOTP) {
-    //   setDisplay("none");
-    //   setColorOTP(Colors.RED);
-    //   setBorderColorOTP(Colors.RED);
-    //   setDisplayReSendOPT("flex");
-    //   return false;
-    // }
-    confirmCode();
+    if (code != codeOTP) {
+      setDisplay("none");
+      setColorOTP(Colors.RED);
+      setBorderColorOTP(Colors.RED);
+      setDisplayReSendOPT("flex");
+      return false;
+    }
+    // confirmCode();
 
-    // if (type == true) {
-    //   navigation.navigate("Home");
-    // } else if (type == false) {
-    //   navigation.navigate("NotificationSignUp");
-    // }
+    if (type == true) {
+      navigation.navigate("Home");
+    } else if (type == false) {
+      navigation.navigate("NotificationSignUp");
+    }
   };
 
   const handleResendOTP = () => {
@@ -142,7 +138,7 @@ const _EnterOTP: React.FC<PropsType> = (props) => {
       <View style={_styles.viewOTP}>
         <OTPInputView
           style={{ width: "100%", height: 50 }}
-          pinCount={6}
+          pinCount={4}
           autoFocusOnLoad
           codeInputFieldStyle={StyleSheet.flatten([
             _styles.underlineStyleBase,
