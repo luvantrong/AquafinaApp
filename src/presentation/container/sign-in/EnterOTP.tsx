@@ -61,7 +61,7 @@ const _EnterOTP: React.FC<PropsType> = (props) => {
   }
 
   useEffect(() => {
-    signInWithPhoneNumber("+84 943223470");
+    signInWithPhoneNumber("+84943223470");
   }, []);
 
   async function confirmCode() {
@@ -69,6 +69,11 @@ const _EnterOTP: React.FC<PropsType> = (props) => {
       await confirm?.confirm(code);
     } catch (error) {
       console.log("Invalid code.");
+      setDisplay("none");
+      setColorOTP(Colors.RED);
+      setBorderColorOTP(Colors.RED);
+      setDisplayReSendOPT("flex");
+      // return false;
     }
   }
 
@@ -137,7 +142,7 @@ const _EnterOTP: React.FC<PropsType> = (props) => {
       <View style={_styles.viewOTP}>
         <OTPInputView
           style={{ width: "100%", height: 50 }}
-          pinCount={4}
+          pinCount={6}
           autoFocusOnLoad
           codeInputFieldStyle={StyleSheet.flatten([
             _styles.underlineStyleBase,

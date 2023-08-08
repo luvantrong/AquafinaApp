@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "623022763335",
-    "project_id": "aquafina-fab2d",
-    "storage_bucket": "aquafina-fab2d.appspot.com"
+    "project_number": "38217348221",
+    "project_id": "aquafinaapp-bc817",
+    "storage_bucket": "aquafinaapp-bc817.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:623022763335:android:5783b5618e15144d4db062",
+        "mobilesdk_app_id": "1:38217348221:android:8863a2cdeb7b7e00332d14",
         "android_client_info": {
           "package_name": "com.aquafinaapp"
         }
       },
       "oauth_client": [
         {
-          "client_id": "623022763335-mvl6cvlhktka0g2li8fohkd2447kjvrd.apps.googleusercontent.com",
+          "client_id": "38217348221-j3tho6jv4hcbha5tls1j870gqd9uokid.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBWcWsJpD07KaoXu0ByTB7rx8EPIyBUp9A"
+          "current_key": "AIzaSyDD-NKiUqXjOFCHl5LuWe7LrHrYJ4PPRHk"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "623022763335-mvl6cvlhktka0g2li8fohkd2447kjvrd.apps.googleusercontent.com",
+              "client_id": "38217348221-j3tho6jv4hcbha5tls1j870gqd9uokid.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

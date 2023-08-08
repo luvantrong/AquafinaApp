@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="default_web_client_id" translatable="false">623022763335-mvl6cvlhktka0g2li8fohkd2447kjvrd.apps.googleusercontent.com</string>
-    <string name="gcm_defaultSenderId" translatable="false">623022763335</string>
-    <string name="google_api_key" translatable="false">AIzaSyBWcWsJpD07KaoXu0ByTB7rx8EPIyBUp9A</string>
-    <string name="google_app_id" translatable="false">1:623022763335:android:5783b5618e15144d4db062</string>
-    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyBWcWsJpD07KaoXu0ByTB7rx8EPIyBUp9A</string>
-    <string name="google_storage_bucket" translatable="false">aquafina-fab2d.appspot.com</string>
-    <string name="project_id" translatable="false">aquafina-fab2d</string>
+    <string name="default_web_client_id" translatable="false">38217348221-j3tho6jv4hcbha5tls1j870gqd9uokid.apps.googleusercontent.com</string>
+    <string name="gcm_defaultSenderId" translatable="false">38217348221</string>
+    <string name="google_api_key" translatable="false">AIzaSyDD-NKiUqXjOFCHl5LuWe7LrHrYJ4PPRHk</string>
+    <string name="google_app_id" translatable="false">1:38217348221:android:8863a2cdeb7b7e00332d14</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyDD-NKiUqXjOFCHl5LuWe7LrHrYJ4PPRHk</string>
+    <string name="google_storage_bucket" translatable="false">aquafinaapp-bc817.appspot.com</string>
+    <string name="project_id" translatable="false">aquafinaapp-bc817</string>
 </resources>
