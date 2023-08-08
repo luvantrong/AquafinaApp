@@ -8,7 +8,7 @@ import {
   Text,
   View,
 } from "react-native";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   Banner,
   Button,
@@ -30,6 +30,7 @@ import {
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { StackHome } from "@navigation";
 import { DrawerNavigationProp } from "@react-navigation/drawer";
+import database from "@react-native-firebase/database";
 
 type DrawerNavigationProps = DrawerNavigationProp<StackHome>;
 type PropsType = NativeStackScreenProps<StackHome, "Home"> & {
@@ -37,6 +38,27 @@ type PropsType = NativeStackScreenProps<StackHome, "Home"> & {
 };
 const _Home: React.FC<PropsType> = (props) => {
   const { navigation } = props;
+
+  interface Rating {
+    name: string;
+    places: number;
+  }
+
+  const [listRating, setListRating] = useState<Rating[]>([]);
+
+  useEffect(() => {
+    const getRatings = async () => {
+      const reference = database().ref("/ratings").once("value");
+      let list: Rating[] = [];
+      await reference.then((snapshot: any) => {
+        const ratingData = snapshot.val();
+        const filteredData = ratingData.filter((item: Rating) => item !== null);
+        list = filteredData;
+      });
+      setListRating(list);
+    };
+    getRatings();
+  }, []);
 
   const showDrawerNavigator = () => {
     navigation.openDrawer();
