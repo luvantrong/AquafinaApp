@@ -31,34 +31,71 @@ import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { StackHome } from "@navigation";
 import { DrawerNavigationProp } from "@react-navigation/drawer";
 import database from "@react-native-firebase/database";
+import { get } from "react-native/Libraries/TurboModule/TurboModuleRegistry";
 
 type DrawerNavigationProps = DrawerNavigationProp<StackHome>;
 type PropsType = NativeStackScreenProps<StackHome, "Home"> & {
   navigation: DrawerNavigationProps;
 };
+
+
 const _Home: React.FC<PropsType> = (props) => {
   const { navigation } = props;
 
   interface Rating {
+    key: number;
     name: string;
     places: number;
   }
 
+  interface User {
+    phoneNumber: string;
+  }
+
   const [listRating, setListRating] = useState<Rating[]>([]);
 
-  useEffect(() => {
-    const getRatings = async () => {
-      const reference = database().ref("/ratings").once("value");
-      let list: Rating[] = [];
-      await reference.then((snapshot: any) => {
-        const ratingData = snapshot.val();
-        const filteredData = ratingData.filter((item: Rating) => item !== null);
-        list = filteredData;
-      });
-      setListRating(list);
-    };
-    getRatings();
-  }, []);
+  
+
+  // useEffect(() => {
+  //   const getRatings = async () => {
+  //     const reference = database().ref("/ratings").once("value");
+  //     let list: Rating[] = [];
+  //     await reference.then((snapshot: any) => {
+  //       snapshot.forEach((childSnapshot: any) => {
+  //         const key = childSnapshot.key;
+  //         const item = childSnapshot.val();
+  //         if (item !== null) {
+  //           // Thêm key vào item
+  //           const itemWithKey = { ...item, key };
+  //           list.push(itemWithKey);
+  //         }
+  //       });
+  //       setListRating(list);
+  //     });
+  //   };
+  //   getRatings();
+  // }, []);
+
+  // console.log("listRating", listRating);
+
+  // useEffect(() => {
+  //   const addNewObject = async () => {
+  //     const reference = database().ref("/users");
+
+  //     // Tạo một child node mới với dữ liệu và key tương ứng
+  //     const newObjectRef = reference.push();
+
+  //     // Tạo object
+  //     const newObject = {
+  //       phoneNumber: "0943223470",
+  //       abc: "abc",
+  //     };
+  //     // Lưu object mới vào child node
+  //     await newObjectRef.set(newObject);
+  //   };
+
+  //   addNewObject();
+  // }, []);
 
   const showDrawerNavigator = () => {
     navigation.openDrawer();

@@ -24,7 +24,6 @@ const _TextView: React.FC<TextViewProps> = (props) => {
       <Text style={StyleSheet.flatten([_styles.textStyle, props.textStyle])}>
         {title}
       </Text>
-      
     </View>
   );
 };
