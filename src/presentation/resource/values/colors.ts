@@ -10,4 +10,8 @@ export const Colors = {
   WHITE_LINEAR: "#FFFFFF",
   WHITE_LINEAR_2: "#FFFFFF90",
   BLUE_400: "rgba(51, 108, 200, 1)",
+  BLUE_300: "rgba(102, 145, 214, 1)",
+  R1: "#FBD300",
+  R2: "#6F84F5",
+  R3: "#57B7F5",
 };

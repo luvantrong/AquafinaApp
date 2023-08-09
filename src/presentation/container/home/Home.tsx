@@ -14,6 +14,7 @@ import {
   Button,
   Header,
   ImageView,
+  Rating,
   SliderBanner,
   SumBottle,
   TextPlus,
@@ -132,6 +133,9 @@ const _Home: React.FC<PropsType> = (props) => {
       <ScrollView style={{ marginBottom: 55 }}>
         <SliderBanner checkSignIn={true} data={DATA} onPress={handleToScreen} />
         <SumBottle sumAqua={200000} sumOther={100000} />
+        <View style={{ marginTop: -10 }}>
+          <Rating checkSignIn={false} />
+        </View>
       </ScrollView>
     </SafeAreaView>
   );

@@ -83,3 +83,33 @@ export const BANNER_HOME_4 =
 
 export const SUM_BOTTLE =
   "https://firebasestorage.googleapis.com/v0/b/aquafinaapp-bc817.appspot.com/o/sum.png?alt=media&token=275e4af0-ae89-438c-aff8-fb83899a3cec";
+
+export const RIPPLE =
+  "https://firebasestorage.googleapis.com/v0/b/aquafinaapp-bc817.appspot.com/o/Ripple.png?alt=media&token=cb4c5e8f-89b0-4097-b281-bc9ffe662530";
+
+export const RATING_N1 =
+  "https://firebasestorage.googleapis.com/v0/b/aquafinaapp-bc817.appspot.com/o/rating_number1.png?alt=media&token=0358822b-226e-4701-817e-e0dcd1e8b77c";
+
+export const RATING_N2 =
+  "https://firebasestorage.googleapis.com/v0/b/aquafinaapp-bc817.appspot.com/o/rating_number2.png?alt=media&token=190acc5b-cea4-49b9-9f3b-7b0f80d9cba6";
+
+export const RATING_N3 =
+  "https://firebasestorage.googleapis.com/v0/b/aquafinaapp-bc817.appspot.com/o/rating_number3.png?alt=media&token=c5569099-f46d-473d-a633-82069cc4b284";
+
+export const AVATAR_1 =
+  "https://firebasestorage.googleapis.com/v0/b/aquafinaapp-bc817.appspot.com/o/avatart_rating1.png?alt=media&token=0cd72e6e-e55c-4c47-9118-01790922d831";
+
+export const AVATAR_2 =
+  "https://firebasestorage.googleapis.com/v0/b/aquafinaapp-bc817.appspot.com/o/avatar_rating2.png?alt=media&token=1cb7e686-23b3-417f-8266-b49c1559a973";
+
+export const AVATAR_3 =
+  "https://firebasestorage.googleapis.com/v0/b/aquafinaapp-bc817.appspot.com/o/avatar_rating2.png?alt=media&token=1cb7e686-23b3-417f-8266-b49c1559a973";
+
+export const R1 =
+  "https://firebasestorage.googleapis.com/v0/b/aquafinaapp-bc817.appspot.com/o/r1.png?alt=media&token=e8d054da-7b11-4a13-9754-68612cb95800";
+
+export const R2 =
+  "https://firebasestorage.googleapis.com/v0/b/aquafinaapp-bc817.appspot.com/o/r2.png?alt=media&token=4897dfa3-e629-444d-b4c3-349d251683cb";
+
+export const R3 =
+  "https://firebasestorage.googleapis.com/v0/b/aquafinaapp-bc817.appspot.com/o/r3.png?alt=media&token=4cf6f318-4f3c-4c1d-8b03-73b55cf4c737";

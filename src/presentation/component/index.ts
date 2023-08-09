@@ -8,3 +8,4 @@ export * from "./textBold";
 export * from "./textPlus";
 export * from "./sliderBanner";
 export * from "./sumBottle";
+export * from "./rating";
