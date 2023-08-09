@@ -251,7 +251,8 @@ const _styles = StyleSheet.create({
   container: {
     backgroundColor: Colors.BLUE_KV,
     marginTop: 18,
-    height: 400,
+    height: "auto",
+    paddingBottom: 30,
   },
 });
 
