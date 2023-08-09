@@ -38,7 +38,6 @@ type PropsType = NativeStackScreenProps<StackHome, "Home"> & {
   navigation: DrawerNavigationProps;
 };
 
-
 const _Home: React.FC<PropsType> = (props) => {
   const { navigation } = props;
 
@@ -53,8 +52,6 @@ const _Home: React.FC<PropsType> = (props) => {
   }
 
   const [listRating, setListRating] = useState<Rating[]>([]);
-
-  
 
   // useEffect(() => {
   //   const getRatings = async () => {
