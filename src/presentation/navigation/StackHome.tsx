@@ -11,6 +11,9 @@ import {
   MapScreen,
   PointsScreen,
   PresentScreen,
+  Warning,
+  DescriptionWarning,
+  RulesScreen,
 } from "@containers";
 
 type SignInProps = {};
@@ -26,6 +29,9 @@ type GreenWorldScreenProps = {};
 type MapScreenProps = {};
 type PointsScreenProps = {};
 type PresentScreenProps = {};
+type WarningScreenProps = {};
+type WarningDescriptionScreenProps = {};
+type RulesScreenProps = {};
 
 export type StackHome = {
   SignIn: SignInProps | undefined;
@@ -38,6 +44,9 @@ export type StackHome = {
   MapScreen: MapScreenProps | undefined;
   PointsScreen: PointsScreenProps | undefined;
   PresentScreen: PresentScreenProps | undefined;
+  WarningScreen: WarningScreenProps | undefined;
+  WarningDescriptionScreen: WarningDescriptionScreenProps | undefined;
+  RulesScreen: RulesScreenProps | undefined;
 };
 
 const Stack = createNativeStackNavigator<StackHome>();
@@ -60,6 +69,12 @@ const _StackHome = () => {
       <Stack.Screen name="MapScreen" component={MapScreen} />
       <Stack.Screen name="PointsScreen" component={PointsScreen} />
       <Stack.Screen name="PresentScreen" component={PresentScreen} />
+      <Stack.Screen name="WarningScreen" component={Warning} />
+      <Stack.Screen
+        name="WarningDescriptionScreen"
+        component={DescriptionWarning}
+      />
+      <Stack.Screen name="RulesScreen" component={RulesScreen} />
     </Stack.Navigator>
   );
 };

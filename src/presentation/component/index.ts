@@ -9,3 +9,6 @@ export * from "./textPlus";
 export * from "./sliderBanner";
 export * from "./sumBottle";
 export * from "./rating";
+export * from "./carousel";
+export * from "./address";
+export * from "./menuFooter";

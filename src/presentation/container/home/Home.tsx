@@ -10,10 +10,13 @@ import {
 } from "react-native";
 import React, { useEffect, useState } from "react";
 import {
+  Address,
   Banner,
   Button,
+  CarouselView,
   Header,
   ImageView,
+  MenuFooter,
   Rating,
   SliderBanner,
   SumBottle,
@@ -27,6 +30,7 @@ import {
   ICON_LOGIN,
   ICON_MENU,
   LOGO_AQUAFINA,
+  PURE_COIN,
 } from "@assets";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { StackHome } from "@navigation";
@@ -107,6 +111,30 @@ const _Home: React.FC<PropsType> = (props) => {
     navigation.navigate("Home");
   };
 
+  const goToScreenPresent = () => {
+    navigation.navigate("PresentScreen");
+  };
+
+  const goToScreenMap = () => {
+    navigation.navigate("MapScreen");
+  };
+
+  const goToScreenGreenWorld = () => {
+    navigation.navigate("GreenWorldScreen");
+  };
+
+  const goToScreenChart = () => {
+    navigation.navigate("ChartScreen");
+  };
+
+  const goToScreenPoints = () => {
+    navigation.navigate("PointsScreen");
+  };
+
+  const goToScreenDescriptionWarning = () => {
+    navigation.navigate("WarningDescriptionScreen");
+  };
+
   const handleToScreen = (screen: any) => {
     switch (screen) {
       case "Thế Giới Xanh":
@@ -130,12 +158,25 @@ const _Home: React.FC<PropsType> = (props) => {
         onPressRight={goToScreenSignIn}
         onPressCenter={goToScreenHome}
       />
-      <ScrollView style={{ marginBottom: 55 }}>
+      <ScrollView
+        style={{ marginBottom: 55 }}
+        showsVerticalScrollIndicator={false}
+      >
         <SliderBanner checkSignIn={true} data={DATA} onPress={handleToScreen} />
         <SumBottle sumAqua={200000} sumOther={100000} />
         <View style={{ marginTop: -10 }}>
           <Rating checkSignIn={false} />
         </View>
+        <CarouselView onPress={goToScreenPresent} check={false} />
+        <Address onPress={goToScreenMap} uri={PURE_COIN} check={false} />
+        <MenuFooter
+          onPress1={goToScreenGreenWorld}
+          onPress2={goToScreenPresent}
+          onPress3={goToScreenMap}
+          onPress4={goToScreenPoints}
+          onPress5={goToScreenChart}
+          onPress6={goToScreenDescriptionWarning}
+        />
       </ScrollView>
     </SafeAreaView>
   );

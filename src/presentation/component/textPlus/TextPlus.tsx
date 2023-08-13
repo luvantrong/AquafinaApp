@@ -2,7 +2,7 @@ import React from "react";
 import { Text, StyleSheet, StyleProp, TextStyle } from "react-native";
 import { fontFamily } from "@assets";
 
-interface TextPlusProps {
+export interface TextPlusProps {
   style?: StyleProp<TextStyle>;
   children: {
     bold: boolean;
@@ -33,9 +33,11 @@ const _TextPlus: React.FC<TextPlusProps> = (props) => {
 const _styles = StyleSheet.create({
   regularText: {
     fontFamily: fontFamily.medium,
+    fontSize: 13,
   },
   boldText: {
     fontFamily: fontFamily.bold,
+    fontSize: 13,
   },
 });
 
