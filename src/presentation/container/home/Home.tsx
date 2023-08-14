@@ -35,8 +35,8 @@ import {
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { StackHome } from "@navigation";
 import { DrawerNavigationProp } from "@react-navigation/drawer";
-import database from "@react-native-firebase/database";
-import { get } from "react-native/Libraries/TurboModule/TurboModuleRegistry";
+import firebase from "firebase/compat/app";
+import "firebase/compat/firestore";
 
 type DrawerNavigationProps = DrawerNavigationProp<StackHome>;
 type PropsType = NativeStackScreenProps<StackHome, "Home"> & {
@@ -58,46 +58,62 @@ const _Home: React.FC<PropsType> = (props) => {
 
   const [listRating, setListRating] = useState<Rating[]>([]);
 
+  interface Product {
+    key: string;
+    name: string;
+    places: number;
+  }
+  const firebaseConfig = {
+    apiKey: "AIzaSyBqFe3zBsohPtGFe7v6Zkhr9KjRekePEzc",
+    authDomain: "aquafinaapp-bc817.firebaseapp.com",
+    databaseURL: "https://aquafinaapp-bc817-default-rtdb.firebaseio.com",
+    projectId: "aquafinaapp-bc817",
+    storageBucket: "aquafinaapp-bc817.appspot.com",
+    messagingSenderId: "38217348221",
+    appId: "1:38217348221:web:15d97749975ecc2f332d14",
+    measurementId: "G-EVGFZKE48N",
+  };
+
+  let firestore: firebase.firestore.Firestore;
+
+  if (!firebase.apps.length) {
+    firebase.initializeApp(firebaseConfig);
+    firestore = firebase.firestore();
+  }
+
   // useEffect(() => {
   //   const getRatings = async () => {
-  //     const reference = database().ref("/ratings").once("value");
-  //     let list: Rating[] = [];
-  //     await reference.then((snapshot: any) => {
-  //       snapshot.forEach((childSnapshot: any) => {
-  //         const key = childSnapshot.key;
-  //         const item = childSnapshot.val();
-  //         if (item !== null) {
-  //           // Thêm key vào item
-  //           const itemWithKey = { ...item, key };
-  //           list.push(itemWithKey);
-  //         }
+  //     try {
+  //       const snapshot = await firestore.collection("ratings").get();
+  //       const products: Product[] = snapshot.docs.map((doc) => {
+  //         const data = doc.data() as Product;
+  //         const key = doc.id;
+  //         return { ...data, key };
   //       });
-  //       setListRating(list);
-  //     });
+  //       // Do something with the products
+  //       console.log("products", products);
+  //     } catch (error) {
+  //       console.log("Error getting ratings:", error);
+  //     }
   //   };
+
   //   getRatings();
   // }, []);
 
-  // console.log("listRating", listRating);
-
   // useEffect(() => {
-  //   const addNewObject = async () => {
-  //     const reference = database().ref("/users");
-
-  //     // Tạo một child node mới với dữ liệu và key tương ứng
-  //     const newObjectRef = reference.push();
-
-  //     // Tạo object
-  //     const newObject = {
-  //       phoneNumber: "0943223470",
-  //       abc: "abc",
-  //     };
-  //     // Lưu object mới vào child node
-  //     await newObjectRef.set(newObject);
+  //   const addUser = async () => {
+  //     try {
+  //       const user = { name: "ABC", phone: "09433224" };
+  //       const docRef = await firestore.collection("users").add(user);
+  //       console.log("User added with ID:", docRef.id);
+  //     } catch (error) {
+  //       console.error("Error adding user:", error);
+  //     }
   //   };
 
-  //   addNewObject();
+  //   addUser();
   // }, []);
+
 
   const showDrawerNavigator = () => {
     navigation.openDrawer();

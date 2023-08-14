@@ -1,5 +1,7 @@
 import { SafeAreaView, StyleSheet, Dimensions } from "react-native";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { useAppDispatch } from "@shared-state";
 import {
   BACKGROUND_BUTTON_BLUE,
   BACKGROUND_BUTTON_WHITE,
@@ -11,18 +13,13 @@ import {
   LOGO_AQUAFINA,
   fontFamily,
 } from "@assets";
-import {
-  Button,
-  Header,
-  ImageView,
-  TextField,
-  TextView,
-} from "@components";
+import { Button, Header, ImageView, TextField, TextView } from "@components";
 import { Colors } from "@resources";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { StackHome } from "@navigation";
 import { DrawerNavigationProp } from "@react-navigation/drawer";
 import LinearGradient from "react-native-linear-gradient";
+import { RootState, getUsers } from "@shared-state";
 
 type DrawerNavigationProps = DrawerNavigationProp<StackHome>;
 type PropsType = NativeStackScreenProps<StackHome, "SignIn"> & {
@@ -30,6 +27,15 @@ type PropsType = NativeStackScreenProps<StackHome, "SignIn"> & {
 };
 const _SignIn: React.FC<PropsType> = (props) => {
   const { navigation } = props;
+
+  const users = useSelector((state: RootState) => state.user.users);
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(getUsers());
+  }, []);
+
+  console.log("users", users);
 
   const [value, setValue] = useState("");
   const [font, setFont] = useState(fontFamily.medium);
