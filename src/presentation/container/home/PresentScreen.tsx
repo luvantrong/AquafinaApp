@@ -38,14 +38,16 @@ import { StackHome } from "@navigation";
 import { DrawerNavigationProp } from "@react-navigation/drawer";
 import database from "@react-native-firebase/database";
 import { get } from "react-native/Libraries/TurboModule/TurboModuleRegistry";
+import { AppContext } from "@shared-state";
 
 type DrawerNavigationProps = DrawerNavigationProp<StackHome>;
-type PropsType = NativeStackScreenProps<StackHome, "PresentScreen"> & {
+type PropsType = NativeStackScreenProps<StackHome, "Quà Tặng Xanh"> & {
   navigation: DrawerNavigationProps;
 };
 
 const _PresentScreen: React.FC<PropsType> = (props) => {
   const { navigation } = props;
+  const { isLoggedIn } = React.useContext(AppContext);
 
   const showDrawerNavigator = () => {
     navigation.openDrawer();
@@ -64,23 +66,23 @@ const _PresentScreen: React.FC<PropsType> = (props) => {
   };
 
   const goToScreenPresent = () => {
-    navigation.navigate("PresentScreen");
+    navigation.navigate("Quà Tặng Xanh");
   };
 
   const goToScreenMap = () => {
-    navigation.navigate("MapScreen");
+    navigation.navigate("Bản Đồ Xanh");
   };
 
   const goToScreenGreenWorld = () => {
-    navigation.navigate("GreenWorldScreen");
+    navigation.navigate("Thế Giới Xanh");
   };
 
   const goToScreenChart = () => {
-    navigation.navigate("ChartScreen");
+    navigation.navigate("Bảng Xếp Hạng");
   };
 
   const goToScreenPoints = () => {
-    navigation.navigate("PointsScreen");
+    navigation.navigate("Điểm Thưởng Xanh");
   };
 
   const goToScreenDescriptionWarning = () => {
@@ -91,7 +93,7 @@ const _PresentScreen: React.FC<PropsType> = (props) => {
       <Header
         icon_home={ICON_MENU}
         icon_aquafina={LOGO_AQUAFINA}
-        icon_logout={ICON_LOGIN}
+        checkLogin={isLoggedIn}
         styleIconLogout={{ opacity: 1 }}
         onPressLeft={showDrawerNavigator}
         onPressRight={goToScreenSignIn}

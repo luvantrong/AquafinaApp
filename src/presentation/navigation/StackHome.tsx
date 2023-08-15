@@ -40,11 +40,11 @@ export type StackHome = {
   SignUp: SignUpProps | undefined;
   NotificationSignUp: NotificationSignUpProps | undefined;
   Home: HomeProps | undefined;
-  ChartScreen: ChartScreenProps | undefined;
-  GreenWorldScreen: GreenWorldScreenProps | undefined;
-  MapScreen: MapScreenProps | undefined;
-  PointsScreen: PointsScreenProps | undefined;
-  PresentScreen: PresentScreenProps | undefined;
+  "Điểm Thưởng Xanh": ChartScreenProps | undefined;
+  "Thế Giới Xanh": GreenWorldScreenProps | undefined;
+  "Bản Đồ Xanh": MapScreenProps | undefined;
+  "Bảng Xếp Hạng": PointsScreenProps | undefined;
+  "Quà Tặng Xanh": PresentScreenProps | undefined;
   WarningScreen: WarningScreenProps | undefined;
   WarningDescriptionScreen: WarningDescriptionScreenProps | undefined;
   RulesScreen: RulesScreenProps | undefined;
@@ -65,11 +65,11 @@ const _StackHome = () => {
       <Stack.Screen name="SignUp" component={SignUp} />
       <Stack.Screen name="NotificationSignUp" component={NotificationSignUp} />
       <Stack.Screen name="Home" component={Home} />
-      <Stack.Screen name="ChartScreen" component={ChartScreen} />
-      <Stack.Screen name="GreenWorldScreen" component={GreenWorldScreen} />
-      <Stack.Screen name="MapScreen" component={MapScreen} />
-      <Stack.Screen name="PointsScreen" component={PointsScreen} />
-      <Stack.Screen name="PresentScreen" component={PresentScreen} />
+      <Stack.Screen name="Bảng Xếp Hạng" component={ChartScreen} />
+      <Stack.Screen name="Thế Giới Xanh" component={GreenWorldScreen} />
+      <Stack.Screen name="Bản Đồ Xanh" component={MapScreen} />
+      <Stack.Screen name="Điểm Thưởng Xanh" component={PointsScreen} />
+      <Stack.Screen name="Quà Tặng Xanh" component={PresentScreen} />
       <Stack.Screen name="WarningScreen" component={Warning} />
       <Stack.Screen
         name="WarningDescriptionScreen"

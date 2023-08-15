@@ -16,6 +16,7 @@ import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { StackHome } from "@navigation";
 import { DrawerNavigationProp } from "@react-navigation/drawer";
 import LinearGradient from "react-native-linear-gradient";
+import { AppContext } from "@shared-state";
 
 type DrawerNavigationProps = DrawerNavigationProp<StackHome>;
 type PropsType = NativeStackScreenProps<StackHome, "NotificationSignUp"> & {
@@ -23,6 +24,7 @@ type PropsType = NativeStackScreenProps<StackHome, "NotificationSignUp"> & {
 };
 const _NotificationSignUp: React.FC<PropsType> = (props) => {
   const { navigation, route } = props;
+  const {isLoggedIn} = React.useContext(AppContext);
 
   const goToScreenSignIn = () => {
     navigation.navigate("SignIn");
@@ -37,7 +39,7 @@ const _NotificationSignUp: React.FC<PropsType> = (props) => {
       <Header
         icon_home={ICON_HOME}
         icon_aquafina={LOGO_AQUAFINA}
-        icon_logout={ICON_LOGOUT}
+        checkLogin={isLoggedIn}
         onPressLeft={gotoScreenHome}
         styleIconAquafina={{ width: 75, height: 25 }}
       />

@@ -21,7 +21,7 @@ import LinearGradient from "react-native-linear-gradient";
 import auth, { FirebaseAuthTypes } from "@react-native-firebase/auth";
 import { useSelector, useDispatch } from "react-redux";
 import { firestore, signUp, useAppDispatch } from "@shared-state";
-import { RootState, getUsers } from "@shared-state";
+import { RootState } from "@shared-state";
 import { User } from "@domain";
 import { AppContext } from "@shared-state";
 
@@ -32,7 +32,7 @@ type PropsType = NativeStackScreenProps<StackHome, "EnterOTP"> & {
 
 const _EnterOTP: React.FC<PropsType> = (props) => {
   const { navigation, route } = props;
-  const { setLoggedIn } = React.useContext(AppContext);
+  const { setLoggedIn, setDataUser, isLoggedIn } = React.useContext(AppContext);
   const phoneNumber = route.params?.phoneNumber;
   const name = route.params?.name;
   const type = route.params?.type;
@@ -86,6 +86,29 @@ const _EnterOTP: React.FC<PropsType> = (props) => {
     navigation.navigate("Home");
   };
 
+  const getDataUser = async () => {
+    try {
+      const snapshot = await firestore
+        .collection("users")
+        .where("phone", "==", phone)
+        .get();
+      if (!snapshot.empty) {
+        const userDoc = snapshot.docs[0];
+        const user = userDoc.data();
+        const key = userDoc.id;
+        const userWithKey: User = {
+          key: key,
+          name: user.name,
+          phone: user.phone,
+          avatar: user.avatar,
+        };
+        setDataUser(userWithKey);
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   const handleCheckOTP = () => {
     if (code != codeOTP) {
       setDisplay("none");
@@ -95,6 +118,7 @@ const _EnterOTP: React.FC<PropsType> = (props) => {
       return false;
     }
     // confirmCode();
+    getDataUser();
 
     if (type == true) {
       setLoggedIn(true);
@@ -123,7 +147,7 @@ const _EnterOTP: React.FC<PropsType> = (props) => {
       <Header
         icon_home={ICON_HOME}
         icon_aquafina={LOGO_AQUAFINA}
-        icon_logout={ICON_LOGOUT}
+        checkLogin={isLoggedIn}
         onPressLeft={gotoScreenHome}
         styleIconAquafina={{ width: 75, height: 25 }}
       />

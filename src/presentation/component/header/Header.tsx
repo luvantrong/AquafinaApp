@@ -10,27 +10,28 @@ import {
   Pressable,
 } from "react-native";
 import React from "react";
+import { ICON_LOGIN, ICON_LOGOUT } from "@assets";
 
 export interface HeaderProps {
   icon_home: string;
   onPressLeft?: () => void;
   icon_aquafina: string;
-  icon_logout: string;
   styleIconHome?: StyleProp<ImageStyle>;
   styleIconLogout?: StyleProp<ImageStyle>;
   styleIconAquafina?: StyleProp<ImageStyle>;
   onPressRight?: () => void;
   onPressCenter?: () => void;
+  checkLogin?: boolean;
 }
 
 const _Header: React.FC<HeaderProps> = (props) => {
   const {
     icon_home,
     icon_aquafina,
-    icon_logout,
     onPressLeft,
     onPressRight,
     onPressCenter,
+    checkLogin,
   } = props;
   return (
     <View style={StyleSheet.flatten(_styles.container)}>
@@ -57,7 +58,7 @@ const _Header: React.FC<HeaderProps> = (props) => {
             _styles.image_logout,
             props.styleIconLogout,
           ])}
-          source={{ uri: icon_logout }}
+          source={checkLogin ? { uri: ICON_LOGOUT } : { uri: ICON_LOGIN }}
         />
       </Pressable>
     </View>

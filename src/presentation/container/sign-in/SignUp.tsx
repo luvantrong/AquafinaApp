@@ -19,8 +19,9 @@ import { DrawerNavigationProp } from "@react-navigation/drawer";
 import LinearGradient from "react-native-linear-gradient";
 import { useSelector, useDispatch } from "react-redux";
 import { firestore, signUp, useAppDispatch } from "@shared-state";
-import { RootState, getUsers } from "@shared-state";
+import { RootState } from "@shared-state";
 import { User } from "@domain";
+import { AppContext } from "@shared-state";
 
 type DrawerNavigationProps = DrawerNavigationProp<StackHome>;
 type PropsType = NativeStackScreenProps<StackHome, "SignUp"> & {
@@ -28,6 +29,7 @@ type PropsType = NativeStackScreenProps<StackHome, "SignUp"> & {
 };
 const _SignUp: React.FC<PropsType> = (props) => {
   const { navigation } = props;
+  const {isLoggedIn} = React.useContext(AppContext);
   const dispatch = useAppDispatch();
   const [valueName, setValueName] = useState("");
   const [valuePhone, setValuePhone] = useState("");
@@ -69,7 +71,7 @@ const _SignUp: React.FC<PropsType> = (props) => {
       <Header
         icon_home={ICON_HOME}
         icon_aquafina={LOGO_AQUAFINA}
-        icon_logout={ICON_LOGOUT}
+        checkLogin={isLoggedIn}
         onPressLeft={goToScreenHome}
         styleIconAquafina={{ width: 75, height: 25 }}
       />

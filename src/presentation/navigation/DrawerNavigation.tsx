@@ -31,6 +31,9 @@ import { StyleSheet, Image } from "react-native";
 import { Colors } from "@resources";
 import { CustomDrawerContent } from "./CustomDrawerContent";
 import { StackHome } from "./StackHome";
+import { DrawerNavigationProp } from "@react-navigation/drawer";
+import { NativeStackScreenProps } from "@react-navigation/native-stack";
+import { AppContext } from "../shared-state/context";
 
 type RootDrawerParamList = {
   "Thế Giới Xanh": undefined;
@@ -44,14 +47,15 @@ type RootDrawerParamList = {
 const Drawer = createDrawerNavigator<RootDrawerParamList>();
 
 const _MyDrawer = () => {
+  const { dataUser, isLoggedIn } = React.useContext(AppContext);
   return (
     <NavigationContainer>
       <Drawer.Navigator
         drawerContent={(props) => (
           <CustomDrawerContent
-            checkSignIn={false}
-            imageAvatar={AVATAR_SIGNIN}
-            textAccount="Lê Quỳnh Ái Vân"
+            checkSignIn={isLoggedIn}
+            imageAvatar={dataUser.avatar ? dataUser.avatar : ICON_AVATAR}
+            textAccount={dataUser.name ? dataUser.name : "User is not signin"}
             {...props}
           />
         )}

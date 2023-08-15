@@ -42,12 +42,12 @@ const _CustomDrawerContent: React.FC<CustomDrawerContentProps> = (props) => {
         <Header
           icon_home={ICON_CLOSE}
           icon_aquafina={LOGO_AQUAFINA}
-          icon_logout={ICON_LOGOUT}
+          checkLogin={checkSignIn}
           onPressLeft={() => props.navigation.closeDrawer()}
         />
         <View style={StyleSheet.flatten(_styles.containerAvartar)}>
           <Image
-            style={{ width: 60, height: 60 }}
+            style={{ width: 60, height: 60, borderRadius: 6 }}
             source={{ uri: imageAvatar }}
           />
           <Text style={StyleSheet.flatten(_styles.styleTextAccount)}>

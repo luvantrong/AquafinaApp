@@ -19,7 +19,8 @@ import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { StackHome } from "@navigation";
 import { DrawerNavigationProp } from "@react-navigation/drawer";
 import LinearGradient from "react-native-linear-gradient";
-import { RootState, getUsers } from "@shared-state";
+import { RootState } from "@shared-state";
+import { AppContext } from "@shared-state";
 
 type DrawerNavigationProps = DrawerNavigationProp<StackHome>;
 type PropsType = NativeStackScreenProps<StackHome, "SignIn"> & {
@@ -27,13 +28,10 @@ type PropsType = NativeStackScreenProps<StackHome, "SignIn"> & {
 };
 const _SignIn: React.FC<PropsType> = (props) => {
   const { navigation } = props;
+  const { isLoggedIn } = React.useContext(AppContext);
 
   const users = useSelector((state: RootState) => state.user.users);
   const dispatch = useAppDispatch();
-
-  useEffect(() => {
-    dispatch(getUsers());
-  }, []);
 
   const [value, setValue] = useState("");
   const [font, setFont] = useState(fontFamily.medium);
@@ -83,7 +81,7 @@ const _SignIn: React.FC<PropsType> = (props) => {
       <Header
         icon_home={ICON_HOME}
         icon_aquafina={LOGO_AQUAFINA}
-        icon_logout={ICON_LOGOUT}
+        checkLogin={isLoggedIn}
         onPressLeft={gotoScreenHome}
         styleIconAquafina={{ width: 75, height: 25 }}
       />

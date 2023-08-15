@@ -45,8 +45,9 @@ type PropsType = NativeStackScreenProps<StackHome, "Home"> & {
 
 const _Home: React.FC<PropsType> = (props) => {
   const { navigation } = props;
-  const { isLoggedIn } = useContext(AppContext);
+  const { isLoggedIn, dataUser } = useContext(AppContext);
   console.log("isLoggedIn", isLoggedIn);
+  console.log("dataUser", dataUser);
   interface Rating {
     key: number;
     name: string;
@@ -110,23 +111,23 @@ const _Home: React.FC<PropsType> = (props) => {
   };
 
   const goToScreenPresent = () => {
-    navigation.navigate("PresentScreen");
+    navigation.navigate("Quà Tặng Xanh");
   };
 
   const goToScreenMap = () => {
-    navigation.navigate("MapScreen");
+    navigation.navigate("Bản Đồ Xanh");
   };
 
   const goToScreenGreenWorld = () => {
-    navigation.navigate("GreenWorldScreen");
+    navigation.navigate("Thế Giới Xanh");
   };
 
   const goToScreenChart = () => {
-    navigation.navigate("ChartScreen");
+    navigation.navigate("Bảng Xếp Hạng");
   };
 
   const goToScreenPoints = () => {
-    navigation.navigate("PointsScreen");
+    navigation.navigate("Điểm Thưởng Xanh");
   };
 
   const goToScreenDescriptionWarning = () => {
@@ -136,10 +137,10 @@ const _Home: React.FC<PropsType> = (props) => {
   const handleToScreen = (screen: any) => {
     switch (screen) {
       case "Thế Giới Xanh":
-        navigation.navigate("GreenWorldScreen");
+        navigation.navigate("Thế Giới Xanh");
         break;
       case "Quà Tặng Xanh":
-        navigation.navigate("PresentScreen");
+        navigation.navigate("Quà Tặng Xanh");
         break;
       default:
         break;
@@ -150,7 +151,7 @@ const _Home: React.FC<PropsType> = (props) => {
       <Header
         icon_home={ICON_MENU}
         icon_aquafina={LOGO_AQUAFINA}
-        icon_logout={ICON_LOGIN}
+        checkLogin={isLoggedIn}
         styleIconLogout={{ opacity: 1 }}
         onPressLeft={showDrawerNavigator}
         onPressRight={goToScreenSignIn}
@@ -160,7 +161,11 @@ const _Home: React.FC<PropsType> = (props) => {
         style={{ marginBottom: 55 }}
         showsVerticalScrollIndicator={false}
       >
-        <SliderBanner checkSignIn={isLoggedIn} data={DATA} onPress={handleToScreen} />
+        <SliderBanner
+          checkSignIn={isLoggedIn}
+          data={DATA}
+          onPress={handleToScreen}
+        />
         <SumBottle sumAqua={200000} sumOther={100000} />
         <View style={{ marginTop: -10 }}>
           <Rating checkSignIn={isLoggedIn} />

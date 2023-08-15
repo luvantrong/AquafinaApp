@@ -42,6 +42,7 @@ import { DrawerNavigationProp } from "@react-navigation/drawer";
 import LinearGradient from "react-native-linear-gradient";
 import { Colors } from "@resources";
 import DropDownPicker from "react-native-dropdown-picker";
+import { AppContext } from "@shared-state";
 
 type DrawerNavigationProps = DrawerNavigationProp<StackHome>;
 type PropsType = NativeStackScreenProps<
@@ -53,6 +54,7 @@ type PropsType = NativeStackScreenProps<
 
 const _DescriptionWarning: React.FC<PropsType> = (props) => {
   const { navigation } = props;
+  const {isLoggedIn} = React.useContext(AppContext);
   const [isOpen, setIsOpen] = useState(false);
   const [currenValue, setCurrenValue] = useState(null);
   const [items, setItems] = useState([
@@ -88,7 +90,7 @@ const _DescriptionWarning: React.FC<PropsType> = (props) => {
       <Header
         icon_home={ICON_MENU}
         icon_aquafina={LOGO_AQUAFINA}
-        icon_logout={ICON_LOGIN}
+        checkLogin={isLoggedIn}
         styleIconLogout={{ opacity: 1 }}
         onPressLeft={showDrawerNavigator}
         onPressRight={goToScreenSignIn}

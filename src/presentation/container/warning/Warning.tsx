@@ -13,6 +13,7 @@ import {
 } from "@assets";
 import { Button, Header, ImageView, TextView } from "@components";
 import { Colors } from "@resources";
+import { AppContext } from "@shared-state";
 
 type DrawerNavigationProps = DrawerNavigationProp<StackHome>;
 type PropsType = NativeStackScreenProps<StackHome, "WarningScreen"> & {
@@ -21,6 +22,7 @@ type PropsType = NativeStackScreenProps<StackHome, "WarningScreen"> & {
 
 const _Warning: React.FC<PropsType> = (props) => {
   const { navigation } = props;
+  const { isLoggedIn} = React.useContext(AppContext);
 
   const showDrawerNavigator = () => {
     navigation.openDrawer();
@@ -38,7 +40,7 @@ const _Warning: React.FC<PropsType> = (props) => {
       <Header
         icon_home={ICON_MENU}
         icon_aquafina={LOGO_AQUAFINA}
-        icon_logout={ICON_LOGIN}
+        checkLogin={isLoggedIn}
         styleIconLogout={{ opacity: 1 }}
         onPressLeft={showDrawerNavigator}
         onPressRight={goToScreenSignIn}
