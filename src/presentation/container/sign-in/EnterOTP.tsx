@@ -1,6 +1,7 @@
 import { SafeAreaView, StyleSheet, Dimensions, View } from "react-native";
 import React, { useEffect, useState } from "react";
 import {
+  AVATAR_SIGNIN,
   BACKGROUND_BUTTON_BLUE,
   CONTENT,
   ICON_HOME,
@@ -18,6 +19,11 @@ import OTPInputView from "@twotalltotems/react-native-otp-input";
 import { DrawerNavigationProp } from "@react-navigation/drawer";
 import LinearGradient from "react-native-linear-gradient";
 import auth, { FirebaseAuthTypes } from "@react-native-firebase/auth";
+import { useSelector, useDispatch } from "react-redux";
+import { firestore, signUp, useAppDispatch } from "@shared-state";
+import { RootState, getUsers } from "@shared-state";
+import { User } from "@domain";
+import { AppContext } from "@shared-state";
 
 type DrawerNavigationProps = DrawerNavigationProp<StackHome>;
 type PropsType = NativeStackScreenProps<StackHome, "EnterOTP"> & {
@@ -26,8 +32,11 @@ type PropsType = NativeStackScreenProps<StackHome, "EnterOTP"> & {
 
 const _EnterOTP: React.FC<PropsType> = (props) => {
   const { navigation, route } = props;
+  const { setLoggedIn } = React.useContext(AppContext);
   const phoneNumber = route.params?.phoneNumber;
+  const name = route.params?.name;
   const type = route.params?.type;
+  const dispatch = useAppDispatch();
   const textBold = "Một mã OTP vừa được gửi vào số " + phoneNumber;
   const phone = phoneNumber + "";
   const boldTexts: string[] = [phone];
@@ -88,8 +97,15 @@ const _EnterOTP: React.FC<PropsType> = (props) => {
     // confirmCode();
 
     if (type == true) {
+      setLoggedIn(true);
       navigation.navigate("Home");
     } else if (type == false) {
+      const user: Omit<User, "key"> = {
+        name: name,
+        phone: phoneNumber,
+        avatar: AVATAR_SIGNIN,
+      };
+      dispatch(signUp(user));
       navigation.navigate("NotificationSignUp");
     }
   };

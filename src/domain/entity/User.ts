@@ -1,6 +1,6 @@
 export interface User {
   key: string;
-  name: string;
-  phone: string;
+  name: string | undefined;
+  phone: string | undefined;
   avatar: string;
 }

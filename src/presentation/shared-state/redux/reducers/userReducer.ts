@@ -12,7 +12,7 @@ import firebase from "firebase/compat/app";
 import "firebase/compat/firestore";
 import { firebaseConfig } from "@core";
 
-let firestore: firebase.firestore.Firestore;
+export let firestore: firebase.firestore.Firestore;
 
 if (!firebase.apps.length) {
   firebase.initializeApp(firebaseConfig);
@@ -39,38 +39,34 @@ export const getUsers = createAsyncThunk("user/getUsers", async () => {
   return users;
 });
 
-
+export const signUp = createAsyncThunk(
+  "user/signUp",
+  async (user: Omit<User, "key">) => {
+    const docRef = await firestore.collection("users").add(user);
+    console.log(docRef);
+  }
+);
 
 const userSlice = createSlice({
   name: "user",
   initialState: initialState,
   reducers: {
-    signUp: {
-      reducer: (state, action: PayloadAction<User>) => {
-        state.users.push(action.payload);
-      },
-      prepare: (user: Omit<User, "key">) => {
-        return {
-          payload: {
-            ...user,
-            key: nanoid(),
-          },
-        };
-      },
-    },
+    // signUp: {
+    //   reducer: (state, action: PayloadAction<User>) => {
+    //     state.users.push(action.payload);
+    //   },
+    //   prepare: (user: Omit<User, "key">) => {
+    //     return {
+    //       payload: {
+    //         ...user,
+    //         key: nanoid(),
+    //       },
+    //     };
+    //   },
+    // },
     signIn: (state, action: PayloadAction<string>) => {
       console.log(action.payload);
     },
-    checkPhoneNumber: {
-      reducer: (state, action: PayloadAction<string>) => {
-        // Handle the action as needed
-      },
-      prepare: (phoneNumber) => {
-        return {
-          payload: phoneNumber
-        };
-      }
-    }
   },
   extraReducers: (builder) => {
     builder
@@ -84,9 +80,18 @@ const userSlice = createSlice({
       .addCase(getUsers.rejected, (state, action) => {
         state.loading = false;
         state.users = [];
+      })
+      .addCase(signUp.pending, (state, action) => {
+        state.loading = true;
+      })
+      .addCase(signUp.fulfilled, (state, action) => {
+        state.loading = false;
+      })
+      .addCase(signUp.rejected, (state, action) => {
+        state.loading = false;
       });
   },
 });
 
-export const { signUp, checkPhoneNumber } = userSlice.actions;
+export const {} = userSlice.actions;
 export const userReducer = userSlice.reducer;

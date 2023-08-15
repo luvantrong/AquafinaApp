@@ -1,6 +1,7 @@
 import { SafeAreaView, StyleSheet, Dimensions } from "react-native";
 import React, { useState } from "react";
 import {
+  AVATAR_SIGNIN,
   BACKGROUND_BUTTON_BLUE,
   CONTENT,
   ICON_HOME,
@@ -10,18 +11,16 @@ import {
   LOGO_AQUAFINA,
   fontFamily,
 } from "@assets";
-import {
-  Button,
-  Header,
-  ImageView,
-  TextField,
-  TextView,
-} from "@components";
+import { Button, Header, ImageView, TextField, TextView } from "@components";
 import { Colors } from "@resources";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { StackHome } from "@navigation";
 import { DrawerNavigationProp } from "@react-navigation/drawer";
 import LinearGradient from "react-native-linear-gradient";
+import { useSelector, useDispatch } from "react-redux";
+import { firestore, signUp, useAppDispatch } from "@shared-state";
+import { RootState, getUsers } from "@shared-state";
+import { User } from "@domain";
 
 type DrawerNavigationProps = DrawerNavigationProp<StackHome>;
 type PropsType = NativeStackScreenProps<StackHome, "SignUp"> & {
@@ -29,7 +28,7 @@ type PropsType = NativeStackScreenProps<StackHome, "SignUp"> & {
 };
 const _SignUp: React.FC<PropsType> = (props) => {
   const { navigation } = props;
-
+  const dispatch = useAppDispatch();
   const [valueName, setValueName] = useState("");
   const [valuePhone, setValuePhone] = useState("");
   const [fontName, setFontName] = useState(fontFamily.medium);
@@ -58,7 +57,11 @@ const _SignUp: React.FC<PropsType> = (props) => {
   };
 
   const goToScreenOTP = () => {
-    navigation.navigate("EnterOTP", { phoneNumber: valuePhone, type: false });
+    navigation.navigate("EnterOTP", {
+      phoneNumber: valuePhone,
+      type: false,
+      name: valueName,
+    });
   };
 
   return (

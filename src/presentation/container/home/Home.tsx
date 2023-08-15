@@ -8,7 +8,7 @@ import {
   Text,
   View,
 } from "react-native";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import {
   Address,
   Banner,
@@ -35,8 +35,8 @@ import {
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { StackHome } from "@navigation";
 import { DrawerNavigationProp } from "@react-navigation/drawer";
-import firebase from "firebase/compat/app";
-import "firebase/compat/firestore";
+import { firestore } from "@shared-state";
+import { AppContext } from "@shared-state";
 
 type DrawerNavigationProps = DrawerNavigationProp<StackHome>;
 type PropsType = NativeStackScreenProps<StackHome, "Home"> & {
@@ -45,7 +45,8 @@ type PropsType = NativeStackScreenProps<StackHome, "Home"> & {
 
 const _Home: React.FC<PropsType> = (props) => {
   const { navigation } = props;
-
+  const { isLoggedIn } = useContext(AppContext);
+  console.log("isLoggedIn", isLoggedIn);
   interface Rating {
     key: number;
     name: string;
@@ -63,23 +64,6 @@ const _Home: React.FC<PropsType> = (props) => {
     name: string;
     places: number;
   }
-  const firebaseConfig = {
-    apiKey: "AIzaSyBqFe3zBsohPtGFe7v6Zkhr9KjRekePEzc",
-    authDomain: "aquafinaapp-bc817.firebaseapp.com",
-    databaseURL: "https://aquafinaapp-bc817-default-rtdb.firebaseio.com",
-    projectId: "aquafinaapp-bc817",
-    storageBucket: "aquafinaapp-bc817.appspot.com",
-    messagingSenderId: "38217348221",
-    appId: "1:38217348221:web:15d97749975ecc2f332d14",
-    measurementId: "G-EVGFZKE48N",
-  };
-
-  let firestore: firebase.firestore.Firestore;
-
-  if (!firebase.apps.length) {
-    firebase.initializeApp(firebaseConfig);
-    firestore = firebase.firestore();
-  }
 
   // useEffect(() => {
   //   const getRatings = async () => {
@@ -96,7 +80,6 @@ const _Home: React.FC<PropsType> = (props) => {
   //       console.log("Error getting ratings:", error);
   //     }
   //   };
-
   //   getRatings();
   // }, []);
 
@@ -113,7 +96,6 @@ const _Home: React.FC<PropsType> = (props) => {
 
   //   addUser();
   // }, []);
-
 
   const showDrawerNavigator = () => {
     navigation.openDrawer();
@@ -178,10 +160,10 @@ const _Home: React.FC<PropsType> = (props) => {
         style={{ marginBottom: 55 }}
         showsVerticalScrollIndicator={false}
       >
-        <SliderBanner checkSignIn={true} data={DATA} onPress={handleToScreen} />
+        <SliderBanner checkSignIn={isLoggedIn} data={DATA} onPress={handleToScreen} />
         <SumBottle sumAqua={200000} sumOther={100000} />
         <View style={{ marginTop: -10 }}>
-          <Rating checkSignIn={false} />
+          <Rating checkSignIn={isLoggedIn} />
         </View>
         <CarouselView onPress={goToScreenPresent} check={false} />
         <Address onPress={goToScreenMap} uri={PURE_COIN} check={false} />

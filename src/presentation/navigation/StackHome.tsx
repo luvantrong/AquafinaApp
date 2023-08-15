@@ -18,8 +18,9 @@ import {
 
 type SignInProps = {};
 type EnterOTPProps = {
-  phoneNumber: string;
+  phoneNumber: string | undefined;
   type: boolean;
+  name?: string | undefined;
 };
 type SignUpProps = {};
 type NotificationSignUpProps = {};

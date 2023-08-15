@@ -1,7 +1,7 @@
-import { SafeAreaView, StyleSheet, Dimensions } from "react-native";
+import { SafeAreaView, StyleSheet, Dimensions, Alert } from "react-native";
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useAppDispatch } from "@shared-state";
+import { firestore, useAppDispatch } from "@shared-state";
 import {
   BACKGROUND_BUTTON_BLUE,
   BACKGROUND_BUTTON_WHITE,
@@ -35,13 +35,30 @@ const _SignIn: React.FC<PropsType> = (props) => {
     dispatch(getUsers());
   }, []);
 
-  console.log("users", users);
-
   const [value, setValue] = useState("");
   const [font, setFont] = useState(fontFamily.medium);
 
-  const goToScreenOTP = () => {
-    navigation.navigate("EnterOTP", { phoneNumber: value, type: true });
+  const goToScreenOTP = async (phoneNumber: string) => {
+    if (phoneNumber && !Number.isInteger(Number(phoneNumber))) {
+      Alert.alert("Số điện thoại không hợp lệ");
+      return;
+    }
+    if (phoneNumber.length > 10 || phoneNumber.length < 10) {
+      Alert.alert("Số điện thoại phải có 10 số");
+      return;
+    }
+
+    const snapshot = await firestore
+      .collection("users")
+      .where("phone", "==", phoneNumber)
+      .get();
+    if (!snapshot.empty) {
+      // Số điện thoại đã tồn tại trong Firestore
+      navigation.navigate("EnterOTP", { phoneNumber: value, type: true });
+    } else {
+      // Số điện thoại không tồn tại trong Firestore
+      Alert.alert("Tài khoản không tồn tại");
+    }
   };
 
   const handleInputChange = (text: string) => {
@@ -91,7 +108,7 @@ const _SignIn: React.FC<PropsType> = (props) => {
         title="Số điện thoại"
         placeholder="Nhập số điện thoại của bạn"
         styleView={{ marginTop: 25 }}
-        onChange={handleInputChange}
+        onChange={(value) => handleInputChange(value)}
         value={value}
         textStyle={{ fontFamily: font }}
       />
@@ -105,7 +122,7 @@ const _SignIn: React.FC<PropsType> = (props) => {
         <Button
           title="Đăng nhập"
           backgroundImage={BACKGROUND_BUTTON_BLUE}
-          onPress={goToScreenOTP}
+          onPress={() => goToScreenOTP(value)}
         />
         <TextView title="Hoặc" textStyle={_styles.textOr} />
         <Button
