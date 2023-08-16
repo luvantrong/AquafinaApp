@@ -3,11 +3,7 @@ import React from "react";
 import Swiper from "react-native-swiper";
 import { BACKGROUND_BUTTON_BLUE, BANNER_HOME } from "@assets";
 import { Button } from "../button";
-export interface Banner {
-  id: number;
-  image: string;
-  screen: string;
-}
+import { Banner } from "@domain";
 
 export interface Slide {
   data: Banner[];
@@ -21,12 +17,9 @@ const _SliderBanner: React.FC<Slide> = (props) => {
   return (
     <View style={_styles.container}>
       {checkSignIn ? (
-        <Swiper
-          // loop={false}
-          autoplay={true}
-        >
+        <Swiper loop={true} autoplay={true}>
           {data.map((item) => (
-            <View key={item.id} style={_styles.slide}>
+            <View key={item.key} style={_styles.slide}>
               <Image source={{ uri: item.image }} style={_styles.image} />
               <Button
                 onPress={() => onPress && onPress(item.screen)}
@@ -38,13 +31,9 @@ const _SliderBanner: React.FC<Slide> = (props) => {
           ))}
         </Swiper>
       ) : (
-        <Swiper
-          // loop={false}
-          autoplay={true}
-          showsPagination={false}
-        >
+        <Swiper loop={true} autoplay={true} showsPagination={false}>
           {data.map((item) => (
-            <View key={item.id} style={_styles.slide}>
+            <View key={item.key} style={_styles.slide}>
               <Image source={{ uri: item.image }} style={_styles.image} />
             </View>
           ))}

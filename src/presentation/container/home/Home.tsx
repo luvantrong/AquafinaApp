@@ -11,11 +11,11 @@ import {
 import React, { useEffect, useState, useContext } from "react";
 import {
   Address,
-  Banner,
   Button,
   CarouselView,
   Header,
   ImageView,
+  Loading,
   MenuFooter,
   Rating,
   SliderBanner,
@@ -35,8 +35,15 @@ import {
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { StackHome } from "@navigation";
 import { DrawerNavigationProp } from "@react-navigation/drawer";
-import { firestore } from "@shared-state";
+import {
+  RootState,
+  firestore,
+  getAllBanner,
+  useAppDispatch,
+} from "@shared-state";
+import { useSelector } from "react-redux";
 import { AppContext } from "@shared-state";
+import { Banner } from "@domain";
 
 type DrawerNavigationProps = DrawerNavigationProp<StackHome>;
 type PropsType = NativeStackScreenProps<StackHome, "Home"> & {
@@ -46,57 +53,24 @@ type PropsType = NativeStackScreenProps<StackHome, "Home"> & {
 const _Home: React.FC<PropsType> = (props) => {
   const { navigation } = props;
   const { isLoggedIn, dataUser } = useContext(AppContext);
-  console.log("isLoggedIn", isLoggedIn);
-  console.log("dataUser", dataUser);
+  const dispatch = useAppDispatch();
+  const banners: Banner[] = useSelector<RootState, Banner[]>(
+    (state) => state.banner.banners
+  );
+
+  const loadingBanner = useSelector<RootState, boolean>(
+    (state) => state.banner.loading
+  );
+
   interface Rating {
     key: number;
     name: string;
     places: number;
   }
 
-  interface User {
-    phoneNumber: string;
-  }
-
-  const [listRating, setListRating] = useState<Rating[]>([]);
-
-  interface Product {
-    key: string;
-    name: string;
-    places: number;
-  }
-
-  // useEffect(() => {
-  //   const getRatings = async () => {
-  //     try {
-  //       const snapshot = await firestore.collection("ratings").get();
-  //       const products: Product[] = snapshot.docs.map((doc) => {
-  //         const data = doc.data() as Product;
-  //         const key = doc.id;
-  //         return { ...data, key };
-  //       });
-  //       // Do something with the products
-  //       console.log("products", products);
-  //     } catch (error) {
-  //       console.log("Error getting ratings:", error);
-  //     }
-  //   };
-  //   getRatings();
-  // }, []);
-
-  // useEffect(() => {
-  //   const addUser = async () => {
-  //     try {
-  //       const user = { name: "ABC", phone: "09433224" };
-  //       const docRef = await firestore.collection("users").add(user);
-  //       console.log("User added with ID:", docRef.id);
-  //     } catch (error) {
-  //       console.error("Error adding user:", error);
-  //     }
-  //   };
-
-  //   addUser();
-  // }, []);
+  useEffect(() => {
+    dispatch(getAllBanner());
+  }, []);
 
   const showDrawerNavigator = () => {
     navigation.openDrawer();
@@ -161,11 +135,16 @@ const _Home: React.FC<PropsType> = (props) => {
         style={{ marginBottom: 55 }}
         showsVerticalScrollIndicator={false}
       >
-        <SliderBanner
-          checkSignIn={isLoggedIn}
-          data={DATA}
-          onPress={handleToScreen}
-        />
+        {loadingBanner ? (
+          <Loading height={600} />
+        ) : (
+          <SliderBanner
+            checkSignIn={isLoggedIn}
+            data={banners}
+            onPress={handleToScreen}
+          />
+        )}
+
         <SumBottle sumAqua={200000} sumOther={100000} />
         <View style={{ marginTop: -10 }}>
           <Rating checkSignIn={isLoggedIn} />
@@ -186,28 +165,5 @@ const _Home: React.FC<PropsType> = (props) => {
 };
 
 const _styles = StyleSheet.create({});
-
-const DATA: Banner[] = [
-  {
-    id: 1,
-    image: BANNER_HOME,
-    screen: "Thế Giới Xanh",
-  },
-  {
-    id: 2,
-    image: BANNER_HOME_2,
-    screen: "Thế Giới Xanh",
-  },
-  {
-    id: 3,
-    image: BANNER_HOME_3,
-    screen: "Thế Giới Xanh",
-  },
-  {
-    id: 4,
-    image: BANNER_HOME_4,
-    screen: "Quà Tặng Xanh",
-  },
-];
 
 export const Home = React.memo(_Home);
