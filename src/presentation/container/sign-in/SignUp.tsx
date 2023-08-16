@@ -1,4 +1,4 @@
-import { SafeAreaView, StyleSheet, Dimensions } from "react-native";
+import { SafeAreaView, StyleSheet, Dimensions, Alert } from "react-native";
 import React, { useState } from "react";
 import {
   AVATAR_SIGNIN,
@@ -29,7 +29,7 @@ type PropsType = NativeStackScreenProps<StackHome, "SignUp"> & {
 };
 const _SignUp: React.FC<PropsType> = (props) => {
   const { navigation } = props;
-  const {isLoggedIn} = React.useContext(AppContext);
+  const { isLoggedIn } = React.useContext(AppContext);
   const dispatch = useAppDispatch();
   const [valueName, setValueName] = useState("");
   const [valuePhone, setValuePhone] = useState("");
@@ -58,7 +58,45 @@ const _SignUp: React.FC<PropsType> = (props) => {
     }
   };
 
-  const goToScreenOTP = () => {
+  const goToScreenOTP = async () => {
+    const nameRegex = "[a-zA-Z\\s\\u00C0-\\u1EF9]+";
+    if (!valueName) {
+      Alert.alert("Bạn chưa nhập họ tên");
+      return;
+    }
+
+    if (!valueName.match(nameRegex)) {
+      Alert.alert("Họ tên không hợp lệ");
+      return;
+    }
+
+    if (!valuePhone) {
+      Alert.alert("Bạn chưa nhập số điện thoại");
+      return;
+    }
+
+    if (
+      valuePhone.length < 10 ||
+      valuePhone.length > 10 ||
+      (valuePhone && !Number.isInteger(Number(valuePhone)))
+    ) {
+      Alert.alert("Số điện thoại không hợp lệ");
+      return;
+    }
+
+    const snapshot = await firestore
+      .collection("users")
+      .where("phone", "==", valuePhone)
+      .get();
+    if (!snapshot.empty) {
+      // Số điện thoại đã tồn tại trong Firestore
+      Alert.alert("Tài khoản đã tồn tại");
+      return;
+    } else {
+      // Số điện thoại không tồn tại trong Firestore
+      navigation.navigate("EnterOTP", { phoneNumber: valuePhone, type: false });
+    }
+
     navigation.navigate("EnterOTP", {
       phoneNumber: valuePhone,
       type: false,

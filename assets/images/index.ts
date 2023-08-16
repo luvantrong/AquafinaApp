@@ -251,3 +251,6 @@ export const BG_POINT =
 
 export const AQUA_BG =
   "https://firebasestorage.googleapis.com/v0/b/aquafinaapp-bc817.appspot.com/o/aqua_bg.png?alt=media&token=258d7961-7930-4040-aedf-221a47073a01";
+
+export const AVT =
+  "https://firebasestorage.googleapis.com/v0/b/aquafinaapp-bc817.appspot.com/o/IMG_1774.jpg?alt=media&token=f00db314-0817-441c-a40f-e4333c6982c8";

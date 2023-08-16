@@ -2,8 +2,10 @@ import { SafeAreaView, StyleSheet, Dimensions, View } from "react-native";
 import React, { useEffect, useState } from "react";
 import {
   AVATAR_SIGNIN,
+  AVT,
   BACKGROUND_BUTTON_BLUE,
   CONTENT,
+  ICON_AVATAR,
   ICON_HOME,
   ICON_LOGOUT,
   ICON_MENU,
@@ -127,7 +129,7 @@ const _EnterOTP: React.FC<PropsType> = (props) => {
       const user: Omit<User, "key"> = {
         name: name,
         phone: phoneNumber,
-        avatar: AVATAR_SIGNIN,
+        avatar: ICON_AVATAR,
       };
       dispatch(signUp(user));
       navigation.navigate("NotificationSignUp");
