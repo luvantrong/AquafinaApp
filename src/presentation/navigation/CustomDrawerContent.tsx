@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, Image, Pressable } from "react-native";
+import { StyleSheet, Text, View, Image, Pressable, Modal } from "react-native";
 import React from "react";
 import {
   DrawerContentComponentProps,
@@ -6,7 +6,7 @@ import {
   DrawerItem,
   DrawerItemList,
 } from "@react-navigation/drawer";
-import { Header } from "@components";
+import { Header, PopupSignIn } from "@components";
 import {
   AVATAR_SIGNIN,
   ICON_AVATAR,
@@ -50,19 +50,25 @@ const _CustomDrawerContent: React.FC<CustomDrawerContentProps> = (props) => {
     state,
   } = props;
 
+  const [modalVisible, setModalVisible] = React.useState(false);
+
+  const hideModal = () => {
+    setModalVisible(!modalVisible);
+  };
+
   const handleItemPress = (route: string) => {
     if (route === "Điểm Thưởng Xanh") {
       // Xử lý logic trước khi chuyển hướng đến màn hình hạn chế
       if (checkSignIn) {
         props.navigation.navigate(route);
       } else {
-        console.log("Bạn chưa đăng nhập");
+        setModalVisible(true);
       }
     } else if (route === "Bảng Xếp Hạng") {
       if (checkSignIn) {
         props.navigation.navigate(route);
       } else {
-        console.log("Bạn chưa đăng nhập");
+        setModalVisible(true);
       }
     } else {
       // Chuyển hướng đến các màn hình khác
@@ -78,6 +84,17 @@ const _CustomDrawerContent: React.FC<CustomDrawerContentProps> = (props) => {
   return (
     <View style={{ flex: 1 }}>
       <DrawerContentScrollView {...props}>
+        <Modal animationType="slide" transparent={true} visible={modalVisible}>
+          <PopupSignIn
+            onPress={() => {
+              hideModal();
+            }}
+            onPressSignIn={() => {
+              hideModal();
+              props.navigation.navigate("SignIn");
+            }}
+          />
+        </Modal>
         <Header
           icon_home={ICON_CLOSE}
           icon_aquafina={LOGO_AQUAFINA}
