@@ -7,6 +7,7 @@ import {
   StyleSheet,
   Text,
   View,
+  Modal,
 } from "react-native";
 import React, { useEffect, useState } from "react";
 import {
@@ -20,6 +21,7 @@ import {
   SliderBanner,
   SumBottle,
   TextPlus,
+  PopupSignOut,
 } from "@components";
 import {
   BANNER_HOME,
@@ -37,6 +39,7 @@ import { DrawerNavigationProp } from "@react-navigation/drawer";
 import database from "@react-native-firebase/database";
 import { get } from "react-native/Libraries/TurboModule/TurboModuleRegistry";
 import { AppContext } from "@shared-state";
+import { User } from "@domain";
 
 type DrawerNavigationProps = DrawerNavigationProp<StackHome>;
 type PropsType = NativeStackScreenProps<StackHome, "Bảng Xếp Hạng"> & {
@@ -45,14 +48,25 @@ type PropsType = NativeStackScreenProps<StackHome, "Bảng Xếp Hạng"> & {
 
 const _ChartScreen: React.FC<PropsType> = (props) => {
   const { navigation } = props;
-  const { isLoggedIn } = React.useContext(AppContext);
+
+  const { isLoggedIn, dataUser, setDataUser, setLoggedIn } =
+    React.useContext(AppContext);
+  const [modalVisibleSignOut, setModalVisibleSignOut] = useState(false);
 
   const showDrawerNavigator = () => {
     navigation.openDrawer();
   };
 
   const goToScreenSignIn = () => {
-    navigation.navigate("SignIn");
+    if (isLoggedIn) {
+      setModalVisibleSignOut(true);
+    } else {
+      navigation.navigate("SignIn");
+    }
+  };
+
+  const hideModalSignOut = () => {
+    setModalVisibleSignOut(!modalVisibleSignOut);
   };
 
   const goToScreenHome = () => {
@@ -93,6 +107,25 @@ const _ChartScreen: React.FC<PropsType> = (props) => {
         onPressRight={goToScreenSignIn}
         onPressCenter={goToScreenHome}
       />
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={modalVisibleSignOut}
+      >
+        <PopupSignOut
+          onPress={() => {
+            setModalVisibleSignOut(!modalVisibleSignOut);
+          }}
+          onPressSignOut={() => {
+            hideModalSignOut();
+            setLoggedIn(false);
+            setDataUser({} as User);
+          }}
+          onPressCancel={() => {
+            setModalVisibleSignOut(!modalVisibleSignOut);
+          }}
+        />
+      </Modal>
       <ScrollView>
         <Rating checkSignIn={true} containerStyle={{ marginTop: 10 }} />
         <MenuFooter

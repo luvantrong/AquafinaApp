@@ -1,4 +1,4 @@
-import { SafeAreaView, StyleSheet, Dimensions, View } from "react-native";
+import { SafeAreaView, StyleSheet, Dimensions, View, Modal } from "react-native";
 import React, { useEffect, useState } from "react";
 import {
   AVATAR_SIGNIN,
@@ -13,7 +13,7 @@ import {
   LOGO_AQUAFINA,
   fontFamily,
 } from "@assets";
-import { Button, Header, ImageView, TextView, TextViewBold } from "@components";
+import { Button, Header, ImageView, TextView, TextViewBold, PopupSignOut } from "@components";
 import { Colors } from "@resources";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { StackHome } from "@navigation";
@@ -26,6 +26,7 @@ import { firestore, signUp, useAppDispatch } from "@shared-state";
 import { RootState } from "@shared-state";
 import { User } from "@domain";
 import { AppContext } from "@shared-state";
+
 
 type DrawerNavigationProps = DrawerNavigationProp<StackHome>;
 type PropsType = NativeStackScreenProps<StackHome, "EnterOTP"> & {

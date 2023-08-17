@@ -6,7 +6,7 @@ import {
   DrawerItem,
   DrawerItemList,
 } from "@react-navigation/drawer";
-import { Header, PopupSignIn } from "@components";
+import { Header, PopupSignIn, PopupSignOut } from "@components";
 import {
   AVATAR_SIGNIN,
   ICON_AVATAR,
@@ -27,6 +27,8 @@ import {
   fontFamily,
 } from "@assets";
 import { Colors } from "../resource/values";
+import { AppContext } from "../shared-state/context";
+import { User } from "@domain";
 
 type CustomDrawerContentProps = DrawerContentComponentProps & {
   imageAvatar: string;
@@ -49,11 +51,16 @@ const _CustomDrawerContent: React.FC<CustomDrawerContentProps> = (props) => {
     checkSignIn,
     state,
   } = props;
-
+  const { setLoggedIn, setDataUser } = React.useContext(AppContext);
   const [modalVisible, setModalVisible] = React.useState(false);
+  const [modalVisibleSignOut, setModalVisibleSignOut] = React.useState(false);
 
   const hideModal = () => {
     setModalVisible(!modalVisible);
+  };
+
+  const hideModalSignOut = () => {
+    setModalVisibleSignOut(!modalVisibleSignOut);
   };
 
   const handleItemPress = (route: string) => {
@@ -92,6 +99,26 @@ const _CustomDrawerContent: React.FC<CustomDrawerContentProps> = (props) => {
             onPressSignIn={() => {
               hideModal();
               props.navigation.navigate("SignIn");
+            }}
+          />
+        </Modal>
+        <Modal
+          animationType="slide"
+          transparent={true}
+          visible={modalVisibleSignOut}
+        >
+          <PopupSignOut
+            onPress={() => {
+              setModalVisibleSignOut(!modalVisibleSignOut);
+            }}
+            onPressSignOut={() => {
+              hideModalSignOut();
+              setLoggedIn(false);
+              setDataUser({} as User);
+              props.navigation.closeDrawer();
+            }}
+            onPressCancel={() => {
+              setModalVisibleSignOut(!modalVisibleSignOut);
             }}
           />
         </Modal>
@@ -159,7 +186,10 @@ const _CustomDrawerContent: React.FC<CustomDrawerContentProps> = (props) => {
         ))}
       </DrawerContentScrollView>
       {checkSignIn ? (
-        <Pressable style={StyleSheet.flatten(_styles.stylePressable)}>
+        <Pressable
+          onPress={() => setModalVisibleSignOut(true)}
+          style={StyleSheet.flatten(_styles.stylePressable)}
+        >
           <Image
             style={{ width: 24, height: 24 }}
             source={{ uri: ICON_LOGOUT }}
@@ -169,7 +199,12 @@ const _CustomDrawerContent: React.FC<CustomDrawerContentProps> = (props) => {
           </Text>
         </Pressable>
       ) : (
-        <Pressable style={StyleSheet.flatten(_styles.stylePressable)}>
+        <Pressable
+          onPress={() => {
+            props.navigation.navigate("SignIn");
+          }}
+          style={StyleSheet.flatten(_styles.stylePressable)}
+        >
           <Image
             style={{ width: 24, height: 24 }}
             source={{ uri: ICON_LOGIN }}

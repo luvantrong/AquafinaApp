@@ -7,6 +7,7 @@ import {
   StyleSheet,
   Text,
   View,
+  Modal,
 } from "react-native";
 import React, { useEffect, useState } from "react";
 import {
@@ -22,6 +23,7 @@ import {
   TextField,
   TextPlus,
   TextView,
+  PopupSignOut,
 } from "@components";
 import {
   AQUA_BG,
@@ -46,6 +48,7 @@ import { get } from "react-native/Libraries/TurboModule/TurboModuleRegistry";
 import { Colors } from "@resources";
 import { TextInput } from "react-native-gesture-handler";
 import { AppContext } from "@shared-state";
+import { User } from "@domain";
 
 type DrawerNavigationProps = DrawerNavigationProp<StackHome>;
 type PropsType = NativeStackScreenProps<StackHome, "Điểm Thưởng Xanh"> & {
@@ -54,16 +57,20 @@ type PropsType = NativeStackScreenProps<StackHome, "Điểm Thưởng Xanh"> & {
 
 const _PointsScreen: React.FC<PropsType> = (props) => {
   const { navigation } = props;
-  const { isLoggedIn } = React.useContext(AppContext);
+  const { isLoggedIn, setLoggedIn, setDataUser } = React.useContext(AppContext);
+  const [modalVisibleSignOut, setModalVisibleSignOut] = useState(false);
 
   const showDrawerNavigator = () => {
     navigation.openDrawer();
   };
 
   const goToScreenSignIn = () => {
-    navigation.navigate("SignIn");
+    if (isLoggedIn) {
+      setModalVisibleSignOut(true);
+    } else {
+      navigation.navigate("SignIn");
+    }
   };
-
   const goToScreenHome = () => {
     navigation.navigate("Home");
   };
@@ -107,6 +114,25 @@ const _PointsScreen: React.FC<PropsType> = (props) => {
         onPressRight={goToScreenSignIn}
         onPressCenter={goToScreenHome}
       />
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={modalVisibleSignOut}
+      >
+        <PopupSignOut
+          onPress={() => {
+            setModalVisibleSignOut(!modalVisibleSignOut);
+          }}
+          onPressSignOut={() => {
+            setModalVisibleSignOut(!modalVisibleSignOut);
+            setLoggedIn(false);
+            setDataUser({} as User);
+          }}
+          onPressCancel={() => {
+            setModalVisibleSignOut(!modalVisibleSignOut);
+          }}
+        />
+      </Modal>
       <ScrollView>
         <View
           style={{

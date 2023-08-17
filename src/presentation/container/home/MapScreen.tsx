@@ -7,6 +7,7 @@ import {
   StyleSheet,
   Text,
   View,
+  Modal,
 } from "react-native";
 import React, { useEffect, useState } from "react";
 import {
@@ -20,6 +21,7 @@ import {
   SliderBanner,
   SumBottle,
   TextPlus,
+  PopupSignOut,
 } from "@components";
 import {
   BANNER_HOME,
@@ -40,6 +42,7 @@ import { DrawerNavigationProp } from "@react-navigation/drawer";
 import database from "@react-native-firebase/database";
 import { get } from "react-native/Libraries/TurboModule/TurboModuleRegistry";
 import { AppContext } from "@shared-state";
+import { User } from "@domain";
 
 type DrawerNavigationProps = DrawerNavigationProp<StackHome>;
 type PropsType = NativeStackScreenProps<StackHome, "Bản Đồ Xanh"> & {
@@ -48,14 +51,19 @@ type PropsType = NativeStackScreenProps<StackHome, "Bản Đồ Xanh"> & {
 
 const _MapScreen: React.FC<PropsType> = (props) => {
   const { navigation } = props;
-  const {isLoggedIn} = React.useContext(AppContext);
+  const { isLoggedIn, setDataUser, setLoggedIn } = React.useContext(AppContext);
+  const [modalVisibleSignOut, setModalVisibleSignOut] = useState(false);
 
   const showDrawerNavigator = () => {
     navigation.openDrawer();
   };
 
   const goToScreenSignIn = () => {
-    navigation.navigate("SignIn");
+    if (isLoggedIn) {
+      setModalVisibleSignOut(true);
+    } else {
+      navigation.navigate("SignIn");
+    }
   };
 
   const goToScreenHome = () => {
@@ -96,6 +104,25 @@ const _MapScreen: React.FC<PropsType> = (props) => {
         onPressRight={goToScreenSignIn}
         onPressCenter={goToScreenHome}
       />
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={modalVisibleSignOut}
+      >
+        <PopupSignOut
+          onPress={() => {
+            setModalVisibleSignOut(!modalVisibleSignOut);
+          }}
+          onPressSignOut={() => {
+            setModalVisibleSignOut(!modalVisibleSignOut);
+            setLoggedIn(false);
+            setDataUser({} as User);
+          }}
+          onPressCancel={() => {
+            setModalVisibleSignOut(!modalVisibleSignOut);
+          }}
+        />
+      </Modal>
       <ScrollView>
         <ImageView uri={W_2} imageStyle={{ height: 600 }} />
         <ImageView uri={MAP_8} imageStyle={{ height: 600 }} />

@@ -10,6 +10,7 @@ import React from "react";
 import {
   BACKGROUND_APP,
   BACKGROUND_BUTTON_BLUE,
+  BACKGROUND_BUTTON_WHITE,
   BG_MODAL_SIGNIN,
   ICON_CLOSE,
   fontFamily,
@@ -22,11 +23,12 @@ import { Button } from "../button";
 
 type Props = {
   onPress: () => void;
-  onPressSignIn: () => void;
+  onPressSignOut: () => void;
+  onPressCancel: () => void;
 };
 
-const _PopupSignIn: React.FC<Props> = (props) => {
-  const { onPress, onPressSignIn } = props;
+const _PopupSignOut: React.FC<Props> = (props) => {
+  const { onPress, onPressSignOut, onPressCancel } = props;
   return (
     <View style={_styles.centeredView}>
       <View style={_styles.modalView}>
@@ -60,44 +62,54 @@ const _PopupSignIn: React.FC<Props> = (props) => {
             marginTop: 30,
           }}
         >
-          <TextViewBold
-            text="Bạn hãy đăng nhập"
-            boldTexts={["đăng nhập"]}
-            styleText={{
-              fontFamily: fontFamily.medium,
-              fontSize: 18,
-              color: Colors.BLUE_TEXT,
-            }}
-            styleBold={{
-              fontSize: 18,
-              color: Colors.BLUE_TEXT,
-            }}
-            styleView={{
-              width: Dimensions.get("window").width * 0.5,
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          />
           <Text
             style={{
-              fontFamily: fontFamily.medium,
+              fontFamily: fontFamily.bold,
               fontSize: 18,
               color: Colors.BLUE_TEXT,
             }}
           >
-            để tiếp tục nhé!
+            Bạn có muốn đăng xuất
+          </Text>
+          <Text
+            style={{
+              fontFamily: fontFamily.bold,
+              fontSize: 18,
+              color: Colors.BLUE_TEXT,
+            }}
+          >
+            hay không ?
           </Text>
         </View>
-        <Button
-          title="Đăng nhập"
-          backgroundImage={BACKGROUND_BUTTON_BLUE}
-          stylePressable={{
-            width: Dimensions.get("window").width * 0.6,
-            alignSelf: "center",
-            marginTop: 20,
+        <View
+          style={{
+            flexDirection: "row",
+            alignItems: "center",
+            justifyContent: "space-evenly",
           }}
-          onPress={onPressSignIn}
-        />
+        >
+          <Button
+            title="Huỷ"
+            backgroundImage={BACKGROUND_BUTTON_WHITE}
+            stylePressable={{
+              width: Dimensions.get("window").width * 0.35,
+              alignSelf: "center",
+              marginTop: 20,
+            }}
+            styleText={{ color: Colors.BLUE_TEXT }}
+            onPress={onPressCancel}
+          />
+          <Button
+            title="Đăng xuất"
+            backgroundImage={BACKGROUND_BUTTON_BLUE}
+            stylePressable={{
+              width: Dimensions.get("window").width * 0.35,
+              alignSelf: "center",
+              marginTop: 20,
+            }}
+            onPress={onPressSignOut}
+          />
+        </View>
       </View>
     </View>
   );
@@ -111,7 +123,7 @@ const _styles = StyleSheet.create({
   },
   modalView: {
     margin: 20,
-    backgroundColor: "white",
+    backgroundColor: Colors.WHITE,
     borderRadius: 20,
     padding: 20,
     shadowColor: "#000",
@@ -124,22 +136,6 @@ const _styles = StyleSheet.create({
     elevation: 5,
     height: 199,
   },
-  button: {
-    borderRadius: 20,
-    padding: 10,
-    elevation: 2,
-  },
-  buttonOpen: {
-    backgroundColor: "#F194FF",
-  },
-  buttonClose: {
-    backgroundColor: "#2196F3",
-  },
-  textStyle: {
-    color: "white",
-    fontWeight: "bold",
-    textAlign: "center",
-  },
 });
 
-export const PopupSignIn = React.memo(_PopupSignIn);
+export const PopupSignOut = React.memo(_PopupSignOut);

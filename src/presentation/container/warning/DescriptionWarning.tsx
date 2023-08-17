@@ -8,6 +8,7 @@ import {
   Text,
   TextInput,
   View,
+  Modal,
 } from "react-native";
 import React, { useEffect, useState } from "react";
 import {
@@ -22,6 +23,7 @@ import {
   SumBottle,
   TextPlus,
   TextView,
+  PopupSignOut,
 } from "@components";
 import {
   BACKGROUND_BUTTON_BLUE,
@@ -42,6 +44,7 @@ import LinearGradient from "react-native-linear-gradient";
 import { Colors } from "@resources";
 import DropDownPicker from "react-native-dropdown-picker";
 import { AppContext } from "@shared-state";
+import { User } from "@domain";
 
 type DrawerNavigationProps = DrawerNavigationProp<StackHome>;
 type PropsType = NativeStackScreenProps<
@@ -53,9 +56,11 @@ type PropsType = NativeStackScreenProps<
 
 const _DescriptionWarning: React.FC<PropsType> = (props) => {
   const { navigation } = props;
-  const {isLoggedIn} = React.useContext(AppContext);
+  const { isLoggedIn, setLoggedIn, setDataUser } = React.useContext(AppContext);
+  const [modalVisibleSignOut, setModalVisibleSignOut] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [currenValue, setCurrenValue] = useState(null);
+
   const [items, setItems] = useState([
     {
       label: "1. Bỏ chai Aquafinha nhưng hệ thống không nhận diện được",
@@ -73,7 +78,11 @@ const _DescriptionWarning: React.FC<PropsType> = (props) => {
   };
 
   const goToScreenSignIn = () => {
-    navigation.navigate("SignIn");
+    if (isLoggedIn) {
+      setModalVisibleSignOut(true);
+    } else {
+      navigation.navigate("SignIn");
+    }
   };
 
   const goToScreenHome = () => {
@@ -95,6 +104,25 @@ const _DescriptionWarning: React.FC<PropsType> = (props) => {
         onPressRight={goToScreenSignIn}
         onPressCenter={goToScreenHome}
       />
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={modalVisibleSignOut}
+      >
+        <PopupSignOut
+          onPress={() => {
+            setModalVisibleSignOut(!modalVisibleSignOut);
+          }}
+          onPressSignOut={() => {
+            setModalVisibleSignOut(!modalVisibleSignOut);
+            setLoggedIn(false);
+            setDataUser({} as User);
+          }}
+          onPressCancel={() => {
+            setModalVisibleSignOut(!modalVisibleSignOut);
+          }}
+        />
+      </Modal>
       <TextView
         title="Nội dung báo lỗi"
         textStyle={{
