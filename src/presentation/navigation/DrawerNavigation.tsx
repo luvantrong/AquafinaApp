@@ -27,7 +27,7 @@ import {
   ICON_MENU_5_FOCUS,
   fontFamily,
 } from "@assets";
-import { StyleSheet, Image } from "react-native";
+import { StyleSheet, Image, Pressable } from "react-native";
 import { Colors } from "@resources";
 import { CustomDrawerContent } from "./CustomDrawerContent";
 import { StackHome } from "./StackHome";
@@ -98,7 +98,9 @@ const _MyDrawer = () => {
         <Drawer.Screen name="Quà Tặng Xanh" component={PresentScreen} />
         <Drawer.Screen name="Bản Đồ Xanh" component={MapScreen} />
         <Drawer.Screen name="Điểm Thưởng Xanh" component={PointsScreen} />
+
         <Drawer.Screen name="Bảng Xếp Hạng" component={ChartScreen} />
+
         <Drawer.Screen
           name="StackHome"
           component={StackHome}

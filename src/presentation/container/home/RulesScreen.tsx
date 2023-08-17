@@ -13,7 +13,6 @@ import {
 import React, { useEffect, useState } from "react";
 import {
   Address,
-  Banner,
   Button,
   CarouselView,
   Header,

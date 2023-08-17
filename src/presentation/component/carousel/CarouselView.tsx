@@ -169,7 +169,7 @@ const _CarouselView: React.FC<CarouselViewProps> = (props) => {
               source={{ uri: item.image }}
               style={[
                 _styles.styleImageItem,
-                isActive ? { marginTop: -35 } : { marginTop: 5 },
+                isActive ? { marginTop: -35 } : { marginTop: 0 },
               ]}
             />
             <Text style={_styles.textTitleItem}>{item.title}</Text>
@@ -177,7 +177,12 @@ const _CarouselView: React.FC<CarouselViewProps> = (props) => {
               source={{ uri: item.imageContent }}
               style={_styles.styleImageContentItem}
             />
-            <Text style={_styles.textSumItem}>
+            <Text
+              style={[
+                _styles.textSumItem,
+                isActive ? { display: "flex" } : { display: "none" },
+              ]}
+            >
               Sản phẩm được làm từ {item.sum} chai nhựa rỗng
             </Text>
           </Pressable>
@@ -337,6 +342,7 @@ const _CarouselView: React.FC<CarouselViewProps> = (props) => {
 const _styles = StyleSheet.create({
   container: {
     alignItems: "center",
+    marginTop: 20,
   },
   centeredView: {
     flex: 1,

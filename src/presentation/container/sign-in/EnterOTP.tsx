@@ -191,7 +191,7 @@ const _EnterOTP: React.FC<PropsType> = (props) => {
             setCode(code);
           }}
           onCodeFilled={(code) => {
-            console.log(`Code is ${code}, you are good to go!`);
+            // console.log(`Code is ${code}, you are good to go!`);
             setCode(code);
           }}
           placeholderCharacter="|"

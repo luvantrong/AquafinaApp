@@ -254,3 +254,6 @@ export const AQUA_BG =
 
 export const AVT =
   "https://firebasestorage.googleapis.com/v0/b/aquafinaapp-bc817.appspot.com/o/IMG_1774.jpg?alt=media&token=f00db314-0817-441c-a40f-e4333c6982c8";
+
+export const BG_MODAL_SIGNIN =
+  "https://firebasestorage.googleapis.com/v0/b/aquafinaapp-bc817.appspot.com/o/bg_modal_login.png?alt=media&token=136b14ba-23da-4934-aacb-b7fb1b823c1c";
