@@ -56,10 +56,15 @@ type PropsType = NativeStackScreenProps<StackHome, "Thế Giới Xanh"> & {
 };
 
 const _GreenWorldScreen: React.FC<PropsType> = (props) => {
-  const { navigation } = props;
+  const { navigation, route } = props;
   const { isLoggedIn, setLoggedIn, setDataUser } = React.useContext(AppContext);
   const [modalVisibleSignOut, setModalVisibleSignOut] = useState(false);
   const [modalVisible, setModalVisible] = useState(false);
+  const scrollViewRef = React.useRef<ScrollView>(null);
+
+  const scrollToTop = () => {
+    scrollViewRef.current?.scrollTo({ y: 0, animated: true });
+  };
 
   const showDrawerNavigator = () => {
     navigation.openDrawer();
@@ -75,23 +80,28 @@ const _GreenWorldScreen: React.FC<PropsType> = (props) => {
 
   const goToScreenHome = () => {
     navigation.navigate("Home");
+    scrollToTop();
   };
 
   const goToScreenPresent = () => {
     navigation.navigate("Quà Tặng Xanh");
+    scrollToTop();
   };
 
   const goToScreenMap = () => {
     navigation.navigate("Bản Đồ Xanh");
+    scrollToTop();
   };
 
   const goToScreenGreenWorld = () => {
     navigation.navigate("Thế Giới Xanh");
+    scrollToTop();
   };
 
   const goToScreenChart = () => {
     if (isLoggedIn) {
       navigation.navigate("Bảng Xếp Hạng");
+      scrollToTop();
     } else {
       setModalVisible(true);
     }
@@ -100,6 +110,7 @@ const _GreenWorldScreen: React.FC<PropsType> = (props) => {
   const goToScreenPoints = () => {
     if (isLoggedIn) {
       navigation.navigate("Điểm Thưởng Xanh");
+      scrollToTop();
     } else {
       setModalVisible(true);
     }
@@ -107,6 +118,7 @@ const _GreenWorldScreen: React.FC<PropsType> = (props) => {
 
   const goToScreenDescriptionWarning = () => {
     navigation.navigate("WarningDescriptionScreen");
+    scrollToTop();
   };
 
   const title1 =
@@ -155,7 +167,7 @@ const _GreenWorldScreen: React.FC<PropsType> = (props) => {
         />
       </Modal>
 
-      <ScrollView>
+      <ScrollView ref={scrollViewRef}>
         <ImageView uri={BANNER_HOME_3} imageStyle={{ height: 600 }} />
         <ImageBackground
           source={{ uri: BA_1 }}

@@ -10,6 +10,7 @@ import {
 } from "@containers";
 import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
+import { ScrollView } from "react-native";
 
 import {
   AVATAR_SIGNIN,

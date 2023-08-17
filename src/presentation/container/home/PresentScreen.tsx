@@ -53,6 +53,15 @@ const _PresentScreen: React.FC<PropsType> = (props) => {
   const { isLoggedIn, setLoggedIn, setDataUser } = React.useContext(AppContext);
   const [modalVisibleSignOut, setModalVisibleSignOut] = useState(false);
   const [modalVisible, setModalVisible] = useState(false);
+  const scrollViewRef = React.useRef<ScrollView>(null);
+
+  const scrollToTop = () => {
+    scrollViewRef.current?.scrollTo({ y: 0, animated: true });
+  };
+
+  useEffect(() => {
+    scrollViewRef.current?.scrollTo({ y: 0, animated: true });
+  }, []);
 
   const showDrawerNavigator = () => {
     navigation.openDrawer();
@@ -68,27 +77,33 @@ const _PresentScreen: React.FC<PropsType> = (props) => {
 
   const goToScreenHome = () => {
     navigation.navigate("Home");
+    scrollToTop();
   };
 
   const goToScreenRules = () => {
     navigation.navigate("RulesScreen");
+    scrollToTop();
   };
 
   const goToScreenPresent = () => {
     navigation.navigate("Quà Tặng Xanh");
+    scrollToTop();
   };
 
   const goToScreenMap = () => {
     navigation.navigate("Bản Đồ Xanh");
+    scrollToTop();
   };
 
   const goToScreenGreenWorld = () => {
     navigation.navigate("Thế Giới Xanh");
+    scrollToTop();
   };
 
   const goToScreenChart = () => {
     if (isLoggedIn) {
       navigation.navigate("Bảng Xếp Hạng");
+      scrollToTop();
     } else {
       setModalVisible(true);
     }
@@ -97,6 +112,7 @@ const _PresentScreen: React.FC<PropsType> = (props) => {
   const goToScreenPoints = () => {
     if (isLoggedIn) {
       navigation.navigate("Điểm Thưởng Xanh");
+      scrollToTop();
     } else {
       setModalVisible(true);
     }
@@ -104,6 +120,7 @@ const _PresentScreen: React.FC<PropsType> = (props) => {
 
   const goToScreenDescriptionWarning = () => {
     navigation.navigate("WarningDescriptionScreen");
+    scrollToTop();
   };
   return (
     <View style={{ paddingBottom: 56 }}>
@@ -147,7 +164,7 @@ const _PresentScreen: React.FC<PropsType> = (props) => {
           }}
         />
       </Modal>
-      <ScrollView>
+      <ScrollView ref={scrollViewRef}>
         <TextView
           title="Quà tặng xanh"
           textStyle={{

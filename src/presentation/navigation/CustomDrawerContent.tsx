@@ -1,4 +1,12 @@
-import { StyleSheet, Text, View, Image, Pressable, Modal } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  Pressable,
+  Modal,
+  ScrollView,
+} from "react-native";
 import React from "react";
 import {
   DrawerContentComponentProps,

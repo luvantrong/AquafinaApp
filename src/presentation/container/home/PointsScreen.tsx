@@ -59,7 +59,15 @@ const _PointsScreen: React.FC<PropsType> = (props) => {
   const { navigation } = props;
   const { isLoggedIn, setLoggedIn, setDataUser } = React.useContext(AppContext);
   const [modalVisibleSignOut, setModalVisibleSignOut] = useState(false);
+  const scrollViewRef = React.useRef<ScrollView>(null);
 
+  const scrollToTop = () => {
+    scrollViewRef.current?.scrollTo({ y: 0, animated: true });
+  };
+
+  useEffect(() => {
+    scrollViewRef.current?.scrollTo({ y: 0, animated: true });
+  }, []);
   const showDrawerNavigator = () => {
     navigation.openDrawer();
   };
@@ -73,30 +81,37 @@ const _PointsScreen: React.FC<PropsType> = (props) => {
   };
   const goToScreenHome = () => {
     navigation.navigate("Home");
+    scrollToTop();
   };
 
   const goToScreenPresent = () => {
     navigation.navigate("Quà Tặng Xanh");
+    scrollToTop();
   };
 
   const goToScreenMap = () => {
     navigation.navigate("Bản Đồ Xanh");
+    scrollToTop();
   };
 
   const goToScreenGreenWorld = () => {
     navigation.navigate("Thế Giới Xanh");
+    scrollToTop();
   };
 
   const goToScreenChart = () => {
     navigation.navigate("Bảng Xếp Hạng");
+    scrollToTop();
   };
 
   const goToScreenPoints = () => {
     navigation.navigate("Điểm Thưởng Xanh");
+    scrollToTop();
   };
 
   const goToScreenDescriptionWarning = () => {
     navigation.navigate("WarningDescriptionScreen");
+    scrollToTop();
   };
 
   const [name, setName] = useState("Lê Quỳnh Ái Vân");
