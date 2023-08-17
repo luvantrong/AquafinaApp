@@ -11,11 +11,11 @@ import React from "react";
 import { fontFamily } from "@assets";
 import { Colors } from "@resources";
 
-export interface TextViewProps {
+export type TextViewProps = {
   styleContainer?: StyleProp<ViewStyle>;
   title: string;
   textStyle?: StyleProp<TextStyle>;
-}
+};
 
 const _TextView: React.FC<TextViewProps> = (props) => {
   const { title } = props;

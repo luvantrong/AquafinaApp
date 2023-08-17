@@ -2,14 +2,14 @@ import React from "react";
 import { Text, StyleSheet, StyleProp, TextStyle } from "react-native";
 import { fontFamily } from "@assets";
 
-export interface TextPlusProps {
+export type TextPlusProps = {
   style?: StyleProp<TextStyle>;
   children: {
     bold: boolean;
     contentStyle?: StyleProp<TextStyle>;
     content: string;
   }[];
-}
+};
 
 const _TextPlus: React.FC<TextPlusProps> = (props) => {
   const { children } = props;

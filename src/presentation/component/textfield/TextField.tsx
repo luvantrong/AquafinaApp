@@ -12,14 +12,14 @@ import React from "react";
 import { BACKGROUND_BUTTON_WHITE, BACKGROUND_WHITE, fontFamily } from "@assets";
 import { Colors } from "@resources";
 
-export interface TextFieldProps {
+export type TextFieldProps = {
   title: string;
   placeholder: string;
   styleView?: StyleProp<ViewStyle>;
   onChange?: (text: string) => void;
   textStyle?: StyleProp<TextStyle>;
   value: string;
-}
+};
 
 const _TextField: React.FC<TextFieldProps> = (props) => {
   const { title, placeholder, onChange, value } = props;

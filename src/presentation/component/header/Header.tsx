@@ -12,7 +12,7 @@ import {
 import React from "react";
 import { ICON_LOGIN, ICON_LOGOUT } from "@assets";
 
-export interface HeaderProps {
+export type HeaderProps = {
   icon_home: string;
   onPressLeft?: () => void;
   icon_aquafina: string;
@@ -22,7 +22,7 @@ export interface HeaderProps {
   onPressRight?: () => void;
   onPressCenter?: () => void;
   checkLogin?: boolean;
-}
+};
 
 const _Header: React.FC<HeaderProps> = (props) => {
   const {

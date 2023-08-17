@@ -9,10 +9,10 @@ import React from "react";
 import { SUM_BOTTLE, fontFamily } from "@assets";
 import { Colors } from "@resources";
 
-export interface SumBottleProps {
+export type SumBottleProps = {
   sumAqua: number;
   sumOther: number;
-}
+};
 
 const _SumBottle: React.FC<SumBottleProps> = (props) => {
   const { sumAqua, sumOther } = props;

@@ -10,11 +10,11 @@ import {
 } from "react-native";
 import React from "react";
 
-export interface ImageViewProps {
+export type ImageViewProps = {
   uri: string;
   viewStyle?: StyleProp<ViewStyle>;
   imageStyle?: StyleProp<ImageStyle>;
-}
+};
 
 const _ImageView: React.FC<ImageViewProps> = (props) => {
   const { uri } = props;

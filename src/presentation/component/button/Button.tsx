@@ -13,13 +13,13 @@ import React from "react";
 import { BACKGROUND_BUTTON_BLUE, fontFamily } from "@assets";
 import { Colors } from "@resources";
 
-export interface ButtonProps {
+export type ButtonProps = {
   title: string;
   stylePressable?: StyleProp<ViewStyle>;
   backgroundImage?: string;
   styleText?: StyleProp<TextStyle>;
   onPress?: (screen?: string) => void;
-}
+};
 
 const _Button: React.FC<ButtonProps> = (props) => {
   const { backgroundImage, title, onPress } = props;

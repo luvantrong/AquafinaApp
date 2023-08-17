@@ -5,11 +5,11 @@ import { BACKGROUND_BUTTON_BLUE, BANNER_HOME } from "@assets";
 import { Button } from "../button";
 import { Banner } from "@domain";
 
-export interface Slide {
+export type Slide = {
   data: Banner[];
   checkSignIn: boolean;
   onPress?: (screen: string) => void;
-}
+};
 
 const _SliderBanner: React.FC<Slide> = (props) => {
   const { data, checkSignIn, onPress } = props;

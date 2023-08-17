@@ -11,10 +11,10 @@ import {
 import { BACKGROUND_APP } from "@assets";
 import { Colors } from "@resources";
 
-export interface BackgroundProps {
+export type BackgroundProps = {
   children: React.ReactNode;
   styleBackground?: StyleProp<ViewStyle>;
-}
+};
 
 const _BackgroundApp: React.FC<BackgroundProps> = (props) => {
   const { children, styleBackground } = props;

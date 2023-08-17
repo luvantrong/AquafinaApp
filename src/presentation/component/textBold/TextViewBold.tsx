@@ -9,13 +9,13 @@ import {
 import React from "react";
 import { fontFamily } from "@assets";
 
-interface Props {
+type Props = {
   boldTexts: string[];
   text: string;
   styleBold?: StyleProp<TextStyle>;
   styleView?: StyleProp<ViewStyle>;
   styleText?: StyleProp<TextStyle>;
-}
+};
 
 const _TextViewBold: React.FC<Props> = (props) => {
   const { boldTexts, text } = props;

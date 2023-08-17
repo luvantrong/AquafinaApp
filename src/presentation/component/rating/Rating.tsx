@@ -28,12 +28,12 @@ import {
 } from "@assets";
 import { Colors } from "@resources";
 
-export interface Rating {
+export type Rating = {
   key: string;
   avatar: string;
   name: string;
   point: number;
-}
+};
 
 interface ItemTab {
   id: number;
