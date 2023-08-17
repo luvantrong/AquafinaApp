@@ -44,6 +44,9 @@ const _CustomDrawerContent: React.FC<CustomDrawerContentProps> = (props) => {
           icon_aquafina={LOGO_AQUAFINA}
           checkLogin={checkSignIn}
           onPressLeft={() => props.navigation.closeDrawer()}
+          onPressCenter={() => {
+            props.navigation.navigate("Home");
+          }}
         />
         <View style={StyleSheet.flatten(_styles.containerAvartar)}>
           <Image

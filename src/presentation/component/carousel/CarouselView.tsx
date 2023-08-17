@@ -10,7 +10,7 @@ import {
   Modal,
   Alert,
 } from "react-native";
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useMemo } from "react";
 import {
   AO_DEN,
   AO_DEN_CONTENT,
@@ -106,155 +106,6 @@ const DATA: Present[] = [
   },
 ];
 
-type CarouselProps = {
-  item: Present;
-};
-
-const Item = ({ item }: CarouselProps) => {
-  const [modalVisible, setModalVisible] = useState(false);
-  return (
-    <Pressable
-      style={[
-        {
-          marginTop: 40,
-          borderRadius: 20,
-          alignItems: "center",
-          flexDirection: "column",
-          backgroundColor: Colors.BLUE_400,
-          width: ITEM_WIDTH,
-          height: 285,
-          overflow: "visible",
-          position: "relative",
-        },
-      ]}
-      onPress={() => setModalVisible(true)}
-    >
-      <Image
-        source={{ uri: BACKGROUND_PRE }}
-        style={{
-          width: 222,
-          height: 170,
-          resizeMode: "stretch",
-          top: 0,
-          position: "absolute",
-        }}
-      />
-
-      <Image
-        source={{ uri: item.image }}
-        style={{
-          width: 240,
-          height: 200,
-          marginTop: -35,
-          resizeMode: "contain",
-        }}
-      />
-      <Text
-        style={{
-          fontFamily: fontFamily.bold,
-          fontSize: 16,
-          color: Colors.WHITE,
-          width: 190,
-          textAlign: "center",
-          marginTop: 12,
-        }}
-      >
-        {item.title}
-      </Text>
-      <Image
-        source={{ uri: item.imageContent }}
-        style={{
-          width: 78,
-          height: 23,
-          marginTop: 5,
-          resizeMode: "stretch",
-          marginBottom: 5,
-        }}
-      />
-      <Text
-        style={{
-          fontFamily: fontFamily.medium,
-          fontSize: 12,
-          color: Colors.WHITE,
-          width: 170,
-          textAlign: "center",
-        }}
-      >
-        Sản phẩm được làm từ {item.sum} chai nhựa rỗng
-      </Text>
-      <Modal animationType="slide" transparent={true} visible={modalVisible}>
-        <View style={_styles.centeredView}>
-          <View style={_styles.modalView}>
-            <Pressable
-              style={{ position: "absolute", top: 20, right: 20 }}
-              onPress={() => setModalVisible(!modalVisible)}
-            >
-              <Image
-                source={{ uri: ICON_CLOSE }}
-                style={{ width: 24, height: 24 }}
-              />
-            </Pressable>
-            <View style={{ flexDirection: "column", alignItems: "center" }}>
-              <TextView
-                title="Khám phá quà tặng được làm từ vải tái chế của Aquafina"
-                textStyle={{
-                  fontSize: 14,
-                  textAlign: "center",
-                  fontFamily: fontFamily.bold,
-                }}
-                styleContainer={{
-                  marginTop: 40,
-                }}
-              />
-              <Image
-                source={{ uri: BACKGROUND_PRE }}
-                style={{
-                  width: 230,
-                  height: 230,
-                  top: 0,
-                }}
-              />
-              <Text
-                style={{
-                  color: Colors.BLUE_TEXT,
-                  fontSize: 18,
-                  fontFamily: fontFamily.bold,
-                  width: 230,
-                  textAlign: "center",
-                  marginBottom: 10,
-                }}
-              >
-                {item.title}
-              </Text>
-              <Text
-                style={{
-                  color: Colors.BLUE_TEXT,
-                  fontSize: 14,
-                  fontFamily: fontFamily.medium,
-                }}
-              >
-                {item.content}
-              </Text>
-
-              <View style={{ position: "absolute", top: 80 }}>
-                <Image
-                  style={{
-                    width: 300,
-                    height: 190,
-                    marginTop: 20,
-                    resizeMode: "contain",
-                  }}
-                  source={{ uri: item.image }}
-                />
-              </View>
-            </View>
-          </View>
-        </View>
-      </Modal>
-    </Pressable>
-  );
-};
-
 export const SLIDER_WIDTH = Dimensions.get("window").width + 30;
 export const ITEM_WIDTH = Math.round(SLIDER_WIDTH * 0.52);
 
@@ -265,7 +116,8 @@ type CarouselViewProps = {
 const _CarouselView: React.FC<CarouselViewProps> = (props) => {
   const { onPress, check } = props;
   const isCarousel = useRef(null);
-  const [index, setIndex] = useState(0);
+  const [indexActive, setIndexActive] = useState(0);
+  const [modalVisible, setModalVisible] = useState(false);
 
   let show: "flex" | "none" | undefined = "flex";
   let uriImageBackground: string = BACKGROUND_ITEM;
@@ -274,9 +126,117 @@ const _CarouselView: React.FC<CarouselViewProps> = (props) => {
     uriImageBackground = WAVE;
   }
 
-  const renderItem = ({ item, index }: { item: Present; index: number }) => {
-    return <Item item={item} />;
-  };
+  const renderItem = useMemo(
+    () =>
+      ({ item, index }: { item: Present; index: number }) => {
+        const isActive = index === indexActive;
+        return (
+          <Pressable
+            style={[
+              _styles.stylePressableItem,
+              {
+                backgroundColor: isActive ? Colors.BLUE_400 : Colors.WHITE,
+              },
+            ]}
+            onPress={() => setModalVisible(true)}
+          >
+            <Image
+              source={{ uri: BACKGROUND_PRE }}
+              style={_styles.styleImagePresentItem}
+            />
+
+            <Image
+              source={{ uri: item.image }}
+              style={_styles.styleImageItem}
+            />
+            <Text style={_styles.textTitleItem}>{item.title}</Text>
+            <Image
+              source={{ uri: item.imageContent }}
+              style={_styles.styleImageContentItem}
+            />
+            <Text style={_styles.textSumItem}>
+              Sản phẩm được làm từ {item.sum} chai nhựa rỗng
+            </Text>
+            <Modal
+              animationType="slide"
+              transparent={true}
+              visible={modalVisible}
+            >
+              <View style={_styles.centeredView}>
+                <View style={_styles.modalView}>
+                  <Pressable
+                    style={{ position: "absolute", top: 20, right: 20 }}
+                    onPress={() => setModalVisible(!modalVisible)}
+                  >
+                    <Image
+                      source={{ uri: ICON_CLOSE }}
+                      style={{ width: 24, height: 24 }}
+                    />
+                  </Pressable>
+                  <View
+                    style={{ flexDirection: "column", alignItems: "center" }}
+                  >
+                    <TextView
+                      title="Khám phá quà tặng được làm từ vải tái chế của Aquafina"
+                      textStyle={{
+                        fontSize: 14,
+                        textAlign: "center",
+                        fontFamily: fontFamily.bold,
+                      }}
+                      styleContainer={{
+                        marginTop: 40,
+                      }}
+                    />
+                    <Image
+                      source={{ uri: BACKGROUND_PRE }}
+                      style={{
+                        width: 230,
+                        height: 230,
+                        top: 0,
+                      }}
+                    />
+                    <Text
+                      style={{
+                        color: Colors.BLUE_TEXT,
+                        fontSize: 18,
+                        fontFamily: fontFamily.bold,
+                        width: 230,
+                        textAlign: "center",
+                        marginBottom: 10,
+                      }}
+                    >
+                      {item.title}
+                    </Text>
+                    <Text
+                      style={{
+                        color: Colors.BLUE_TEXT,
+                        fontSize: 14,
+                        fontFamily: fontFamily.medium,
+                      }}
+                    >
+                      {item.content}
+                    </Text>
+
+                    <View style={{ position: "absolute", top: 80 }}>
+                      <Image
+                        style={{
+                          width: 300,
+                          height: 190,
+                          marginTop: 20,
+                          resizeMode: "contain",
+                        }}
+                        source={{ uri: item.image }}
+                      />
+                    </View>
+                  </View>
+                </View>
+              </View>
+            </Modal>
+          </Pressable>
+        );
+      },
+    [indexActive]
+  );
 
   return (
     <View>
@@ -306,13 +266,11 @@ const _CarouselView: React.FC<CarouselViewProps> = (props) => {
             renderItem={renderItem}
             sliderWidth={SLIDER_WIDTH}
             itemWidth={ITEM_WIDTH}
-            onSnapToItem={(index) => setIndex(index)}
-            useScrollView={true}
             autoplay={true}
-            autoplayDelay={1000}
-            loop={true}
+            onSnapToItem={(index) => setIndexActive(index)}
+            autoplayDelay={2000}
             initialNumToRender={3}
-            inactiveSlideOpacity={0.2}
+            inactiveSlideOpacity={1}
             inactiveSlideScale={0.8}
           />
           <Button
@@ -328,7 +286,7 @@ const _CarouselView: React.FC<CarouselViewProps> = (props) => {
           />
           <Pagination
             dotsLength={DATA.length}
-            activeDotIndex={index}
+            activeDotIndex={indexActive}
             carouselRef={isCarousel}
             dotStyle={{
               width: 10,
@@ -395,6 +353,57 @@ const _styles = StyleSheet.create({
 
   active: {
     backgroundColor: Colors.BLUE_400,
+  },
+
+  stylePressableItem: {
+    marginTop: 40,
+    borderRadius: 20,
+    alignItems: "center",
+    flexDirection: "column",
+    width: ITEM_WIDTH,
+    height: 285,
+    overflow: "visible",
+    position: "relative",
+  },
+
+  styleImagePresentItem: {
+    width: 222,
+    height: 170,
+    resizeMode: "stretch",
+    top: 0,
+    position: "absolute",
+  },
+
+  styleImageItem: {
+    width: 240,
+    height: 200,
+    marginTop: -35,
+    resizeMode: "contain",
+  },
+
+  textTitleItem: {
+    fontFamily: fontFamily.bold,
+    fontSize: 16,
+    color: Colors.WHITE,
+    width: 190,
+    textAlign: "center",
+    marginTop: 12,
+  },
+
+  styleImageContentItem: {
+    width: 78,
+    height: 23,
+    marginTop: 5,
+    resizeMode: "stretch",
+    marginBottom: 5,
+  },
+
+  textSumItem: {
+    fontFamily: fontFamily.medium,
+    fontSize: 12,
+    color: Colors.WHITE,
+    width: 170,
+    textAlign: "center",
   },
 });
 
