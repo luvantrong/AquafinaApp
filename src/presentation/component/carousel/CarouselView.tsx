@@ -218,7 +218,7 @@ const _CarouselView: React.FC<CarouselViewProps> = (props) => {
             <View style={_styles.container}>
               <Carousel
                 ref={isCarousel}
-                data={DATA}
+                data={presents}
                 //@ts-ignore
                 renderItem={renderItem}
                 sliderWidth={SLIDER_WIDTH}
