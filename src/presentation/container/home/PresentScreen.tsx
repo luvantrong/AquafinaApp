@@ -23,6 +23,7 @@ import {
   TextPlus,
   TextView,
   PopupSignOut,
+  PopupSignIn,
 } from "@components";
 import {
   BANNER_HOME,
@@ -51,6 +52,7 @@ const _PresentScreen: React.FC<PropsType> = (props) => {
   const { navigation } = props;
   const { isLoggedIn, setLoggedIn, setDataUser } = React.useContext(AppContext);
   const [modalVisibleSignOut, setModalVisibleSignOut] = useState(false);
+  const [modalVisible, setModalVisible] = useState(false);
 
   const showDrawerNavigator = () => {
     navigation.openDrawer();
@@ -85,11 +87,19 @@ const _PresentScreen: React.FC<PropsType> = (props) => {
   };
 
   const goToScreenChart = () => {
-    navigation.navigate("Bảng Xếp Hạng");
+    if (isLoggedIn) {
+      navigation.navigate("Bảng Xếp Hạng");
+    } else {
+      setModalVisible(true);
+    }
   };
 
   const goToScreenPoints = () => {
-    navigation.navigate("Điểm Thưởng Xanh");
+    if (isLoggedIn) {
+      navigation.navigate("Điểm Thưởng Xanh");
+    } else {
+      setModalVisible(true);
+    }
   };
 
   const goToScreenDescriptionWarning = () => {
@@ -106,6 +116,17 @@ const _PresentScreen: React.FC<PropsType> = (props) => {
         onPressRight={goToScreenSignIn}
         onPressCenter={goToScreenHome}
       />
+      <Modal animationType="slide" transparent={true} visible={modalVisible}>
+        <PopupSignIn
+          onPress={() => {
+            setModalVisible(!modalVisible);
+          }}
+          onPressSignIn={() => {
+            setModalVisible(!modalVisible);
+            props.navigation.navigate("SignIn");
+          }}
+        />
+      </Modal>
       <Modal
         animationType="slide"
         transparent={true}
@@ -119,6 +140,7 @@ const _PresentScreen: React.FC<PropsType> = (props) => {
             setModalVisibleSignOut(!modalVisibleSignOut);
             setLoggedIn(false);
             setDataUser({} as User);
+            navigation.navigate("Home");
           }}
           onPressCancel={() => {
             setModalVisibleSignOut(!modalVisibleSignOut);

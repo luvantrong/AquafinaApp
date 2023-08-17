@@ -24,6 +24,7 @@ import {
   TextPlus,
   TextView,
   PopupSignOut,
+  PopupSignIn,
 } from "@components";
 import {
   BACKGROUND_BUTTON_BLUE,
@@ -117,6 +118,7 @@ const _DescriptionWarning: React.FC<PropsType> = (props) => {
             setModalVisibleSignOut(!modalVisibleSignOut);
             setLoggedIn(false);
             setDataUser({} as User);
+            navigation.navigate("Home");
           }}
           onPressCancel={() => {
             setModalVisibleSignOut(!modalVisibleSignOut);

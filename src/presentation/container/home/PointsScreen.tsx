@@ -127,6 +127,7 @@ const _PointsScreen: React.FC<PropsType> = (props) => {
             setModalVisibleSignOut(!modalVisibleSignOut);
             setLoggedIn(false);
             setDataUser({} as User);
+            navigation.navigate("Home");
           }}
           onPressCancel={() => {
             setModalVisibleSignOut(!modalVisibleSignOut);

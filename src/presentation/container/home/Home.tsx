@@ -23,6 +23,7 @@ import {
   SliderBanner,
   SumBottle,
   TextPlus,
+  PopupSignIn,
 } from "@components";
 import {
   BANNER_HOME,
@@ -57,6 +58,7 @@ const _Home: React.FC<PropsType> = (props) => {
   const { isLoggedIn, dataUser, setDataUser, setLoggedIn } =
     useContext(AppContext);
   const [modalVisibleSignOut, setModalVisibleSignOut] = useState(false);
+  const [modalVisible, setModalVisible] = useState(false);
   const dispatch = useAppDispatch();
   const banners: Banner[] = useSelector<RootState, Banner[]>(
     (state) => state.banner.banners
@@ -109,11 +111,19 @@ const _Home: React.FC<PropsType> = (props) => {
   };
 
   const goToScreenChart = () => {
-    navigation.navigate("Bảng Xếp Hạng");
+    if (isLoggedIn) {
+      navigation.navigate("Bảng Xếp Hạng");
+    } else {
+      setModalVisible(true);
+    }
   };
 
   const goToScreenPoints = () => {
-    navigation.navigate("Điểm Thưởng Xanh");
+    if (isLoggedIn) {
+      navigation.navigate("Điểm Thưởng Xanh");
+    } else {
+      setModalVisible(true);
+    }
   };
 
   const goToScreenDescriptionWarning = () => {
@@ -143,6 +153,17 @@ const _Home: React.FC<PropsType> = (props) => {
         onPressRight={goToScreenSignIn}
         onPressCenter={goToScreenHome}
       />
+      <Modal animationType="slide" transparent={true} visible={modalVisible}>
+        <PopupSignIn
+          onPress={() => {
+            setModalVisible(!modalVisible);
+          }}
+          onPressSignIn={() => {
+            setModalVisible(!modalVisible);
+            props.navigation.navigate("SignIn");
+          }}
+        />
+      </Modal>
       <Modal
         animationType="slide"
         transparent={true}
@@ -156,6 +177,7 @@ const _Home: React.FC<PropsType> = (props) => {
             hideModalSignOut();
             setLoggedIn(false);
             setDataUser({} as User);
+            navigation.navigate("Home");
           }}
           onPressCancel={() => {
             setModalVisibleSignOut(!modalVisibleSignOut);

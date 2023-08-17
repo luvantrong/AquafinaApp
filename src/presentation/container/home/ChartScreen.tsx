@@ -22,6 +22,7 @@ import {
   SumBottle,
   TextPlus,
   PopupSignOut,
+  PopupSignIn,
 } from "@components";
 import {
   BANNER_HOME,
@@ -52,6 +53,7 @@ const _ChartScreen: React.FC<PropsType> = (props) => {
   const { isLoggedIn, dataUser, setDataUser, setLoggedIn } =
     React.useContext(AppContext);
   const [modalVisibleSignOut, setModalVisibleSignOut] = useState(false);
+  const [modalVisible, setModalVisible] = useState(false);
 
   const showDrawerNavigator = () => {
     navigation.openDrawer();
@@ -86,7 +88,10 @@ const _ChartScreen: React.FC<PropsType> = (props) => {
   };
 
   const goToScreenChart = () => {
-    navigation.navigate("Bảng Xếp Hạng");
+    if (isLoggedIn) {
+      navigation.navigate("Bảng Xếp Hạng");
+    } else {
+    }
   };
 
   const goToScreenPoints = () => {
@@ -107,6 +112,22 @@ const _ChartScreen: React.FC<PropsType> = (props) => {
         onPressRight={goToScreenSignIn}
         onPressCenter={goToScreenHome}
       />
+      <Modal animationType="slide" transparent={true} visible={modalVisible}>
+        <PopupSignIn
+          onPress={() => {
+            setModalVisible(!modalVisible);
+          }}
+          onPressSignIn={() => {
+            setModalVisible(!modalVisible);
+            props.navigation.navigate("SignIn");
+          }}
+        />
+      </Modal>
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={modalVisibleSignOut}
+      ></Modal>
       <Modal
         animationType="slide"
         transparent={true}
@@ -120,6 +141,7 @@ const _ChartScreen: React.FC<PropsType> = (props) => {
             hideModalSignOut();
             setLoggedIn(false);
             setDataUser({} as User);
+            navigation.navigate("Home");
           }}
           onPressCancel={() => {
             setModalVisibleSignOut(!modalVisibleSignOut);
