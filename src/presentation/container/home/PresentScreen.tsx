@@ -1,45 +1,19 @@
-import {
-  Dimensions,
-  Image,
-  Pressable,
-  SafeAreaView,
-  ScrollView,
-  StyleSheet,
-  Text,
-  View,
-  Modal,
-} from "react-native";
+import { ScrollView, StyleSheet, View, Modal } from "react-native";
 import React, { useEffect, useState } from "react";
 import {
   Address,
-  Button,
   CarouselView,
   Header,
   ImageView,
   MenuFooter,
-  Rating,
-  SliderBanner,
-  SumBottle,
-  TextPlus,
   TextView,
   PopupSignOut,
   PopupSignIn,
 } from "@components";
-import {
-  BANNER_HOME,
-  BANNER_HOME_2,
-  BANNER_HOME_3,
-  BANNER_HOME_4,
-  ICON_LOGIN,
-  ICON_MENU,
-  LOGO_AQUAFINA,
-  TH,
-} from "@assets";
+import { BANNER_HOME_4, ICON_MENU, LOGO_AQUAFINA, TH } from "@assets";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { StackHome } from "@navigation";
 import { DrawerNavigationProp } from "@react-navigation/drawer";
-import database from "@react-native-firebase/database";
-import { get } from "react-native/Libraries/TurboModule/TurboModuleRegistry";
 import { AppContext } from "@shared-state";
 import { User } from "@domain";
 

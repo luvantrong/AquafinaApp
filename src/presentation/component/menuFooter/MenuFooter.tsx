@@ -1,6 +1,5 @@
 import {
   Dimensions,
-  ImageBackground,
   StyleSheet,
   Text,
   View,
@@ -9,9 +8,7 @@ import {
 } from "react-native";
 import React from "react";
 import {
-  BACKGROUND_BUTTON_BLUE,
   BACKGROUND_ITEM,
-  BACKGROUND_WHITE,
   FACEBOOK,
   WARNING,
   YOUTUBE,

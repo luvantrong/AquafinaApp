@@ -9,7 +9,7 @@ import {
   ImageBackground,
 } from "react-native";
 import React from "react";
-import { BACKGROUND_BUTTON_WHITE, BACKGROUND_WHITE, fontFamily } from "@assets";
+import { BACKGROUND_WHITE, fontFamily } from "@assets";
 import { Colors } from "@resources";
 
 export type TextFieldProps = {

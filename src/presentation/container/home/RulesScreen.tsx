@@ -1,27 +1,19 @@
 import {
   Dimensions,
   Image,
-  Pressable,
   SafeAreaView,
   ScrollView,
   StyleSheet,
   Text,
   View,
-  StyleProp,
-  TextStyle,
   Modal,
 } from "react-native";
 import React, { useEffect, useState } from "react";
 import {
-  Address,
   Button,
-  CarouselView,
   Header,
   ImageView,
   MenuFooter,
-  Rating,
-  SliderBanner,
-  SumBottle,
   TextPlus,
   TextView,
   PopupSignOut,
@@ -30,33 +22,14 @@ import {
 } from "@components";
 import {
   BACKGROUND_BUTTON_BLUE,
-  BACKGROUND_ITEM,
-  BACKGROUND_PRE,
   BACKGROUND_RULES,
-  BANNER_HOME,
-  BANNER_HOME_2,
-  BANNER_HOME_3,
-  BANNER_HOME_4,
-  CONTENT,
-  ICON_LOGIN,
   ICON_MENU,
   LOGO_AQUAFINA,
-  MAP_1,
-  MAP_2,
-  MAP_3,
-  MAP_4,
-  MAP_5,
-  MAP_6,
-  MAP_7,
-  PURE_COIN,
   fontFamily,
 } from "@assets";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { StackHome } from "@navigation";
 import { DrawerNavigationProp } from "@react-navigation/drawer";
-import database from "@react-native-firebase/database";
-import { get } from "react-native/Libraries/TurboModule/TurboModuleRegistry";
-import LinearGradient from "react-native-linear-gradient";
 import { Colors } from "@resources";
 import { AppContext, getAllPresentRules } from "@shared-state";
 import { User, PresentRules } from "@domain";

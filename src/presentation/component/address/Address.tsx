@@ -1,13 +1,11 @@
 import {
   Dimensions,
   Image,
-  ImageBackground,
   StyleSheet,
-  Text,
   View,
 } from "react-native";
 import React from "react";
-import { BACKGROUND_BUTTON_BLUE, PURE_COIN } from "@assets";
+import { BACKGROUND_BUTTON_BLUE } from "@assets";
 import { Button } from "../button";
 
 type Props = {

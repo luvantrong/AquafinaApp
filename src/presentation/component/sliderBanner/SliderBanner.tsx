@@ -1,7 +1,7 @@
-import { Pressable, StyleSheet, Text, View, Image } from "react-native";
+import { StyleSheet, View, Image } from "react-native";
 import React from "react";
 import Swiper from "react-native-swiper";
-import { BACKGROUND_BUTTON_BLUE, BANNER_HOME } from "@assets";
+import { BACKGROUND_BUTTON_BLUE } from "@assets";
 import { Button } from "../button";
 import { Banner } from "@domain";
 

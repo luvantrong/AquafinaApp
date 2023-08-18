@@ -1,8 +1,6 @@
 import {
   Dimensions,
   Image,
-  Pressable,
-  SafeAreaView,
   ScrollView,
   StyleSheet,
   Text,
@@ -11,40 +9,24 @@ import {
 } from "react-native";
 import React, { useEffect, useState } from "react";
 import {
-  Address,
-  Button,
-  CarouselView,
   Header,
   ImageView,
   MenuFooter,
-  Rating,
-  SliderBanner,
-  SumBottle,
-  TextField,
-  TextPlus,
   TextView,
   PopupSignOut,
 } from "@components";
 import {
   AQUA_BG,
   AVATAR_SIGNIN,
-  BANNER_HOME,
-  BANNER_HOME_2,
-  BANNER_HOME_3,
-  BANNER_HOME_4,
   BG_POINT,
   CAMERA,
-  ICON_LOGIN,
   ICON_MENU,
   LOGO_AQUAFINA,
-  PURE_COIN,
   fontFamily,
 } from "@assets";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { StackHome } from "@navigation";
 import { DrawerNavigationProp } from "@react-navigation/drawer";
-import database from "@react-native-firebase/database";
-import { get } from "react-native/Libraries/TurboModule/TurboModuleRegistry";
 import { Colors } from "@resources";
 import { TextInput } from "react-native-gesture-handler";
 import { AppContext } from "@shared-state";

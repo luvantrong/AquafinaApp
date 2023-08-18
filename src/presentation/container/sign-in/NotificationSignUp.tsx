@@ -1,10 +1,9 @@
 import { SafeAreaView, StyleSheet, Dimensions } from "react-native";
-import React, { useState } from "react";
+import React from "react";
 import {
   BACKGROUND_BUTTON_BLUE,
   CONTENT,
   ICON_HOME,
-  ICON_LOGOUT,
   ICON_MENU,
   IMAGE_BOTTOM_LOGIN,
   LOGO_AQUAFINA,
@@ -24,7 +23,7 @@ type PropsType = NativeStackScreenProps<StackHome, "NotificationSignUp"> & {
 };
 const _NotificationSignUp: React.FC<PropsType> = (props) => {
   const { navigation, route } = props;
-  const {isLoggedIn} = React.useContext(AppContext);
+  const { isLoggedIn } = React.useContext(AppContext);
 
   const goToScreenSignIn = () => {
     navigation.navigate("SignIn");

@@ -2,7 +2,6 @@ import {
   StyleSheet,
   Text,
   View,
-  Dimensions,
   StyleProp,
   ViewStyle,
   TextStyle,

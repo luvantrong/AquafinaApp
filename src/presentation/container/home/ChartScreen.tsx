@@ -1,26 +1,9 @@
-import {
-  Dimensions,
-  Image,
-  Pressable,
-  SafeAreaView,
-  ScrollView,
-  StyleSheet,
-  Text,
-  View,
-  Modal,
-} from "react-native";
+import { ScrollView, StyleSheet, View, Modal } from "react-native";
 import React, { useEffect, useState } from "react";
 import {
-  Address,
-  Button,
-  CarouselView,
   Header,
-  ImageView,
   MenuFooter,
   Rating,
-  SliderBanner,
-  SumBottle,
-  TextPlus,
   PopupSignOut,
   PopupSignIn,
 } from "@components";
@@ -28,20 +11,12 @@ import {
   AVATAR_1,
   AVATAR_2,
   AVATAR_3,
-  BANNER_HOME,
-  BANNER_HOME_2,
-  BANNER_HOME_3,
-  BANNER_HOME_4,
-  ICON_LOGIN,
   ICON_MENU,
   LOGO_AQUAFINA,
-  PURE_COIN,
 } from "@assets";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { StackHome } from "@navigation";
 import { DrawerNavigationProp } from "@react-navigation/drawer";
-import database from "@react-native-firebase/database";
-import { get } from "react-native/Libraries/TurboModule/TurboModuleRegistry";
 import { AppContext } from "@shared-state";
 import { User } from "@domain";
 import { useSelector } from "react-redux";
@@ -74,7 +49,6 @@ const _ChartScreen: React.FC<PropsType> = (props) => {
   useEffect(() => {
     scrollViewRef.current?.scrollTo({ y: 0, animated: true });
   }, []);
-
 
   const showDrawerNavigator = () => {
     navigation.openDrawer();
@@ -182,7 +156,6 @@ const _ChartScreen: React.FC<PropsType> = (props) => {
           data={ratings}
           containerStyle={{ marginTop: 10 }}
           type={false}
-         
         />
         <MenuFooter
           onPress1={goToScreenGreenWorld}

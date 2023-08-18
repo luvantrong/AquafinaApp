@@ -1,14 +1,12 @@
 import { SafeAreaView, StyleSheet, Dimensions, Alert } from "react-native";
 import React, { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { firestore, useAppDispatch } from "@shared-state";
 import {
   BACKGROUND_BUTTON_BLUE,
   BACKGROUND_BUTTON_WHITE,
   CONTENT,
   ICON_HOME,
-  ICON_LOGOUT,
-  ICON_MENU,
   IMAGE_BOTTOM_LOGIN,
   LOGO_AQUAFINA,
   fontFamily,

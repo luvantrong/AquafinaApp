@@ -5,10 +5,8 @@ import {
   Image,
   Dimensions,
   Pressable,
-  Animated,
   ImageBackground,
   Modal,
-  Alert,
 } from "react-native";
 import React, { useState, useRef, useEffect, useMemo } from "react";
 import {

@@ -1,10 +1,4 @@
-import {
-  StyleSheet,
-  Text,
-  View,
-  ActivityIndicator,
-  Dimensions,
-} from "react-native";
+import { StyleSheet, View, ActivityIndicator } from "react-native";
 import React from "react";
 
 type Props = {

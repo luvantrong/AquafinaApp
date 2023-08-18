@@ -1,39 +1,27 @@
 import {
-  Dimensions,
-  Image,
   Modal,
-  Pressable,
   SafeAreaView,
   ScrollView,
   StyleSheet,
-  Text,
   View,
 } from "react-native";
 import React, { useEffect, useState, useContext } from "react";
 import {
   Address,
-  Button,
   CarouselView,
   Header,
-  ImageView,
   Loading,
   MenuFooter,
   PopupSignOut,
   Rating,
   SliderBanner,
   SumBottle,
-  TextPlus,
   PopupSignIn,
 } from "@components";
 import {
   AVATAR_1,
   AVATAR_2,
   AVATAR_3,
-  BANNER_HOME,
-  BANNER_HOME_2,
-  BANNER_HOME_3,
-  BANNER_HOME_4,
-  ICON_LOGIN,
   ICON_MENU,
   LOGO_AQUAFINA,
   PURE_COIN,
@@ -43,7 +31,6 @@ import { StackHome } from "@navigation";
 import { DrawerNavigationProp } from "@react-navigation/drawer";
 import {
   RootState,
-  firestore,
   getAllBanner,
   useAppDispatch,
   getRatings,

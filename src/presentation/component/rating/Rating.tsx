@@ -1,5 +1,4 @@
 import {
-  FlatList,
   ScrollView,
   StyleSheet,
   Text,
@@ -13,8 +12,6 @@ import {
 import React, { useState, useEffect, useRef } from "react";
 import { Button, ImageView, TextView } from "@components";
 import {
-  AVATAR_1,
-  AVATAR_2,
   AVATAR_3,
   BACKGROUND_BUTTON_WHITE,
   R1,
@@ -28,29 +25,18 @@ import {
 } from "@assets";
 import { Colors } from "@resources";
 import { User } from "@domain";
-import { AppContext, RootState, useAppDispatch } from "@shared-state";
+import { AppContext, RootState } from "@shared-state";
 import { useSelector } from "react-redux";
-import { get } from "react-native/Libraries/TurboModule/TurboModuleRegistry";
 
 interface ItemTab {
   id: number;
   title: string;
 }
 
-const Me: User = {
-  key: "1",
-  avatar: AVATAR_3,
-  name: "Bùi Văn Anh",
-  point: 200,
-  phone: "0123456789",
-};
-
 type ItemProps = {
-  item: User ;
+  item: User;
   index: number;
 };
-
-
 
 const Item = ({ item, index }: ItemProps) => {
   let backgroundColor = Colors.WHITE;

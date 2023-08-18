@@ -5,12 +5,10 @@ import {
   StyleSheet,
   Text,
   TextStyle,
-  View,
-  ViewProps,
   ViewStyle,
 } from "react-native";
 import React from "react";
-import { BACKGROUND_BUTTON_BLUE, fontFamily } from "@assets";
+import { fontFamily } from "@assets";
 import { Colors } from "@resources";
 
 export type ButtonProps = {

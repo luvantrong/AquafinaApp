@@ -8,13 +8,12 @@ import {
 } from "react-native";
 import React from "react";
 import {
-  BACKGROUND_APP,
   BACKGROUND_BUTTON_BLUE,
   BG_MODAL_SIGNIN,
   ICON_CLOSE,
   fontFamily,
 } from "@assets";
-import { TextView } from "../text";
+
 import { ImageView } from "../image";
 import { TextViewBold } from "../textBold";
 import { Colors } from "@resources";

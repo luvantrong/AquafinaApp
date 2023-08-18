@@ -1,32 +1,15 @@
-import {
-  SafeAreaView,
-  StyleSheet,
-  Dimensions,
-  View,
-  Modal,
-} from "react-native";
+import { SafeAreaView, StyleSheet, Dimensions, View } from "react-native";
 import React, { useEffect, useState } from "react";
 import {
-  AVATAR_SIGNIN,
-  AVT,
   BACKGROUND_BUTTON_BLUE,
   CONTENT,
   ICON_AVATAR,
   ICON_HOME,
-  ICON_LOGOUT,
-  ICON_MENU,
   IMAGE_BOTTOM_LOGIN,
   LOGO_AQUAFINA,
   fontFamily,
 } from "@assets";
-import {
-  Button,
-  Header,
-  ImageView,
-  TextView,
-  TextViewBold,
-  PopupSignOut,
-} from "@components";
+import { Button, Header, ImageView, TextView, TextViewBold } from "@components";
 import { Colors } from "@resources";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { StackHome } from "@navigation";
@@ -34,9 +17,7 @@ import OTPInputView from "@twotalltotems/react-native-otp-input";
 import { DrawerNavigationProp } from "@react-navigation/drawer";
 import LinearGradient from "react-native-linear-gradient";
 import auth, { FirebaseAuthTypes } from "@react-native-firebase/auth";
-import { useSelector, useDispatch } from "react-redux";
 import { firestore, signUp, useAppDispatch } from "@shared-state";
-import { RootState } from "@shared-state";
 import { User } from "@domain";
 import { AppContext } from "@shared-state";
 
@@ -47,7 +28,8 @@ type PropsType = NativeStackScreenProps<StackHome, "EnterOTP"> & {
 
 const _EnterOTP: React.FC<PropsType> = (props) => {
   const { navigation, route } = props;
-  const { setLoggedIn, setDataUser, isLoggedIn , setKey} = React.useContext(AppContext);
+  const { setLoggedIn, setDataUser, isLoggedIn, setKey } =
+    React.useContext(AppContext);
   const phoneNumber = route.params?.phoneNumber;
   const name = route.params?.name;
   const type = route.params?.type;

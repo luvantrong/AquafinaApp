@@ -8,7 +8,6 @@ import {
 } from "react-native";
 import React from "react";
 import {
-  BACKGROUND_APP,
   BACKGROUND_BUTTON_BLUE,
   BACKGROUND_BUTTON_WHITE,
   BG_MODAL_SIGNIN,

@@ -3,9 +3,7 @@ import {
   Text,
   View,
   Image,
-  ImageSourcePropType,
   StyleProp,
-  ViewStyle,
   ImageStyle,
   Pressable,
 } from "react-native";

@@ -1,12 +1,9 @@
 import { SafeAreaView, StyleSheet, Dimensions, Alert } from "react-native";
 import React, { useState } from "react";
 import {
-  AVATAR_SIGNIN,
   BACKGROUND_BUTTON_BLUE,
   CONTENT,
   ICON_HOME,
-  ICON_LOGOUT,
-  ICON_MENU,
   IMAGE_BOTTOM_LOGIN,
   LOGO_AQUAFINA,
   fontFamily,

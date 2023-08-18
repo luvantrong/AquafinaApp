@@ -3,8 +3,6 @@ import {
   StyleSheet,
   StatusBar,
   ImageBackground,
-  SafeAreaView,
-  SafeAreaViewBase,
   StyleProp,
   ViewStyle,
 } from "react-native";
