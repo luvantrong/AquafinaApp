@@ -57,7 +57,8 @@ type PropsType = NativeStackScreenProps<StackHome, "Điểm Thưởng Xanh"> & {
 
 const _PointsScreen: React.FC<PropsType> = (props) => {
   const { navigation } = props;
-  const { isLoggedIn, setLoggedIn, setDataUser } = React.useContext(AppContext);
+  const { isLoggedIn, setLoggedIn, setDataUser, dataUser } =
+    React.useContext(AppContext);
   const [modalVisibleSignOut, setModalVisibleSignOut] = useState(false);
   const scrollViewRef = React.useRef<ScrollView>(null);
 
@@ -114,9 +115,15 @@ const _PointsScreen: React.FC<PropsType> = (props) => {
     scrollToTop();
   };
 
-  const [name, setName] = useState("Lê Quỳnh Ái Vân");
-  const [phone, setPhone] = useState("0943223470");
-  const [point, setPoint] = useState(150);
+  const [name, setName] = useState<string | undefined>("Lê Quỳnh Ái Vân");
+  const [phone, setPhone] = useState<string | undefined>("0943223470");
+  const [point, setPoint] = useState<string | undefined>("150");
+
+  useEffect(() => {
+    setName(dataUser.name);
+    setPhone(dataUser.phone);
+    setPoint(dataUser.point + "");
+  }, [dataUser]);
 
   return (
     <View style={{ paddingBottom: 56 }}>
@@ -167,7 +174,7 @@ const _PointsScreen: React.FC<PropsType> = (props) => {
             }}
           />
           <Image
-            source={{ uri: AVATAR_SIGNIN }}
+            source={{ uri: dataUser.avatar ? dataUser.avatar : AVATAR_SIGNIN }}
             style={{ width: 94, height: 94, borderRadius: 50 }}
           />
 
@@ -216,7 +223,7 @@ const _PointsScreen: React.FC<PropsType> = (props) => {
             }}
           />
           <TextView
-            title={point.toString()}
+            title={point + ""}
             textStyle={{
               textTransform: "none",
               fontSize: 60,

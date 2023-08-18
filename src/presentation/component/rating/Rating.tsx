@@ -150,7 +150,6 @@ const Item2 = ({ item, index }: ItemProps) => {
   let displayImage: "flex" | "none" | undefined = "none";
   let displayText: "flex" | "none" | undefined = "flex";
   let color = Colors.GREY_5;
-  const places = 10;
 
   if (index == 0) {
     backgroundColor = Colors.R1;
