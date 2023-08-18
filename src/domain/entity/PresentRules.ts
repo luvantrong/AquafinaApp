@@ -1,5 +1,5 @@
 export interface PresentRules {
-  key: number;
+  key: string;
   title: string;
   quantity: number;
   method: string;

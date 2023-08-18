@@ -1,12 +1,18 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { useDispatch } from "react-redux";
-import { userReducer, bannerReducer, presentReducer } from "./reducers";
+import {
+  userReducer,
+  bannerReducer,
+  presentReducer,
+  presentRulesReducer,
+} from "./reducers";
 
 export const store = configureStore({
   reducer: {
     user: userReducer,
     banner: bannerReducer,
     present: presentReducer,
+    rules: presentRulesReducer,
   },
 });
 
