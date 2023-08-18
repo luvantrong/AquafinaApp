@@ -306,7 +306,7 @@ const _CarouselView: React.FC<CarouselViewProps> = (props) => {
                       marginBottom: 10,
                     }}
                   >
-                    {present.title}
+                    {present.title.replace(/\\n/g, "\u000A")}
                   </Text>
                   <Text
                     style={{
