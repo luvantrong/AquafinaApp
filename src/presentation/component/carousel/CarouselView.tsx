@@ -170,7 +170,9 @@ const _CarouselView: React.FC<CarouselViewProps> = (props) => {
                 isActive ? { marginTop: -35 } : { marginTop: 0 },
               ]}
             />
-            <Text style={_styles.textTitleItem}>{item.title}</Text>
+            <Text style={_styles.textTitleItem}>
+              {item.title.replace(/\\n/g, "\u000A")}
+            </Text>
             <Image
               source={{ uri: item.imageContent }}
               style={_styles.styleImageContentItem}
