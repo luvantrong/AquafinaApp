@@ -1,23 +1,12 @@
-import {
-  StyleSheet,
-  Text,
-  View,
-  Image,
-  Pressable,
-  Modal,
-  ScrollView,
-} from "react-native";
+import { StyleSheet, Text, View, Image, Pressable, Modal } from "react-native";
 import React from "react";
 import {
   DrawerContentComponentProps,
   DrawerContentScrollView,
   DrawerItem,
-  DrawerItemList,
 } from "@react-navigation/drawer";
 import { Header, PopupSignIn, PopupSignOut } from "@components";
 import {
-  AVATAR_SIGNIN,
-  ICON_AVATAR,
   ICON_CLOSE,
   ICON_LOGIN,
   ICON_LOGOUT,
@@ -49,16 +38,7 @@ type CustomDrawerContentProps = DrawerContentComponentProps & {
 };
 
 const _CustomDrawerContent: React.FC<CustomDrawerContentProps> = (props) => {
-  const {
-    imageAvatar,
-    textAccount,
-    imageSignIn,
-    imageSignOut,
-    textSignIn,
-    textSignOut,
-    checkSignIn,
-    state,
-  } = props;
+  const { imageAvatar, textAccount, checkSignIn, state } = props;
   const { setLoggedIn, setDataUser } = React.useContext(AppContext);
   const [modalVisible, setModalVisible] = React.useState(false);
   const [modalVisibleSignOut, setModalVisibleSignOut] = React.useState(false);

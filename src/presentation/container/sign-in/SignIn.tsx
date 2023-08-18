@@ -17,7 +17,6 @@ import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { StackHome } from "@navigation";
 import { DrawerNavigationProp } from "@react-navigation/drawer";
 import LinearGradient from "react-native-linear-gradient";
-import { RootState } from "@shared-state";
 import { AppContext } from "@shared-state";
 
 type DrawerNavigationProps = DrawerNavigationProp<StackHome>;
@@ -27,10 +26,6 @@ type PropsType = NativeStackScreenProps<StackHome, "SignIn"> & {
 const _SignIn: React.FC<PropsType> = (props) => {
   const { navigation } = props;
   const { isLoggedIn } = React.useContext(AppContext);
-
-  const users = useSelector((state: RootState) => state.user.users);
-  const dispatch = useAppDispatch();
-
   const [value, setValue] = useState("");
   const [font, setFont] = useState(fontFamily.medium);
 

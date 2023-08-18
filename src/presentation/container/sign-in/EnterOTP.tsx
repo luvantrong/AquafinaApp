@@ -184,12 +184,11 @@ const _EnterOTP: React.FC<PropsType> = (props) => {
             _styles.underlineStyleBase,
             { color: colorOTP, borderColor: borderColorOTP },
           ])}
-          code={code} //You can supply this prop or not. The component will be used as a controlled / uncontrolled component respectively.
+          code={code} 
           onCodeChanged={(code) => {
             setCode(code);
           }}
           onCodeFilled={(code) => {
-            // console.log(`Code is ${code}, you are good to go!`);
             setCode(code);
           }}
           placeholderCharacter="|"
@@ -215,7 +214,6 @@ const _EnterOTP: React.FC<PropsType> = (props) => {
           styleBold={{ color: "red", textTransform: "uppercase" }}
           styleView={{ marginTop: 12, display: display }}
         />
-
         <Button
           onPress={handleResendOTP}
           title="Gửi lại mã"

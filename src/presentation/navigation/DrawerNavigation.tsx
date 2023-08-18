@@ -99,9 +99,7 @@ const _MyDrawer = () => {
         <Drawer.Screen name="Quà Tặng Xanh" component={PresentScreen} />
         <Drawer.Screen name="Bản Đồ Xanh" component={MapScreen} />
         <Drawer.Screen name="Điểm Thưởng Xanh" component={PointsScreen} />
-
         <Drawer.Screen name="Bảng Xếp Hạng" component={ChartScreen} />
-
         <Drawer.Screen
           name="StackHome"
           component={StackHome}

@@ -4,7 +4,6 @@ import {
   BACKGROUND_BUTTON_BLUE,
   CONTENT,
   ICON_HOME,
-  ICON_MENU,
   IMAGE_BOTTOM_LOGIN,
   LOGO_AQUAFINA,
   fontFamily,
@@ -22,7 +21,7 @@ type PropsType = NativeStackScreenProps<StackHome, "NotificationSignUp"> & {
   navigation: DrawerNavigationProps;
 };
 const _NotificationSignUp: React.FC<PropsType> = (props) => {
-  const { navigation, route } = props;
+  const { navigation } = props;
   const { isLoggedIn } = React.useContext(AppContext);
 
   const goToScreenSignIn = () => {

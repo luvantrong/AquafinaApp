@@ -47,7 +47,7 @@ type PropsType = NativeStackScreenProps<StackHome, "Home"> & {
 
 const _Home: React.FC<PropsType> = (props) => {
   const { navigation } = props;
-  const { isLoggedIn, dataUser, setDataUser, setLoggedIn, key } =
+  const { isLoggedIn, setDataUser, setLoggedIn, key } =
     useContext(AppContext);
   const [modalVisibleSignOut, setModalVisibleSignOut] = useState(false);
   const [modalVisible, setModalVisible] = useState(false);
@@ -263,40 +263,3 @@ const _styles = StyleSheet.create({});
 
 export const Home = React.memo(_Home);
 
-const DATA: User[] = [
-  {
-    key: "1",
-    avatar: AVATAR_1,
-    name: "Nguyễn Văn A",
-    point: 1000,
-    phone: "0123456789",
-  },
-  {
-    key: "2",
-    avatar: AVATAR_1,
-    name: "Nguyễn  B",
-    point: 999,
-    phone: "0123456789",
-  },
-  {
-    key: "3",
-    avatar: AVATAR_1,
-    name: "Nguyễn Văn C",
-    point: 500,
-    phone: "0123456789",
-  },
-  {
-    key: "4",
-    avatar: AVATAR_2,
-    name: "Nguyễn Văn D",
-    point: 450,
-    phone: "0123456789",
-  },
-  {
-    key: "5",
-    avatar: AVATAR_3,
-    name: "Nguyễn Văn E",
-    point: 200,
-    phone: "0123456789",
-  },
-];
