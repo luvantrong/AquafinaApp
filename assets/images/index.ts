@@ -103,7 +103,7 @@ export const AVATAR_2 =
   "https://firebasestorage.googleapis.com/v0/b/aquafinaapp-bc817.appspot.com/o/avatar_rating2.png?alt=media&token=1cb7e686-23b3-417f-8266-b49c1559a973";
 
 export const AVATAR_3 =
-  "https://firebasestorage.googleapis.com/v0/b/aquafinaapp-bc817.appspot.com/o/avatar_rating2.png?alt=media&token=1cb7e686-23b3-417f-8266-b49c1559a973";
+  "https://firebasestorage.googleapis.com/v0/b/aquafinaapp-bc817.appspot.com/o/avatar_rating3.png?alt=media&token=92159a45-ad75-43ef-b2e9-8f8e948c1137";
 
 export const R1 =
   "https://firebasestorage.googleapis.com/v0/b/aquafinaapp-bc817.appspot.com/o/r1.png?alt=media&token=e8d054da-7b11-4a13-9754-68612cb95800";

@@ -3,4 +3,5 @@ export interface User {
   name: string | undefined;
   phone: string | undefined;
   avatar: string;
+  point: number;
 }

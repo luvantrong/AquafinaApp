@@ -25,6 +25,9 @@ import {
   PopupSignIn,
 } from "@components";
 import {
+  AVATAR_1,
+  AVATAR_2,
+  AVATAR_3,
   BANNER_HOME,
   BANNER_HOME_2,
   BANNER_HOME_3,
@@ -88,26 +91,22 @@ const _ChartScreen: React.FC<PropsType> = (props) => {
   const goToScreenPresent = () => {
     navigation.navigate("Quà Tặng Xanh");
     scrollToTop();
-
   };
 
   const goToScreenMap = () => {
     navigation.navigate("Bản Đồ Xanh");
     scrollToTop();
-
   };
 
   const goToScreenGreenWorld = () => {
     navigation.navigate("Thế Giới Xanh");
     scrollToTop();
-
   };
 
   const goToScreenChart = () => {
     if (isLoggedIn) {
       navigation.navigate("Bảng Xếp Hạng");
-    scrollToTop();
-
+      scrollToTop();
     } else {
     }
   };
@@ -115,13 +114,11 @@ const _ChartScreen: React.FC<PropsType> = (props) => {
   const goToScreenPoints = () => {
     navigation.navigate("Điểm Thưởng Xanh");
     scrollToTop();
-
   };
 
   const goToScreenDescriptionWarning = () => {
     navigation.navigate("WarningDescriptionScreen");
     scrollToTop();
-
   };
   return (
     <View style={{ paddingBottom: 56 }}>
@@ -171,7 +168,12 @@ const _ChartScreen: React.FC<PropsType> = (props) => {
         />
       </Modal>
       <ScrollView>
-        <Rating checkSignIn={true} containerStyle={{ marginTop: 10 }} />
+        <Rating
+          checkSignIn={true}
+          data={DATA}
+          containerStyle={{ marginTop: 10 }}
+          type={false}
+        />
         <MenuFooter
           onPress1={goToScreenGreenWorld}
           onPress2={goToScreenPresent}
@@ -188,3 +190,41 @@ const _ChartScreen: React.FC<PropsType> = (props) => {
 const _styles = StyleSheet.create({});
 
 export const ChartScreen = React.memo(_ChartScreen);
+
+const DATA: User[] = [
+  {
+    key: "1",
+    avatar: AVATAR_1,
+    name: "Nguyễn Văn A",
+    point: 1000,
+    phone: "0123456789",
+  },
+  {
+    key: "2",
+    avatar: AVATAR_1,
+    name: "Nguyễn  B",
+    point: 999,
+    phone: "0123456789",
+  },
+  {
+    key: "3",
+    avatar: AVATAR_1,
+    name: "Nguyễn Văn C",
+    point: 500,
+    phone: "0123456789",
+  },
+  {
+    key: "4",
+    avatar: AVATAR_2,
+    name: "Nguyễn Văn D",
+    point: 450,
+    phone: "0123456789",
+  },
+  {
+    key: "5",
+    avatar: AVATAR_3,
+    name: "Nguyễn Văn E",
+    point: 200,
+    phone: "0123456789",
+  },
+];

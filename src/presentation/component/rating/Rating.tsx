@@ -27,61 +27,23 @@ import {
   fontFamily,
 } from "@assets";
 import { Colors } from "@resources";
-
-export type Rating = {
-  key: string;
-  avatar: string;
-  name: string;
-  point: number;
-};
+import { User } from "@domain";
 
 interface ItemTab {
   id: number;
   title: string;
 }
 
-const DATA: Rating[] = [
-  {
-    key: "1",
-    avatar: AVATAR_1,
-    name: "Nguyễn Văn A",
-    point: 1000,
-  },
-  {
-    key: "2",
-    avatar: AVATAR_1,
-    name: "Nguyễn  B",
-    point: 999,
-  },
-  {
-    key: "3",
-    avatar: AVATAR_1,
-    name: "Nguyễn Văn C",
-    point: 500,
-  },
-  {
-    key: "4",
-    avatar: AVATAR_2,
-    name: "Nguyễn Văn D",
-    point: 450,
-  },
-  {
-    key: "5",
-    avatar: AVATAR_3,
-    name: "Nguyễn Văn E",
-    point: 200,
-  },
-];
-
-const Me: Rating = {
+const Me: User = {
   key: "1",
   avatar: AVATAR_3,
   name: "Bùi Văn Anh",
   point: 200,
+  phone: "0123456789",
 };
 
 type ItemProps = {
-  item: Rating;
+  item: User;
   index: number;
 };
 
@@ -271,10 +233,14 @@ const Item2 = ({ item, index }: ItemProps) => {
 type RatingProps = {
   checkSignIn: boolean;
   containerStyle?: StyleProp<ViewStyle>;
+  data: User[];
+  type: boolean;
+  onPressSignIn?: () => void;
+  onPress?: () => void;
 };
 
 const _Rating: React.FC<RatingProps> = (props) => {
-  const { checkSignIn } = props;
+  const { checkSignIn, data, type } = props;
   const scrollViewRef = useRef<ScrollView>(null);
   const [selectedIndex, setSelectedIndex] = useState(1);
   useEffect(() => {
@@ -362,7 +328,7 @@ const _Rating: React.FC<RatingProps> = (props) => {
         )}
 
         <View style={{ marginHorizontal: 54 }}>
-          {DATA.map((item, index) => (
+          {data.map((item, index) => (
             <Item item={item} index={index} key={item.key} />
           ))}
         </View>
@@ -382,8 +348,12 @@ const _Rating: React.FC<RatingProps> = (props) => {
             <Button
               title="Xem chi tiết"
               backgroundImage={BACKGROUND_BUTTON_WHITE}
-              stylePressable={{ marginHorizontal: 0 }}
+              stylePressable={{
+                marginHorizontal: 0,
+                display: type ? "flex" : "none",
+              }}
               styleText={{ color: Colors.BLUE_TEXT }}
+              onPress={props.onPress}
             />
           </View>
         ) : (
@@ -401,6 +371,7 @@ const _Rating: React.FC<RatingProps> = (props) => {
               backgroundImage={BACKGROUND_BUTTON_WHITE}
               styleText={{ color: Colors.BLUE_TEXT }}
               stylePressable={{ marginHorizontal: 54, marginTop: 20 }}
+              onPress={props.onPressSignIn}
             />
           </View>
         )}

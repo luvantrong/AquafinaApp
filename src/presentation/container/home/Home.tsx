@@ -26,6 +26,9 @@ import {
   PopupSignIn,
 } from "@components";
 import {
+  AVATAR_1,
+  AVATAR_2,
+  AVATAR_3,
   BANNER_HOME,
   BANNER_HOME_2,
   BANNER_HOME_3,
@@ -112,26 +115,22 @@ const _Home: React.FC<PropsType> = (props) => {
   const goToScreenPresent = () => {
     navigation.navigate("Quà Tặng Xanh");
     scrollToTop();
-
   };
 
   const goToScreenMap = () => {
     navigation.navigate("Bản Đồ Xanh");
     scrollToTop();
-
   };
 
   const goToScreenGreenWorld = () => {
     navigation.navigate("Thế Giới Xanh");
     scrollToTop();
-
   };
 
   const goToScreenChart = () => {
     if (isLoggedIn) {
       navigation.navigate("Bảng Xếp Hạng");
-    scrollToTop();
-
+      scrollToTop();
     } else {
       setModalVisible(true);
     }
@@ -140,8 +139,7 @@ const _Home: React.FC<PropsType> = (props) => {
   const goToScreenPoints = () => {
     if (isLoggedIn) {
       navigation.navigate("Điểm Thưởng Xanh");
-    scrollToTop();
-
+      scrollToTop();
     } else {
       setModalVisible(true);
     }
@@ -150,7 +148,6 @@ const _Home: React.FC<PropsType> = (props) => {
   const goToScreenDescriptionWarning = () => {
     navigation.navigate("WarningDescriptionScreen");
     scrollToTop();
-
   };
 
   const handleToScreen = (screen: any) => {
@@ -224,7 +221,17 @@ const _Home: React.FC<PropsType> = (props) => {
 
         <SumBottle sumAqua={200000} sumOther={100000} />
         <View style={{ marginTop: -10 }}>
-          <Rating checkSignIn={isLoggedIn} />
+          <Rating
+            checkSignIn={isLoggedIn}
+            data={DATA}
+            type={true}
+            onPressSignIn={() => {
+              navigation.navigate("SignIn");
+            }}
+            onPress={() => {
+              navigation.navigate("Bảng Xếp Hạng");
+            }}
+          />
         </View>
         <CarouselView onPress={goToScreenPresent} check={false} />
         <Address onPress={goToScreenMap} uri={PURE_COIN} check={false} />
@@ -244,3 +251,41 @@ const _Home: React.FC<PropsType> = (props) => {
 const _styles = StyleSheet.create({});
 
 export const Home = React.memo(_Home);
+
+const DATA: User[] = [
+  {
+    key: "1",
+    avatar: AVATAR_1,
+    name: "Nguyễn Văn A",
+    point: 1000,
+    phone: "0123456789",
+  },
+  {
+    key: "2",
+    avatar: AVATAR_1,
+    name: "Nguyễn  B",
+    point: 999,
+    phone: "0123456789",
+  },
+  {
+    key: "3",
+    avatar: AVATAR_1,
+    name: "Nguyễn Văn C",
+    point: 500,
+    phone: "0123456789",
+  },
+  {
+    key: "4",
+    avatar: AVATAR_2,
+    name: "Nguyễn Văn D",
+    point: 450,
+    phone: "0123456789",
+  },
+  {
+    key: "5",
+    avatar: AVATAR_3,
+    name: "Nguyễn Văn E",
+    point: 200,
+    phone: "0123456789",
+  },
+];
