@@ -46,6 +46,8 @@ import {
   firestore,
   getAllBanner,
   useAppDispatch,
+  getRatings,
+  getRatingUser,
 } from "@shared-state";
 import { useSelector } from "react-redux";
 import { AppContext } from "@shared-state";
@@ -58,7 +60,7 @@ type PropsType = NativeStackScreenProps<StackHome, "Home"> & {
 
 const _Home: React.FC<PropsType> = (props) => {
   const { navigation } = props;
-  const { isLoggedIn, dataUser, setDataUser, setLoggedIn } =
+  const { isLoggedIn, dataUser, setDataUser, setLoggedIn, key } =
     useContext(AppContext);
   const [modalVisibleSignOut, setModalVisibleSignOut] = useState(false);
   const [modalVisible, setModalVisible] = useState(false);
@@ -81,6 +83,22 @@ const _Home: React.FC<PropsType> = (props) => {
     (state) => state.banner.loading
   );
 
+  const loadingRatings = useSelector<RootState, boolean>(
+    (state) => state.user.loadingRatings
+  );
+
+  const ratings: User[] = useSelector<RootState, User[]>(
+    (state) => state.user.users
+  );
+
+  useEffect(() => {
+    dispatch(getRatings());
+  }, []);
+
+  useEffect(() => {
+    dispatch(getRatingUser(key));
+  }, [key]);
+
   interface Rating {
     key: number;
     name: string;
@@ -90,6 +108,8 @@ const _Home: React.FC<PropsType> = (props) => {
   useEffect(() => {
     dispatch(getAllBanner());
   }, []);
+
+  const ratingData: User[] = ratings.slice(0, 5);
 
   const showDrawerNavigator = () => {
     navigation.openDrawer();
@@ -221,17 +241,21 @@ const _Home: React.FC<PropsType> = (props) => {
 
         <SumBottle sumAqua={200000} sumOther={100000} />
         <View style={{ marginTop: -10 }}>
-          <Rating
-            checkSignIn={isLoggedIn}
-            data={DATA}
-            type={true}
-            onPressSignIn={() => {
-              navigation.navigate("SignIn");
-            }}
-            onPress={() => {
-              navigation.navigate("Bảng Xếp Hạng");
-            }}
-          />
+          {loadingRatings ? (
+            <Loading height={300} />
+          ) : (
+            <Rating
+              checkSignIn={isLoggedIn}
+              data={ratingData}
+              type={true}
+              onPressSignIn={() => {
+                navigation.navigate("SignIn");
+              }}
+              onPress={() => {
+                navigation.navigate("Bảng Xếp Hạng");
+              }}
+            />
+          )}
         </View>
         <CarouselView onPress={goToScreenPresent} check={false} />
         <Address onPress={goToScreenMap} uri={PURE_COIN} check={false} />

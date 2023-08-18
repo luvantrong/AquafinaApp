@@ -44,6 +44,8 @@ import database from "@react-native-firebase/database";
 import { get } from "react-native/Libraries/TurboModule/TurboModuleRegistry";
 import { AppContext } from "@shared-state";
 import { User } from "@domain";
+import { useSelector } from "react-redux";
+import { RootState, getRatings, useAppDispatch } from "@shared-state";
 
 type DrawerNavigationProps = DrawerNavigationProp<StackHome>;
 type PropsType = NativeStackScreenProps<StackHome, "Bảng Xếp Hạng"> & {
@@ -55,8 +57,14 @@ const _ChartScreen: React.FC<PropsType> = (props) => {
 
   const { isLoggedIn, dataUser, setDataUser, setLoggedIn } =
     React.useContext(AppContext);
+  const dispatch = useAppDispatch();
+  const ratings = useSelector((state: RootState) => state.user.users);
   const [modalVisibleSignOut, setModalVisibleSignOut] = useState(false);
   const [modalVisible, setModalVisible] = useState(false);
+
+  useEffect(() => {
+    dispatch(getRatings());
+  }, []);
   const scrollViewRef = React.useRef<ScrollView>(null);
 
   const scrollToTop = () => {
@@ -66,6 +74,7 @@ const _ChartScreen: React.FC<PropsType> = (props) => {
   useEffect(() => {
     scrollViewRef.current?.scrollTo({ y: 0, animated: true });
   }, []);
+
 
   const showDrawerNavigator = () => {
     navigation.openDrawer();
@@ -170,9 +179,10 @@ const _ChartScreen: React.FC<PropsType> = (props) => {
       <ScrollView>
         <Rating
           checkSignIn={true}
-          data={DATA}
+          data={ratings}
           containerStyle={{ marginTop: 10 }}
           type={false}
+         
         />
         <MenuFooter
           onPress1={goToScreenGreenWorld}

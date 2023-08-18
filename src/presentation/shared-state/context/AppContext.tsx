@@ -6,6 +6,8 @@ interface AppContextProps {
   setLoggedIn: React.Dispatch<React.SetStateAction<boolean>>;
   dataUser: User;
   setDataUser: React.Dispatch<React.SetStateAction<User>>;
+  key: string;
+  setKey: React.Dispatch<React.SetStateAction<string>>;
 }
 
 type AppContextProviderProps = {
@@ -17,6 +19,8 @@ const defaultContextValue: AppContextProps = {
   setLoggedIn: () => {},
   dataUser: {} as User,
   setDataUser: () => {},
+  key: "",
+  setKey: () => {},
 };
 
 export const AppContext = createContext<AppContextProps>(defaultContextValue);
@@ -24,12 +28,15 @@ export const AppContext = createContext<AppContextProps>(defaultContextValue);
 export const AppContextProvider = ({ children }: AppContextProviderProps) => {
   const [isLoggedIn, setLoggedIn] = useState(false);
   const [dataUser, setDataUser] = useState<User>({} as User);
+  const [key, setKey] = useState("");
 
   const appContextValue: AppContextProps = {
     isLoggedIn,
     setLoggedIn,
     dataUser,
     setDataUser,
+    key,
+    setKey,
   };
 
   return (

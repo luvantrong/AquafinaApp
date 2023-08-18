@@ -28,6 +28,9 @@ import {
 } from "@assets";
 import { Colors } from "@resources";
 import { User } from "@domain";
+import { AppContext, RootState, useAppDispatch } from "@shared-state";
+import { useSelector } from "react-redux";
+import { get } from "react-native/Libraries/TurboModule/TurboModuleRegistry";
 
 interface ItemTab {
   id: number;
@@ -43,9 +46,11 @@ const Me: User = {
 };
 
 type ItemProps = {
-  item: User;
+  item: User ;
   index: number;
 };
+
+
 
 const Item = ({ item, index }: ItemProps) => {
   let backgroundColor = Colors.WHITE;
@@ -108,7 +113,7 @@ const Item = ({ item, index }: ItemProps) => {
         #{index + 1}
       </Text>
       <Image
-        style={{ marginStart: 10, marginEnd: 5 }}
+        style={{ marginStart: 10, marginEnd: 5, borderRadius: 50 }}
         source={{ uri: item.avatar, width: 24, height: 24 }}
       />
       <Text style={{ color: color, fontFamily: fontFamily.bold }}>
@@ -120,7 +125,7 @@ const Item = ({ item, index }: ItemProps) => {
           width: 20,
           height: 20,
           position: "absolute",
-          right: 70,
+          right: 55,
         }}
         source={{ uri: uriR }}
       />
@@ -197,10 +202,10 @@ const Item2 = ({ item, index }: ItemProps) => {
           fontSize: 12,
         }}
       >
-        #{places + 1}
+        #{index + 1}
       </Text>
       <Image
-        style={{ marginStart: 10, marginEnd: 5 }}
+        style={{ marginStart: 10, marginEnd: 5, borderRadius: 50 }}
         source={{ uri: item.avatar, width: 24, height: 24 }}
       />
       <Text style={{ color: color, fontFamily: fontFamily.bold }}>
@@ -212,7 +217,7 @@ const Item2 = ({ item, index }: ItemProps) => {
           width: 20,
           height: 20,
           position: "absolute",
-          right: 70,
+          right: 55,
         }}
         source={{ uri: uriR }}
       />
@@ -241,6 +246,11 @@ type RatingProps = {
 
 const _Rating: React.FC<RatingProps> = (props) => {
   const { checkSignIn, data, type } = props;
+  const { key, isLoggedIn } = React.useContext(AppContext);
+
+  const itemUser = useSelector((state: RootState) => state.user.item);
+  const index = useSelector((state: RootState) => state.user.index);
+
   const scrollViewRef = useRef<ScrollView>(null);
   const [selectedIndex, setSelectedIndex] = useState(1);
   useEffect(() => {
@@ -344,7 +354,7 @@ const _Rating: React.FC<RatingProps> = (props) => {
                 marginBottom: 10,
               }}
             />
-            <Item2 item={Me} index={4} />
+            <Item2 item={itemUser} index={index} />
             <Button
               title="Xem chi tiết"
               backgroundImage={BACKGROUND_BUTTON_WHITE}

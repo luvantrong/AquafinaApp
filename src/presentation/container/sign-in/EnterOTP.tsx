@@ -47,7 +47,7 @@ type PropsType = NativeStackScreenProps<StackHome, "EnterOTP"> & {
 
 const _EnterOTP: React.FC<PropsType> = (props) => {
   const { navigation, route } = props;
-  const { setLoggedIn, setDataUser, isLoggedIn } = React.useContext(AppContext);
+  const { setLoggedIn, setDataUser, isLoggedIn , setKey} = React.useContext(AppContext);
   const phoneNumber = route.params?.phoneNumber;
   const name = route.params?.name;
   const type = route.params?.type;
@@ -119,6 +119,7 @@ const _EnterOTP: React.FC<PropsType> = (props) => {
           point: user.point,
         };
         setDataUser(userWithKey);
+        setKey(key);
       }
     } catch (error) {
       console.error(error);
