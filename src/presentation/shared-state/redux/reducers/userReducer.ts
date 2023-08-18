@@ -1,18 +1,9 @@
-import {
-  createSlice,
-  createAction,
-  createAsyncThunk,
-  createReducer,
-  PayloadAction,
-  nanoid,
-} from "@reduxjs/toolkit";
-
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { User } from "@domain";
 import firebase from "firebase/compat/app";
 import "firebase/compat/firestore";
 import { firebaseConfig } from "@core";
 import { AVATAR_1 } from "@assets";
-import React from "react";
 
 export let firestore: firebase.firestore.Firestore;
 

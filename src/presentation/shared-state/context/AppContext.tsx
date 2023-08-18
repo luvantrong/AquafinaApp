@@ -1,5 +1,5 @@
 import { User } from "@domain";
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useState } from "react";
 
 interface AppContextProps {
   isLoggedIn: boolean;

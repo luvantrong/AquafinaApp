@@ -1,15 +1,5 @@
-import {
-  createSlice,
-  createAction,
-  createAsyncThunk,
-  createReducer,
-  PayloadAction,
-  nanoid,
-} from "@reduxjs/toolkit";
-
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { Banner } from "@domain";
-import firebase from "firebase/compat/app";
-import "firebase/compat/firestore";
 import { firestore } from "./userReducer";
 
 export interface BannerState {
