@@ -155,6 +155,4 @@ const _MapScreen: React.FC<PropsType> = (props) => {
   );
 };
 
-const styles = StyleSheet.create({});
-
 export const MapScreen = React.memo(_MapScreen);

@@ -7,13 +7,7 @@ import {
   PopupSignOut,
   PopupSignIn,
 } from "@components";
-import {
-  AVATAR_1,
-  AVATAR_2,
-  AVATAR_3,
-  ICON_MENU,
-  LOGO_AQUAFINA,
-} from "@assets";
+import { ICON_MENU, LOGO_AQUAFINA } from "@assets";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { StackHome } from "@navigation";
 import { DrawerNavigationProp } from "@react-navigation/drawer";
@@ -29,7 +23,6 @@ type PropsType = NativeStackScreenProps<StackHome, "Bảng Xếp Hạng"> & {
 
 const _ChartScreen: React.FC<PropsType> = (props) => {
   const { navigation } = props;
-
   const { isLoggedIn, dataUser, setDataUser, setLoggedIn } =
     React.useContext(AppContext);
   const dispatch = useAppDispatch();
@@ -91,12 +84,17 @@ const _ChartScreen: React.FC<PropsType> = (props) => {
       navigation.navigate("Bảng Xếp Hạng");
       scrollToTop();
     } else {
+      setModalVisible(true);
     }
   };
 
   const goToScreenPoints = () => {
-    navigation.navigate("Điểm Thưởng Xanh");
-    scrollToTop();
+    if (isLoggedIn) {
+      navigation.navigate("Điểm Thưởng Xanh");
+      scrollToTop();
+    } else {
+      setModalVisible(true);
+    }
   };
 
   const goToScreenDescriptionWarning = () => {
@@ -169,7 +167,5 @@ const _ChartScreen: React.FC<PropsType> = (props) => {
     </View>
   );
 };
-
-const _styles = StyleSheet.create({});
 
 export const ChartScreen = React.memo(_ChartScreen);

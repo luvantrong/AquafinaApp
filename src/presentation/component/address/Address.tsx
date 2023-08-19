@@ -1,9 +1,4 @@
-import {
-  Dimensions,
-  Image,
-  StyleSheet,
-  View,
-} from "react-native";
+import { Dimensions, Image, StyleSheet, View } from "react-native";
 import React from "react";
 import { BACKGROUND_BUTTON_BLUE } from "@assets";
 import { Button } from "../button";
@@ -43,7 +38,5 @@ const _Address: React.FC<Props> = (props) => {
     </View>
   );
 };
-
-const _styles = StyleSheet.create({});
 
 export const Address = React.memo(_Address);

@@ -25,7 +25,6 @@ const _SumBottle: React.FC<SumBottleProps> = (props) => {
         <Text style={StyleSheet.flatten(_styles.textSum)}>{numberAqua}</Text>
         <Text style={StyleSheet.flatten(_styles.text)}>Chai AQUAFINA</Text>
       </View>
-
       <View style={StyleSheet.flatten(_styles.viewOther)}>
         <Text style={StyleSheet.flatten(_styles.textSum)}>{numberOther}</Text>
         <Text style={StyleSheet.flatten(_styles.text)}>Chai khác</Text>

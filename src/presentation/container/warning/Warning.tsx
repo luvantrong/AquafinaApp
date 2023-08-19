@@ -1,11 +1,10 @@
-import { Dimensions, StyleSheet, Text, View } from "react-native";
+import { Dimensions, StyleSheet, View } from "react-native";
 import React from "react";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { StackHome } from "@navigation";
 import { DrawerNavigationProp } from "@react-navigation/drawer";
 import {
   BACKGROUND_BUTTON_BLUE,
-  ICON_LOGIN,
   ICON_MENU,
   LOGO_AQUAFINA,
   WARNING_2,
@@ -22,7 +21,7 @@ type PropsType = NativeStackScreenProps<StackHome, "WarningScreen"> & {
 
 const _Warning: React.FC<PropsType> = (props) => {
   const { navigation } = props;
-  const { isLoggedIn} = React.useContext(AppContext);
+  const { isLoggedIn } = React.useContext(AppContext);
 
   const showDrawerNavigator = () => {
     navigation.openDrawer();

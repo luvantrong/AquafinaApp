@@ -1,38 +1,8 @@
-import {
-  Dimensions,
-  Image,
-  Pressable,
-  SafeAreaView,
-  ScrollView,
-  StyleSheet,
-  Text,
-  TextInput,
-  View,
-  Modal,
-} from "react-native";
-import React, { useEffect, useState } from "react";
-import {
-  Address,
-  Button,
-  CarouselView,
-  Header,
-  ImageView,
-  MenuFooter,
-  Rating,
-  SliderBanner,
-  SumBottle,
-  TextPlus,
-  TextView,
-  PopupSignOut,
-  PopupSignIn,
-} from "@components";
+import { Dimensions, StyleSheet, TextInput, View, Modal } from "react-native";
+import React, { useState } from "react";
+import { Button, Header, ImageView, TextView, PopupSignOut } from "@components";
 import {
   BACKGROUND_BUTTON_BLUE,
-  BANNER_HOME,
-  BANNER_HOME_2,
-  BANNER_HOME_3,
-  BANNER_HOME_4,
-  ICON_LOGIN,
   ICON_MENU,
   IMAGE_BOTTOM_LOGIN,
   LOGO_AQUAFINA,

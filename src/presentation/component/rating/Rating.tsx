@@ -12,7 +12,6 @@ import {
 import React, { useState, useEffect, useRef } from "react";
 import { Button, ImageView, TextView } from "@components";
 import {
-  AVATAR_3,
   BACKGROUND_BUTTON_WHITE,
   R1,
   R2,
@@ -231,11 +230,8 @@ type RatingProps = {
 
 const _Rating: React.FC<RatingProps> = (props) => {
   const { checkSignIn, data, type } = props;
-  const { key, isLoggedIn } = React.useContext(AppContext);
-
   const itemUser = useSelector((state: RootState) => state.user.item);
   const index = useSelector((state: RootState) => state.user.index);
-
   const scrollViewRef = useRef<ScrollView>(null);
   const [selectedIndex, setSelectedIndex] = useState(1);
   useEffect(() => {

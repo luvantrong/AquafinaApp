@@ -10,24 +10,13 @@ import {
 } from "react-native";
 import React, { useState, useRef, useEffect, useMemo } from "react";
 import {
-  AO_DEN,
-  AO_DEN_CONTENT,
-  AO_KHOAC,
-  AO_KHOAC_CONTENT,
-  AO_TRANG,
   BACKGROUND_BUTTON_BLUE,
   BACKGROUND_ITEM,
   BACKGROUND_PRE,
   GROUP,
   ICON_CLOSE,
-  MU,
-  MU_CONTENT,
   TUI,
   TUI_CONTENT,
-  TUI_HOP,
-  TUI_HOP_CONTENT,
-  VO,
-  VO_CONTENT,
   WAVE,
   fontFamily,
 } from "@assets";
@@ -39,65 +28,6 @@ import { useSelector } from "react-redux";
 import { RootState, useAppDispatch, getAllPresent } from "@shared-state";
 import { Present } from "@domain";
 import { Loading } from "../loading";
-
-const DATA: Present[] = [
-  {
-    key: "2",
-    title: "Túi tote \n Aqufina x Repeet",
-    image: TUI,
-    content: "1 túi được làm từ 2 chai nhựa",
-    imageContent: TUI_CONTENT,
-    sum: 2,
-  },
-  {
-    key: "3",
-    title: "Áo khoác cape \n Aquafina x Headless",
-    image: AO_KHOAC,
-    content: "1 áo được làm từ 108 chai nhựa",
-    imageContent: AO_KHOAC_CONTENT,
-    sum: 108,
-  },
-  {
-    key: "4",
-    title: "Túi hộp \n Aquafina x Headlesss",
-    image: TUI_HOP,
-    content: "1 túi hộp được làm từ 104 chai nhựa",
-    imageContent: TUI_HOP_CONTENT,
-    sum: 104,
-  },
-  {
-    key: "1",
-    title: "Vớ \n Aquafina x Repeet",
-    image: VO,
-    content: "1 vớ được làm từ 1 chai nhựa",
-    imageContent: VO_CONTENT,
-    sum: 1,
-  },
-  {
-    key: "5",
-    title: "Áo thun thời trang \n Aquafina x Repeet",
-    image: AO_TRANG,
-    content: "1 áo được làm từ 7 chai nhựa",
-    imageContent: AO_DEN_CONTENT,
-    sum: 7,
-  },
-  {
-    key: "6",
-    title: "Nón lưỡi trai\n Aquafina x Repeet",
-    image: MU,
-    content: "1 mũ được làm từ 1 chai nhựa",
-    imageContent: MU_CONTENT,
-    sum: 1,
-  },
-  {
-    key: "7",
-    title: "Áo thun thời trang \n Aquafina x Repeet",
-    image: AO_DEN,
-    content: "1 áo được làm từ 7 chai nhựa",
-    imageContent: AO_DEN_CONTENT,
-    sum: 7,
-  },
-];
 
 export const SLIDER_WIDTH = Dimensions.get("window").width + 30;
 export const ITEM_WIDTH = Math.round(SLIDER_WIDTH * 0.52);
@@ -242,7 +172,7 @@ const _CarouselView: React.FC<CarouselViewProps> = (props) => {
                 onPress={onPress}
               />
               <Pagination
-                dotsLength={DATA.length}
+                dotsLength={presents.length}
                 activeDotIndex={indexActive}
                 carouselRef={isCarousel}
                 dotStyle={{

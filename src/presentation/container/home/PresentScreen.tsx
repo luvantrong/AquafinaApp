@@ -164,6 +164,4 @@ const _PresentScreen: React.FC<PropsType> = (props) => {
   );
 };
 
-const styles = StyleSheet.create({});
-
 export const PresentScreen = React.memo(_PresentScreen);

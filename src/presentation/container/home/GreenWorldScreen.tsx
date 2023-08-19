@@ -211,6 +211,4 @@ const _GreenWorldScreen: React.FC<PropsType> = (props) => {
   );
 };
 
-const styles = StyleSheet.create({});
-
 export const GreenWorldScreen = React.memo(_GreenWorldScreen);

@@ -14,9 +14,7 @@ import {
   ICON_CLOSE,
   fontFamily,
 } from "@assets";
-import { TextView } from "../text";
 import { ImageView } from "../image";
-import { TextViewBold } from "../textBold";
 import { Colors } from "@resources";
 import { Button } from "../button";
 

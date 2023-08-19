@@ -19,14 +19,7 @@ import {
   PopupSignIn,
   PopupStatistical,
 } from "@components";
-import {
-  AVATAR_1,
-  AVATAR_2,
-  AVATAR_3,
-  ICON_MENU,
-  LOGO_AQUAFINA,
-  PURE_COIN,
-} from "@assets";
+import { ICON_MENU, LOGO_AQUAFINA, PURE_COIN } from "@assets";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { StackHome } from "@navigation";
 import { DrawerNavigationProp } from "@react-navigation/drawer";
@@ -280,7 +273,5 @@ const _Home: React.FC<PropsType> = (props) => {
     </SafeAreaView>
   );
 };
-
-const _styles = StyleSheet.create({});
 
 export const Home = React.memo(_Home);

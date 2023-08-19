@@ -1,7 +1,6 @@
 import { SafeAreaView, StyleSheet, Dimensions, Alert } from "react-native";
-import React, { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
-import { firestore, useAppDispatch } from "@shared-state";
+import React, { useState } from "react";
+import { firestore } from "@shared-state";
 import {
   BACKGROUND_BUTTON_BLUE,
   BACKGROUND_BUTTON_WHITE,

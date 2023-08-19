@@ -1,7 +1,5 @@
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import {
-  SignIn,
-  Home,
   MapScreen,
   GreenWorldScreen,
   PresentScreen,
@@ -10,12 +8,9 @@ import {
 } from "@containers";
 import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
-import { ScrollView } from "react-native";
 
 import {
-  AVATAR_SIGNIN,
   ICON_AVATAR,
-  ICON_CLOSE,
   ICON_MENU_1,
   ICON_MENU_1_FOCUS,
   ICON_MENU_2,
@@ -28,12 +23,10 @@ import {
   ICON_MENU_5_FOCUS,
   fontFamily,
 } from "@assets";
-import { StyleSheet, Image, Pressable } from "react-native";
+import { StyleSheet, Image } from "react-native";
 import { Colors } from "@resources";
 import { CustomDrawerContent } from "./CustomDrawerContent";
 import { StackHome } from "./StackHome";
-import { DrawerNavigationProp } from "@react-navigation/drawer";
-import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { AppContext } from "../shared-state/context";
 
 type RootDrawerParamList = {

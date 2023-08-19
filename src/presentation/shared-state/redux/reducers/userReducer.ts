@@ -30,6 +30,10 @@ const initialState: UserState = {
     avatar: AVATAR_1,
     point: 0,
     phone: "0912123412",
+    statistical: {
+      aquafina: 0,
+      other: 0,
+    },
   },
   index: 0,
 };
@@ -70,6 +74,10 @@ export const getRatingUser = createAsyncThunk(
       avatar: AVATAR_1,
       point: 0,
       phone: "0912123412",
+      statistical: {
+        aquafina: 0,
+        other: 0,
+      },
     };
     let index = 0;
     try {
