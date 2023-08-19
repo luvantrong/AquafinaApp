@@ -17,6 +17,7 @@ import {
   SliderBanner,
   SumBottle,
   PopupSignIn,
+  PopupStatistical,
 } from "@components";
 import {
   AVATAR_1,
@@ -47,11 +48,23 @@ type PropsType = NativeStackScreenProps<StackHome, "Home"> & {
 
 const _Home: React.FC<PropsType> = (props) => {
   const { navigation } = props;
-  const { isLoggedIn, setDataUser, setLoggedIn, key } =
+  const { isLoggedIn, setDataUser, setLoggedIn, key, dataUser } =
     useContext(AppContext);
   const [modalVisibleSignOut, setModalVisibleSignOut] = useState(false);
   const [modalVisible, setModalVisible] = useState(false);
+  const [modalVisibleStatistical, setModalVisibleStatistical] = useState(false);
   const scrollViewRef = React.useRef<ScrollView>(null);
+
+  useEffect(() => {
+    if (
+      isLoggedIn &&
+      dataUser &&
+      dataUser.statistical &&
+      dataUser.statistical.aquafina
+    ) {
+      setModalVisibleStatistical(true);
+    }
+  }, [isLoggedIn, dataUser]);
 
   const scrollToTop = () => {
     scrollViewRef.current?.scrollTo({ y: 0, animated: true });
@@ -85,12 +98,6 @@ const _Home: React.FC<PropsType> = (props) => {
   useEffect(() => {
     dispatch(getRatingUser(key));
   }, [key]);
-
-  interface Rating {
-    key: number;
-    name: string;
-    places: number;
-  }
 
   useEffect(() => {
     dispatch(getAllBanner());
@@ -180,6 +187,20 @@ const _Home: React.FC<PropsType> = (props) => {
         onPressRight={goToScreenSignIn}
         onPressCenter={goToScreenHome}
       />
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={modalVisibleStatistical}
+      >
+        <PopupStatistical
+          onPress={() => {
+            setModalVisibleStatistical(!modalVisibleStatistical);
+          }}
+          sumStatistical={dataUser?.point}
+          aquafina={dataUser?.statistical?.aquafina}
+          other={dataUser?.statistical?.other}
+        />
+      </Modal>
       <Modal animationType="slide" transparent={true} visible={modalVisible}>
         <PopupSignIn
           onPress={() => {
@@ -211,6 +232,7 @@ const _Home: React.FC<PropsType> = (props) => {
           }}
         />
       </Modal>
+
       <ScrollView
         style={{ marginBottom: 55 }}
         showsVerticalScrollIndicator={false}
@@ -262,4 +284,3 @@ const _Home: React.FC<PropsType> = (props) => {
 const _styles = StyleSheet.create({});
 
 export const Home = React.memo(_Home);
-

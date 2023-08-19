@@ -21,4 +21,5 @@ export const Colors = {
   GREY_RULES: "rgba(41, 43, 46, 0.8)",
   GREY_GREY: "rgba(234, 234, 236, 1)",
   YELLOW: "rgba(255, 184, 0, 1)",
+  ORANGE: "rgba(244, 111, 36, 1)",
 };

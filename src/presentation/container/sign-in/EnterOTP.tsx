@@ -99,6 +99,7 @@ const _EnterOTP: React.FC<PropsType> = (props) => {
           phone: user.phone,
           avatar: user.avatar,
           point: user.point,
+          statistical: user.statistical,
         };
         setDataUser(userWithKey);
         setKey(key);
@@ -128,6 +129,10 @@ const _EnterOTP: React.FC<PropsType> = (props) => {
         phone: phoneNumber,
         avatar: ICON_AVATAR,
         point: 0,
+        statistical: {
+          aquafina: 0,
+          other: 0,
+        },
       };
       dispatch(signUp(user));
       navigation.navigate("NotificationSignUp");
@@ -184,7 +189,7 @@ const _EnterOTP: React.FC<PropsType> = (props) => {
             _styles.underlineStyleBase,
             { color: colorOTP, borderColor: borderColorOTP },
           ])}
-          code={code} 
+          code={code}
           onCodeChanged={(code) => {
             setCode(code);
           }}
