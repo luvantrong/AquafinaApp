@@ -118,9 +118,9 @@ const _EnterOTP: React.FC<PropsType> = (props) => {
       return false;
     }
     // confirmCode();
-    getDataUser();
 
     if (type == true) {
+      getDataUser();
       setLoggedIn(true);
       navigation.navigate("Home");
     } else if (type == false) {
