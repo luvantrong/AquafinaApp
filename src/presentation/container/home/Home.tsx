@@ -50,10 +50,13 @@ const _Home: React.FC<PropsType> = (props) => {
 
   useEffect(() => {
     if (
-      isLoggedIn &&
-      dataUser &&
-      dataUser.statistical &&
-      dataUser.statistical.aquafina
+      (isLoggedIn &&
+        dataUser &&
+        dataUser.statistical &&
+        dataUser.statistical.aquafina) ||
+      (dataUser.statistical?.other == 0 &&
+        dataUser.statistical?.aquafina == 0) ||
+      dataUser.point == 0
     ) {
       setModalVisibleStatistical(true);
     }

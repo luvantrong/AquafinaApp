@@ -52,97 +52,104 @@ const _PopupStatistical: React.FC<Props> = (props) => {
             alignSelf: "center",
           }}
         />
-        <View
-          style={{
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
-        >
-          <TextView title="Chúc mừng " textStyle={{ marginTop: 12 }} />
-          <TextViewBold
-            text={title}
-            boldTexts={[sumStatistical.toString()]}
-            styleText={{
-              fontFamily: fontFamily.medium,
-              fontSize: 16,
-              color: Colors.BLUE_TEXT,
-            }}
-            styleBold={{
-              fontSize: 16,
-              color: Colors.BLUE_TEXT,
-            }}
-            styleView={{
-              width: Dimensions.get("window").width * 0.9,
+        <TextView title="Chúc mừng " textStyle={{ marginTop: 12 }} />
+
+        <View>
+          <View
+            style={{
+              flexDirection: "column",
               alignItems: "center",
               justifyContent: "center",
-              marginTop: 30,
-            }}
-          />
-        </View>
-        <View style={{ marginStart: 45, marginTop: 20, flexDirection: "row" }}>
-          <Image
-            source={{ uri: IMG_AQUAFINA }}
-            style={{
-              width: 28.5,
-              height: 93.5,
-              resizeMode: "stretch",
-            }}
-          />
-          <Text
-            style={{
-              fontFamily: fontFamily.bold,
-              color: Colors.ORANGE,
-              fontSize: 42,
-              marginTop: 30,
-              marginStart: 15,
             }}
           >
-            {aquafina}
-          </Text>
-          <Text
-            style={{
-              fontFamily: fontFamily.bold,
-              color: Colors.BLUE_KV,
-              fontSize: 16,
-              marginTop: 57,
-              marginStart: 5,
-            }}
+            <TextViewBold
+              text={title}
+              boldTexts={[sumStatistical.toString()]}
+              styleText={{
+                fontFamily: fontFamily.medium,
+                fontSize: 16,
+                color: Colors.BLUE_TEXT,
+              }}
+              styleBold={{
+                fontSize: 16,
+                color: Colors.BLUE_TEXT,
+              }}
+              styleView={{
+                width: Dimensions.get("window").width * 0.9,
+                alignItems: "center",
+                justifyContent: "center",
+                marginTop: 30,
+              }}
+            />
+          </View>
+          <View
+            style={{ marginStart: 45, marginTop: 20, flexDirection: "row" }}
           >
-            chai Aquafina
-          </Text>
-        </View>
-        <View style={{ marginStart: 45, marginTop: 20, flexDirection: "row" }}>
-          <Image
-            source={{ uri: IMG_OTHER }}
-            style={{
-              width: 28.5,
-              height: 93.5,
-              resizeMode: "stretch",
-            }}
-          />
-          <Text
-            style={{
-              fontFamily: fontFamily.bold,
-              color: Colors.ORANGE,
-              fontSize: 42,
-              marginTop: 30,
-              marginStart: 15,
-            }}
+            <Image
+              source={{ uri: IMG_AQUAFINA }}
+              style={{
+                width: 28.5,
+                height: 93.5,
+                resizeMode: "stretch",
+              }}
+            />
+            <Text
+              style={{
+                fontFamily: fontFamily.bold,
+                color: Colors.ORANGE,
+                fontSize: 42,
+                marginTop: 30,
+                marginStart: 15,
+              }}
+            >
+              {aquafina + ""}
+            </Text>
+            <Text
+              style={{
+                fontFamily: fontFamily.bold,
+                color: Colors.BLUE_KV,
+                fontSize: 16,
+                marginTop: 57,
+                marginStart: 5,
+              }}
+            >
+              chai Aquafina
+            </Text>
+          </View>
+          <View
+            style={{ marginStart: 45, marginTop: 20, flexDirection: "row" }}
           >
-            {other}
-          </Text>
-          <Text
-            style={{
-              fontFamily: fontFamily.bold,
-              color: Colors.BLUE_KV,
-              fontSize: 16,
-              marginTop: 57,
-              marginStart: 5,
-            }}
-          >
-            chai khác
-          </Text>
+            <Image
+              source={{ uri: IMG_OTHER }}
+              style={{
+                width: 28.5,
+                height: 93.5,
+                resizeMode: "stretch",
+              }}
+            />
+            <Text
+              style={{
+                fontFamily: fontFamily.bold,
+                color: Colors.ORANGE,
+                fontSize: 42,
+                marginTop: 30,
+                marginStart: 15,
+              }}
+            >
+              {other + ""}
+            </Text>
+            <Text
+              style={{
+                fontFamily: fontFamily.bold,
+                color: Colors.BLUE_KV,
+                fontSize: 16,
+                marginTop: 57,
+                marginStart: 5,
+              }}
+            >
+              chai khác
+            </Text>
+          </View>
         </View>
 
         <Button
@@ -151,7 +158,8 @@ const _PopupStatistical: React.FC<Props> = (props) => {
           stylePressable={{
             width: Dimensions.get("window").width * 0.4,
             alignSelf: "center",
-            marginTop: 20,
+            position: "absolute",
+            bottom: 25,
           }}
           onPress={onPress}
         />
