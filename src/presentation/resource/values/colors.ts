@@ -22,4 +22,6 @@ export const Colors = {
   GREY_GREY: "rgba(234, 234, 236, 1)",
   YELLOW: "rgba(255, 184, 0, 1)",
   ORANGE: "rgba(244, 111, 36, 1)",
+  GREEN: "#E2E7EE",
+  GREEEN_2: "rgba(0, 187, 41, 1)",
 };

@@ -15,6 +15,7 @@ import {
   DescriptionWarning,
   RulesScreen,
 } from "@containers";
+import { StackRVM } from "./StackRVM";
 
 type SignInProps = {};
 type EnterOTPProps = {
@@ -33,6 +34,7 @@ type PresentScreenProps = {};
 type WarningScreenProps = {};
 type WarningDescriptionScreenProps = {};
 type RulesScreenProps = {};
+type StackRVMProps = {};
 
 export type StackHome = {
   SignIn: SignInProps | undefined;
@@ -48,6 +50,7 @@ export type StackHome = {
   WarningScreen: WarningScreenProps | undefined;
   WarningDescriptionScreen: WarningDescriptionScreenProps | undefined;
   RulesScreen: RulesScreenProps | undefined;
+  StackRVM: StackRVMProps | undefined;
 };
 
 const Stack = createNativeStackNavigator<StackHome>();
@@ -76,6 +79,7 @@ const _StackHome = () => {
         component={DescriptionWarning}
       />
       <Stack.Screen name="RulesScreen" component={RulesScreen} />
+      <Stack.Screen name="StackRVM" component={StackRVM} />
     </Stack.Navigator>
   );
 };

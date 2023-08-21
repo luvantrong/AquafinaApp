@@ -269,3 +269,15 @@ export const IMG_AQUAFINA =
 
 export const IMG_OTHER =
   "https://firebasestorage.googleapis.com/v0/b/aquafinaapp-bc817.appspot.com/o/other_img.png?alt=media&token=5d9b4f97-4bc1-46c7-8151-dc006fe150cc";
+
+export const IMG_RVM_HOME =
+  "https://firebasestorage.googleapis.com/v0/b/aquafinaapp-bc817.appspot.com/o/RVM_IMG_HOME.png?alt=media&token=de4441c1-403c-4799-8b3a-acab263aa227";
+
+export const BTN_START =
+  "https://firebasestorage.googleapis.com/v0/b/aquafinaapp-bc817.appspot.com/o/BTN_START.png?alt=media&token=c3d2bc81-591b-4c0e-b8ce-051fd4e1168c";
+
+export const QR_CODE =
+  "https://firebasestorage.googleapis.com/v0/b/aquafinaapp-bc817.appspot.com/o/QR_CODE.png?alt=media&token=d535727a-07b2-49a0-8ed6-4f9e9416fffb";
+
+export const FB_RVM =
+  "https://firebasestorage.googleapis.com/v0/b/aquafinaapp-bc817.appspot.com/o/facebookRVM.png?alt=media&token=58caa2e7-13e5-4189-bb0d-603d287f3928";

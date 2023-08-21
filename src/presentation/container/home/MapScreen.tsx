@@ -1,4 +1,11 @@
-import { Dimensions, ScrollView, StyleSheet, View, Modal } from "react-native";
+import {
+  Dimensions,
+  ScrollView,
+  StyleSheet,
+  View,
+  Modal,
+  Pressable,
+} from "react-native";
 import React, { useEffect, useState } from "react";
 import {
   Header,
@@ -131,7 +138,13 @@ const _MapScreen: React.FC<PropsType> = (props) => {
         />
       </Modal>
       <ScrollView ref={scrollViewRef}>
-        <ImageView uri={W_2} imageStyle={{ height: 600 }} />
+        <Pressable
+          onPress={() => {
+            navigation.navigate("StackRVM");
+          }}
+        >
+          <ImageView uri={W_2} imageStyle={{ height: 600 }} />
+        </Pressable>
         <ImageView uri={MAP_8} imageStyle={{ height: 600 }} />
         <ImageView
           uri={MAP_9}
