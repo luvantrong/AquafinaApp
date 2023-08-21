@@ -29,7 +29,7 @@ import {
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { StackRVM } from "@navigation";
 
-type PropsType = NativeStackScreenProps<StackRVM, "HomeRVM">;
+type PropsType = NativeStackScreenProps<StackRVM, "InstructRVM">;
 
 const _InstructRVM: React.FC<PropsType> = (props) => {
   const { navigation } = props;
