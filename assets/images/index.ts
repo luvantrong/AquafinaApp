@@ -281,3 +281,21 @@ export const QR_CODE =
 
 export const FB_RVM =
   "https://firebasestorage.googleapis.com/v0/b/aquafinaapp-bc817.appspot.com/o/facebookRVM.png?alt=media&token=58caa2e7-13e5-4189-bb0d-603d287f3928";
+
+export const LEFT_CIRCLE =
+  "https://firebasestorage.googleapis.com/v0/b/aquafinaapp-bc817.appspot.com/o/left-circle.png?alt=media&token=18fac785-56ae-4484-b729-1a3790772090";
+
+export const LOGO_STRUCT =
+  "https://firebasestorage.googleapis.com/v0/b/aquafinaapp-bc817.appspot.com/o/logostruct.png?alt=media&token=eecfed55-40cb-4fbe-9a62-4596229b527b";
+
+export const BTN_CONFIRM =
+  "https://firebasestorage.googleapis.com/v0/b/aquafinaapp-bc817.appspot.com/o/btnConfirm.png?alt=media&token=c68af36d-f803-4ae9-82dd-0cf0a1ad4361";
+
+export const STR_1 =
+  "https://firebasestorage.googleapis.com/v0/b/aquafinaapp-bc817.appspot.com/o/str1.png?alt=media&token=d0c08f68-9dd2-4aa7-a0a2-2c4465f5d68a";
+
+export const STR_2 =
+  "https://firebasestorage.googleapis.com/v0/b/aquafinaapp-bc817.appspot.com/o/str2.png?alt=media&token=0a79c363-1feb-43e0-92dc-0c45db2a2c4f";
+
+export const STR_3 =
+  "https://firebasestorage.googleapis.com/v0/b/aquafinaapp-bc817.appspot.com/o/str3.png?alt=media&token=8ba91878-8af6-4fcc-b400-ac9514fc6f0e";
