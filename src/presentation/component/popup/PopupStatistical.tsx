@@ -13,6 +13,7 @@ import { ImageView } from "../image";
 import { TextViewBold } from "../textBold";
 import { Colors } from "@resources";
 import { Button } from "../button";
+import { BackgroundModal } from "../backgroundModal";
 
 type Props = {
   onPress?: () => void;
@@ -26,6 +27,7 @@ const _PopupStatistical: React.FC<Props> = (props) => {
   let title = "Bạn đã đổi thành công " + sumStatistical + " điểm với:";
   return (
     <View style={_styles.centeredView}>
+      <BackgroundModal />
       <View style={_styles.modalView}>
         <ImageView
           uri={BG_STATIS_1}
@@ -172,7 +174,6 @@ const _styles = StyleSheet.create({
   centeredView: {
     flex: 1,
     justifyContent: "center",
-    marginTop: 22,
   },
   modalView: {
     margin: 20,

@@ -18,6 +18,7 @@ import { ImageView } from "../image";
 import { TextViewBold } from "../textBold";
 import { Colors } from "@resources";
 import { Button } from "../button";
+import { BackgroundModal } from "../backgroundModal";
 
 type Props = {
   onPress: () => void;
@@ -28,6 +29,7 @@ const _PopupSignIn: React.FC<Props> = (props) => {
   const { onPress, onPressSignIn } = props;
   return (
     <View style={_styles.centeredView}>
+      <BackgroundModal />
       <View style={_styles.modalView}>
         <Pressable
           style={{ position: "absolute", top: 20, right: 20 }}
@@ -106,7 +108,7 @@ const _styles = StyleSheet.create({
   centeredView: {
     flex: 1,
     justifyContent: "center",
-    marginTop: 22,
+    // marginTop: 22,
   },
   modalView: {
     margin: 20,

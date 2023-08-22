@@ -17,6 +17,7 @@ import {
 import { ImageView } from "../image";
 import { Colors } from "@resources";
 import { Button } from "../button";
+import { BackgroundModal } from "../backgroundModal";
 
 type Props = {
   onPress: () => void;
@@ -28,6 +29,7 @@ const _PopupSignOut: React.FC<Props> = (props) => {
   const { onPress, onPressSignOut, onPressCancel } = props;
   return (
     <View style={_styles.centeredView}>
+      <BackgroundModal />
       <View style={_styles.modalView}>
         <Pressable
           style={{ position: "absolute", top: 20, right: 20 }}
@@ -116,7 +118,6 @@ const _styles = StyleSheet.create({
   centeredView: {
     flex: 1,
     justifyContent: "center",
-    marginTop: 22,
   },
   modalView: {
     margin: 20,

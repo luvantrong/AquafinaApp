@@ -320,3 +320,9 @@ export const BTN_COMPLTETE_1 =
 
 export const BTN_COMPLTETE_2 =
   "https://firebasestorage.googleapis.com/v0/b/aquafinaapp-bc817.appspot.com/o/btncomplete2.png?alt=media&token=01273fd9-3823-4ed7-b4d1-22982dfddf06";
+
+export const BG_MODAL_TIMEUP =
+  "https://firebasestorage.googleapis.com/v0/b/aquafinaapp-bc817.appspot.com/o/BG_modaltimeup.png?alt=media&token=f28c01b7-fbed-4d04-8a1c-deaefd6ebb17";
+
+export const BUTTON_BD =
+  "https://firebasestorage.googleapis.com/v0/b/aquafinaapp-bc817.appspot.com/o/button_bd.png?alt=media&token=afe97e31-8f5f-49d7-96f1-3201c187518f";

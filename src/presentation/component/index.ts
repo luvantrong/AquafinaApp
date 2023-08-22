@@ -14,3 +14,4 @@ export * from "./address";
 export * from "./menuFooter";
 export * from "./loading";
 export * from "./popup";
+export * from "./backgroundModal";

@@ -25,4 +25,5 @@ export const Colors = {
   GREEN: "#E2E7EE",
   GREEEN_2: "rgba(0, 187, 41, 1)",
   BLUE_600: "rgba(0, 53, 140, 1)",
+  BG_MODAL: "rgba(0, 0, 0, 0.7)",
 };

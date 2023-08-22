@@ -5,10 +5,17 @@ import {
   View,
   Image,
   Pressable,
+  Modal,
 } from "react-native";
 import React, { useEffect, useState } from "react";
 import { Colors } from "@resources";
-import { Header, ImageView, TextView, TextViewBold } from "@components";
+import {
+  Header,
+  ImageView,
+  PopupTimeup,
+  TextView,
+  TextViewBold,
+} from "@components";
 import {
   AQUA_2,
   BG_START_RVM,
@@ -48,6 +55,8 @@ const _StartRVM: React.FC<PropsType> = (props) => {
 
   const [type, setType] = useState(0);
 
+  const [visibleTimeup, setVisibleTimeup] = useState(false);
+
   useEffect(() => {
     const setTiomeoutAuto = setTimeout(() => {
       setTextTitle("CHAI NHỰA ĐANG ĐƯỢC XỬ LÝ...");
@@ -72,6 +81,37 @@ const _StartRVM: React.FC<PropsType> = (props) => {
     };
   }, []);
 
+  useEffect(() => {
+    const setTiomeoutPopupTimeout = setTimeout(() => {
+      setVisibleTimeup(true);
+    }, 15000);
+
+    return () => {
+      clearTimeout(setTiomeoutPopupTimeout);
+    };
+  }, []);
+
+  useEffect(() => {
+    const setTiomeoutGoToHomeRVM = setTimeout(() => {
+      setVisibleTimeup(false);
+      navigation.navigate("HomeRVM");
+    }, 25000);
+
+    return () => {
+      clearTimeout(setTiomeoutGoToHomeRVM);
+    };
+  }, []);
+
+  useEffect(() => {
+    const setTiomeoutGoToHomeRVM = setTimeout(() => {
+      navigation.navigate("HomeRVM");
+    }, 30000);
+
+    return () => {
+      clearTimeout(setTiomeoutGoToHomeRVM);
+    };
+  }, []);
+
   console.log("type", type);
 
   return (
@@ -81,7 +121,16 @@ const _StartRVM: React.FC<PropsType> = (props) => {
         icon_home={ICON_HOME}
         styleIconHome={{ opacity: 0 }}
       />
-
+      <Modal animationType="slide" transparent={true} visible={visibleTimeup}>
+        <PopupTimeup
+          onPress={() => {
+            navigation.navigate("HomeRVM");
+          }}
+          onPressPlus={() => {
+            setVisibleTimeup(false);
+          }}
+        />
+      </Modal>
       <TextView title={textTitle} />
       <View style={[_styles.viewContent, { display: check ? "flex" : "none" }]}>
         <View style={_styles.viewTop}>

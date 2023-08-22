@@ -18,6 +18,7 @@ import {
   SumBottle,
   PopupSignIn,
   PopupStatistical,
+  BackgroundModal,
 } from "@components";
 import { ICON_MENU, LOGO_AQUAFINA, PURE_COIN } from "@assets";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
