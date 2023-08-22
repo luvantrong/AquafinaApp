@@ -87,14 +87,12 @@ const _SignUp: React.FC<PropsType> = (props) => {
       return;
     } else {
       // Số điện thoại không tồn tại trong Firestore
-      navigation.navigate("EnterOTP", { phoneNumber: valuePhone, type: false });
+      navigation.navigate("EnterOTP", {
+        phoneNumber: valuePhone,
+        type: false,
+        name: valueName,
+      });
     }
-
-    navigation.navigate("EnterOTP", {
-      phoneNumber: valuePhone,
-      type: false,
-      name: valueName,
-    });
   };
 
   return (
