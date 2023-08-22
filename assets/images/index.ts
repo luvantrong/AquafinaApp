@@ -332,3 +332,6 @@ export const BUTTON_FULL =
 
 export const BG_TD =
   "https://firebasestorage.googleapis.com/v0/b/aquafinaapp-bc817.appspot.com/o/bg_td.png?alt=media&token=62a8043b-e50d-417e-8d83-22cacff90e45";
+
+export const IMG_TK =
+  "https://firebasestorage.googleapis.com/v0/b/aquafinaapp-bc817.appspot.com/o/imgpopupthankyou.png?alt=media&token=3ac0e539-70b5-446c-bd0e-df12c250686a";

@@ -13,6 +13,7 @@ import {
   Header,
   ImageView,
   PopupComplete,
+  PopupThankyou,
   PopupTimeup,
   TextView,
   TextViewBold,
@@ -58,6 +59,8 @@ const _StartRVM: React.FC<PropsType> = (props) => {
 
   const [visibleTimeup, setVisibleTimeup] = useState(false);
   const [visibleComplete, setVisibleComplete] = useState(false);
+  const [visibleThankyou, setVisibleThankyou] = useState(false);
+  const [completeStatus, setCompleteStatus] = useState(false);
 
   useEffect(() => {
     const setTiomeoutAuto = setTimeout(() => {
@@ -84,7 +87,7 @@ const _StartRVM: React.FC<PropsType> = (props) => {
   }, []);
 
   useEffect(() => {
-    if (visibleComplete == false) {
+    if (completeStatus == false) {
       const setTiomeoutPopupTimeout = setTimeout(() => {
         setVisibleTimeup(true);
       }, 15000);
@@ -93,10 +96,10 @@ const _StartRVM: React.FC<PropsType> = (props) => {
         clearTimeout(setTiomeoutPopupTimeout);
       };
     }
-  }, [visibleComplete]);
+  }, [completeStatus]);
 
   useEffect(() => {
-    if (visibleComplete == false) {
+    if (completeStatus == false) {
       const setTiomeoutGoToHomeRVM = setTimeout(() => {
         setVisibleTimeup(false);
         navigation.navigate("HomeRVM");
@@ -106,10 +109,10 @@ const _StartRVM: React.FC<PropsType> = (props) => {
         clearTimeout(setTiomeoutGoToHomeRVM);
       };
     }
-  }, [visibleComplete]);
+  }, [completeStatus]);
 
   useEffect(() => {
-    if (visibleComplete == false) {
+    if (completeStatus == false) {
       const setTiomeoutGoToHomeRVM = setTimeout(() => {
         navigation.navigate("HomeRVM");
       }, 30000);
@@ -118,9 +121,19 @@ const _StartRVM: React.FC<PropsType> = (props) => {
         clearTimeout(setTiomeoutGoToHomeRVM);
       };
     }
-  }, [visibleComplete]);
+  }, [completeStatus]);
 
-  console.log("type", type);
+  useEffect(() => {
+    if (completeStatus == true) {
+      const setTiomeoutGoToHomeRVM = setTimeout(() => {
+        navigation.navigate("HomeRVM");
+      }, 7000);
+
+      return () => {
+        clearTimeout(setTiomeoutGoToHomeRVM);
+      };
+    }
+  }, [completeStatus]);
 
   return (
     <View style={_styles.container}>
@@ -146,7 +159,14 @@ const _StartRVM: React.FC<PropsType> = (props) => {
           }}
           onPressPlus={() => {
             setVisibleComplete(false);
-            console.log("hiện popup cảm ơn");
+            setVisibleThankyou(true);
+          }}
+        />
+      </Modal>
+      <Modal animationType="slide" transparent={true} visible={visibleThankyou}>
+        <PopupThankyou
+          onPress={() => {
+            navigation.navigate("HomeRVM");
           }}
         />
       </Modal>
@@ -376,6 +396,7 @@ const _StartRVM: React.FC<PropsType> = (props) => {
             console.log("type 1");
           } else if (type == 2) {
             setVisibleComplete(true);
+            setCompleteStatus(true);
           }
         }}
         style={{ position: "absolute", bottom: 10, alignSelf: "center" }}
