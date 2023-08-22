@@ -61,6 +61,7 @@ const _StartRVM: React.FC<PropsType> = (props) => {
   const [visibleComplete, setVisibleComplete] = useState(false);
   const [visibleThankyou, setVisibleThankyou] = useState(false);
   const [completeStatus, setCompleteStatus] = useState(false);
+  const [checkGoToScreenQRCode, setCheckGoToScreenQRCode] = useState(false);
 
   useEffect(() => {
     const setTiomeoutAuto = setTimeout(() => {
@@ -87,7 +88,7 @@ const _StartRVM: React.FC<PropsType> = (props) => {
   }, []);
 
   useEffect(() => {
-    if (completeStatus == false) {
+    if (visibleComplete == false && checkGoToScreenQRCode == false) {
       const setTiomeoutPopupTimeout = setTimeout(() => {
         setVisibleTimeup(true);
       }, 15000);
@@ -96,10 +97,10 @@ const _StartRVM: React.FC<PropsType> = (props) => {
         clearTimeout(setTiomeoutPopupTimeout);
       };
     }
-  }, [completeStatus]);
+  }, [visibleComplete]);
 
   useEffect(() => {
-    if (completeStatus == false) {
+    if (visibleComplete == false && checkGoToScreenQRCode == false) {
       const setTiomeoutGoToHomeRVM = setTimeout(() => {
         setVisibleTimeup(false);
         navigation.navigate("HomeRVM");
@@ -109,10 +110,10 @@ const _StartRVM: React.FC<PropsType> = (props) => {
         clearTimeout(setTiomeoutGoToHomeRVM);
       };
     }
-  }, [completeStatus]);
+  }, [visibleComplete]);
 
   useEffect(() => {
-    if (completeStatus == false) {
+    if (visibleComplete == false && checkGoToScreenQRCode == false) {
       const setTiomeoutGoToHomeRVM = setTimeout(() => {
         navigation.navigate("HomeRVM");
       }, 30000);
@@ -121,19 +122,35 @@ const _StartRVM: React.FC<PropsType> = (props) => {
         clearTimeout(setTiomeoutGoToHomeRVM);
       };
     }
-  }, [completeStatus]);
+  }, [visibleComplete]);
 
   useEffect(() => {
-    if (completeStatus == true) {
+    if (completeStatus == true && checkGoToScreenQRCode == false) {
       const setTiomeoutGoToHomeRVM = setTimeout(() => {
         navigation.navigate("HomeRVM");
-      }, 7000);
+      }, 5000);
 
       return () => {
         clearTimeout(setTiomeoutGoToHomeRVM);
       };
     }
   }, [completeStatus]);
+
+  useEffect(() => {
+    if (
+      completeStatus == false &&
+      visibleComplete == true &&
+      checkGoToScreenQRCode == false
+    ) {
+      const setTiomeoutGoToHomeRVM = setTimeout(() => {
+        navigation.navigate("HomeRVM");
+      }, 5000);
+
+      return () => {
+        clearTimeout(setTiomeoutGoToHomeRVM);
+      };
+    }
+  }, [visibleComplete]);
 
   return (
     <View style={_styles.container}>
@@ -155,11 +172,15 @@ const _StartRVM: React.FC<PropsType> = (props) => {
       <Modal animationType="slide" transparent={true} visible={visibleComplete}>
         <PopupComplete
           onPress={() => {
-            console.log("onPress");
+            setCompleteStatus(false);
+            setVisibleComplete(false);
+            setCheckGoToScreenQRCode(true);
+            navigation.navigate("QRCodeRVM");
           }}
           onPressPlus={() => {
             setVisibleComplete(false);
             setVisibleThankyou(true);
+            setCompleteStatus(true);
           }}
         />
       </Modal>
@@ -396,7 +417,6 @@ const _StartRVM: React.FC<PropsType> = (props) => {
             console.log("type 1");
           } else if (type == 2) {
             setVisibleComplete(true);
-            setCompleteStatus(true);
           }
         }}
         style={{ position: "absolute", bottom: 10, alignSelf: "center" }}

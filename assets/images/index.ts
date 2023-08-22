@@ -335,3 +335,6 @@ export const BG_TD =
 
 export const IMG_TK =
   "https://firebasestorage.googleapis.com/v0/b/aquafinaapp-bc817.appspot.com/o/imgpopupthankyou.png?alt=media&token=3ac0e539-70b5-446c-bd0e-df12c250686a";
+
+export const QR_COMPLETE =
+  "https://firebasestorage.googleapis.com/v0/b/aquafinaapp-bc817.appspot.com/o/QRQR.png?alt=media&token=4afc7ee3-9b47-4018-97a1-c7a4be9574a9";
