@@ -12,6 +12,7 @@ import { Colors } from "@resources";
 import {
   Header,
   ImageView,
+  PopupComplete,
   PopupTimeup,
   TextView,
   TextViewBold,
@@ -56,6 +57,7 @@ const _StartRVM: React.FC<PropsType> = (props) => {
   const [type, setType] = useState(0);
 
   const [visibleTimeup, setVisibleTimeup] = useState(false);
+  const [visibleComplete, setVisibleComplete] = useState(false);
 
   useEffect(() => {
     const setTiomeoutAuto = setTimeout(() => {
@@ -82,35 +84,41 @@ const _StartRVM: React.FC<PropsType> = (props) => {
   }, []);
 
   useEffect(() => {
-    const setTiomeoutPopupTimeout = setTimeout(() => {
-      setVisibleTimeup(true);
-    }, 15000);
+    if (visibleComplete == false) {
+      const setTiomeoutPopupTimeout = setTimeout(() => {
+        setVisibleTimeup(true);
+      }, 15000);
 
-    return () => {
-      clearTimeout(setTiomeoutPopupTimeout);
-    };
-  }, []);
-
-  useEffect(() => {
-    const setTiomeoutGoToHomeRVM = setTimeout(() => {
-      setVisibleTimeup(false);
-      navigation.navigate("HomeRVM");
-    }, 25000);
-
-    return () => {
-      clearTimeout(setTiomeoutGoToHomeRVM);
-    };
-  }, []);
+      return () => {
+        clearTimeout(setTiomeoutPopupTimeout);
+      };
+    }
+  }, [visibleComplete]);
 
   useEffect(() => {
-    const setTiomeoutGoToHomeRVM = setTimeout(() => {
-      navigation.navigate("HomeRVM");
-    }, 30000);
+    if (visibleComplete == false) {
+      const setTiomeoutGoToHomeRVM = setTimeout(() => {
+        setVisibleTimeup(false);
+        navigation.navigate("HomeRVM");
+      }, 25000);
 
-    return () => {
-      clearTimeout(setTiomeoutGoToHomeRVM);
-    };
-  }, []);
+      return () => {
+        clearTimeout(setTiomeoutGoToHomeRVM);
+      };
+    }
+  }, [visibleComplete]);
+
+  useEffect(() => {
+    if (visibleComplete == false) {
+      const setTiomeoutGoToHomeRVM = setTimeout(() => {
+        navigation.navigate("HomeRVM");
+      }, 30000);
+
+      return () => {
+        clearTimeout(setTiomeoutGoToHomeRVM);
+      };
+    }
+  }, [visibleComplete]);
 
   console.log("type", type);
 
@@ -128,6 +136,17 @@ const _StartRVM: React.FC<PropsType> = (props) => {
           }}
           onPressPlus={() => {
             setVisibleTimeup(false);
+          }}
+        />
+      </Modal>
+      <Modal animationType="slide" transparent={true} visible={visibleComplete}>
+        <PopupComplete
+          onPress={() => {
+            console.log("onPress");
+          }}
+          onPressPlus={() => {
+            setVisibleComplete(false);
+            console.log("hiện popup cảm ơn");
           }}
         />
       </Modal>
@@ -356,7 +375,7 @@ const _StartRVM: React.FC<PropsType> = (props) => {
           } else if (type == 1) {
             console.log("type 1");
           } else if (type == 2) {
-            console.log("type 2");
+            setVisibleComplete(true);
           }
         }}
         style={{ position: "absolute", bottom: 10, alignSelf: "center" }}

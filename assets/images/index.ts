@@ -326,3 +326,9 @@ export const BG_MODAL_TIMEUP =
 
 export const BUTTON_BD =
   "https://firebasestorage.googleapis.com/v0/b/aquafinaapp-bc817.appspot.com/o/button_bd.png?alt=media&token=afe97e31-8f5f-49d7-96f1-3201c187518f";
+
+export const BUTTON_FULL =
+  "https://firebasestorage.googleapis.com/v0/b/aquafinaapp-bc817.appspot.com/o/bt_full.png?alt=media&token=871a1163-c7fd-4df2-baf6-46ed7b5d38ff";
+
+export const BG_TD =
+  "https://firebasestorage.googleapis.com/v0/b/aquafinaapp-bc817.appspot.com/o/bg_td.png?alt=media&token=62a8043b-e50d-417e-8d83-22cacff90e45";
