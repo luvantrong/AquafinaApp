@@ -19,7 +19,7 @@ const Stack = createNativeStackNavigator<StackRVM>();
 const _StackRVM = () => {
   return (
     <Stack.Navigator
-      initialRouteName="QRCodeRVM"
+      initialRouteName="HomeRVM"
       screenOptions={{
         headerShown: false,
       }}
